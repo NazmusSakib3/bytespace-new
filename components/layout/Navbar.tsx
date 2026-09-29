@@ -17,15 +17,15 @@ export function Navbar() {
   return (
     <header className="relative z-50 bg-transparent">
       <Container as="nav" aria-label="Main navigation">
-        <div className="flex h-16 items-center justify-between gap-4 sm:h-20">
+        <div className="flex h-[72px] items-center justify-between gap-4 sm:h-[88px] lg:h-[120px]">
           <Logo variant="light" />
 
-          <ul className="hidden items-center gap-10 md:flex">
+          <ul className="hidden items-center gap-8 md:flex lg:gap-10">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-sm font-medium text-white/90 transition-colors hover:text-white"
+                  className="text-sm font-medium text-white/95 transition-colors hover:text-white"
                 >
                   {link.label}
                 </Link>
@@ -33,16 +33,16 @@ export function Navbar() {
             ))}
           </ul>
 
-          <div className="hidden items-center gap-5 md:flex">
+          <div className="hidden items-center gap-5 md:flex lg:gap-6">
             <Link
               href="/login"
-              className="text-sm font-medium text-white/90 transition-colors hover:text-white"
+              className="text-sm font-medium text-white/95 transition-colors hover:text-white"
             >
               Sign In
             </Link>
             <Link
               href="/signup"
-              className="text-sm font-medium text-white/90 transition-colors hover:text-white"
+              className="text-sm font-medium text-white/95 transition-colors hover:text-white"
             >
               Join Us
             </Link>
@@ -98,10 +98,7 @@ export function Navbar() {
         </div>
 
         {open ? (
-          <div
-            id="mobile-menu"
-            className="border-t border-white/20 py-4 md:hidden"
-          >
+          <div id="mobile-menu" className="border-t border-white/20 py-4 md:hidden">
             <ul className="flex flex-col gap-3">
               {navLinks.map((link) => (
                 <li key={link.href}>

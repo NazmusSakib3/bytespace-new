@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 type LogoProps = {
@@ -11,17 +12,17 @@ export function Logo({ variant = "default", className = "" }: LogoProps) {
   return (
     <Link
       href="/"
-      className={`inline-flex items-center gap-2.5 font-bold text-xl tracking-tight ${textColor} ${className}`}
+      className={`inline-flex items-center gap-2.5 font-heading text-xl font-bold tracking-tight ${textColor} ${className}`}
       aria-label="ByteSpace home"
     >
-      <span
-        className="relative flex h-9 w-9 items-center justify-center rounded-full bg-brand-lime-bright"
-        aria-hidden
-      >
-        <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
-          <path d="M2 1.5v13l11-6.5L2 1.5z" fill="#0A0A0A" />
-        </svg>
-      </span>
+      <Image
+        src="/figma/logo-mark.svg"
+        alt=""
+        width={29}
+        height={32}
+        className="h-8 w-auto"
+        priority
+      />
       ByteSpace
     </Link>
   );

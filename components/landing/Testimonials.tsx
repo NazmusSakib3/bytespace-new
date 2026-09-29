@@ -1,91 +1,78 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const testimonials = [
   {
-    name: "Sarah Mitchell",
-    role: "Product Designer",
+    name: "Sarah M.",
+    role: "Enthusiastic Learner",
     quote:
-      "ByteSpace transformed how I learn. The project-based courses helped me land my dream job in just six months.",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80",
-    rating: 5,
+      "ByteSpace has transformed my approach to learning. The diverse range of courses and the quality of content provided by creators have exceeded my expectations. The platform truly fosters a sense of community and lifelong learning.",
+    avatar: "/figma/testimonial-1.png",
   },
   {
-    name: "James Okonkwo",
-    role: "Full-Stack Developer",
+    name: "James L.",
+    role: "Lifelong Learner",
     quote:
-      "Clear lessons, supportive mentors, and a vibrant community. I went from beginner to building production apps.",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80",
-    rating: 5,
+      "I've tried several online learning platforms, and ByteSpace stands out for its vibrant community and the variety of courses available. The easy navigation and engaging content make it a go-to platform for continuous skill development.",
+    avatar: "/figma/testimonial-2.png",
   },
   {
-    name: "Elena Vasquez",
-    role: "Marketing Lead",
+    name: "Alex B.",
+    role: "Inspired Creator",
     quote:
-      "The digital marketing track gave me practical skills I use every day. Worth every minute I invested.",
-    avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=120&q=80",
-    rating: 5,
+      "As a creator, ByteSpace has been a game-changer for me. The Course Editor is user-friendly, and the support from the community is incredible. It's fulfilling to see my courses making a positive impact on learners globally.",
+    avatar: "/figma/testimonial-3.png",
   },
 ];
-
-function Stars({ count }: { count: number }) {
-  return (
-    <div className="flex gap-0.5" aria-label={`${count} out of 5 stars`}>
-      {Array.from({ length: count }).map((_, i) => (
-        <svg
-          key={i}
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          className="text-brand-yellow"
-          aria-hidden
-        >
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-        </svg>
-      ))}
-    </div>
-  );
-}
 
 export function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="py-16 sm:py-20"
+      className="relative overflow-hidden py-16 sm:py-20 lg:py-24"
       aria-labelledby="testimonials-heading"
     >
-      <Container>
-        <SectionHeading
-          id="testimonials-heading"
-          title="Discover What Our Community is Saying"
-          subtitle="Real stories from learners who grew their skills and advanced their careers with ByteSpace."
-          className="mb-12"
-        />
+      <div
+        className="pointer-events-none absolute -left-40 top-20 h-[500px] w-[500px] rounded-full bg-brand-lime/20 blur-3xl"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -right-32 -top-20 h-[420px] w-[420px] rounded-full bg-brand-lime/15 blur-3xl"
+        aria-hidden
+      />
 
-        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <Container className="relative z-10">
+        <div className="mb-12 grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-16">
+          <h2
+            id="testimonials-heading"
+            className="font-heading text-2xl font-bold tracking-tight text-text sm:text-3xl lg:text-[2.5rem] lg:leading-tight"
+          >
+            Discover What Our Community Is Saying
+          </h2>
+          <p className="text-base leading-relaxed text-muted sm:text-lg">
+            At ByteSpace, our vibrant community of learners and creators is at the heart of what
+            we do. Hear directly from those who have experienced the transformative journey of
+            learning and creating on our platform. Explore testimonials that reflect the diverse
+            perspectives of enthusiastic learners and accomplished creators.
+          </p>
+        </div>
+
+        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-7">
           {testimonials.map((item) => (
             <li key={item.name}>
-              <article className="flex h-full flex-col rounded-2xl border border-border bg-white p-6 shadow-sm">
-                <div className="mb-4 flex items-center gap-3">
-                  <Image
-                    src={item.avatar}
-                    alt=""
-                    width={48}
-                    height={48}
-                    className="h-12 w-12 rounded-full object-cover"
-                  />
-                  <div>
-                    <p className="font-semibold text-text">{item.name}</p>
-                    <p className="text-sm text-muted">{item.role}</p>
-                  </div>
+              <article className="flex h-full flex-col rounded-[1.25rem] border border-border bg-white p-6 shadow-sm sm:p-7">
+                <Image
+                  src={item.avatar}
+                  alt=""
+                  width={80}
+                  height={80}
+                  className="h-16 w-16 rounded-full object-cover sm:h-20 sm:w-20"
+                />
+                <div className="mt-5">
+                  <p className="font-heading text-base font-semibold text-text">{item.name}</p>
+                  <p className="mt-0.5 text-sm text-muted">{item.role}</p>
                 </div>
-                <Stars count={item.rating} />
-                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-muted">
+                <blockquote className="mt-5 flex-1 text-sm leading-relaxed text-muted sm:text-base">
                   &ldquo;{item.quote}&rdquo;
                 </blockquote>
               </article>

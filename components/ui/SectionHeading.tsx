@@ -4,6 +4,7 @@ type SectionHeadingProps = {
   align?: "left" | "center";
   className?: string;
   id?: string;
+  maxWidth?: string;
 };
 
 export function SectionHeading({
@@ -12,19 +13,20 @@ export function SectionHeading({
   align = "center",
   className = "",
   id,
+  maxWidth = "max-w-3xl",
 }: SectionHeadingProps) {
   const alignClass = align === "center" ? "text-center mx-auto" : "text-left";
 
   return (
-    <div className={`max-w-2xl ${alignClass} ${className}`}>
+    <div className={`${maxWidth} ${alignClass} ${className}`}>
       <h2
         id={id}
-        className="text-2xl font-bold tracking-tight text-text sm:text-3xl lg:text-4xl"
+        className="font-heading text-2xl font-bold tracking-tight text-text sm:text-3xl lg:text-[2.5rem] lg:leading-tight"
       >
         {title}
       </h2>
       {subtitle ? (
-        <p className="mt-3 text-base text-muted sm:text-lg">{subtitle}</p>
+        <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">{subtitle}</p>
       ) : null}
     </div>
   );

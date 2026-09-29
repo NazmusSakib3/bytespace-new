@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --brand-blue: #0052ff;
-  --brand-blue-dark: #0041cc;
-  --brand-blue-deep: #0033a0;
-  --brand-lime: #d4ff00;
-  --brand-lime-bright: #d4ff25;
+  --brand-blue: #003be2;
+  --brand-blue-dark: #0030b8;
+  --brand-blue-deep: #0029a0;
+  --brand-lime: #d4fb20;
+  --brand-lime-bright: #d4fb20;
   --brand-yellow: #ffe566;
   --surface: #ffffff;
-  --surface-muted: #f5f6f8;
-  --muted: #6b7280;
-  --border: #e5e7eb;
-  --text: #0a0a0a;
+  --surface-muted: #f5f5f6;
+  --muted: #82868e;
+  --border: #e5e6e8;
+  --text: #242528;
   --radius-sm: 0.5rem;
   --radius-md: 0.75rem;
   --radius-lg: 1rem;
@@ -32,12 +32,17 @@
   --color-border: var(--border);
   --color-text: var(--text);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-poppins), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
   font-family: var(--font-sans);
   color: var(--text);
   background: var(--surface);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
 }
 
 @keyframes float-y {
@@ -56,7 +61,7 @@ body {
     transform: translateY(0) rotate(0deg);
   }
   50% {
-    transform: translateY(-8px) rotate(6deg);
+    transform: translateY(-8px) rotate(4deg);
   }
 }
 
@@ -74,9 +79,9 @@ body {
 
 .hero-grid {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 120px 120px;
 }
 
 .auth-grid {
