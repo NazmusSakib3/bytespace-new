@@ -75,37 +75,39 @@ export function Hero() {
             </p>
           </div>
 
-          {/* Search — Figma visual: lime Search button inside white pill */}
+          {/* Search — Figma: white field + separate lime button */}
           <form
-            className="mx-auto flex h-[52px] w-full max-w-[581px] items-center gap-2 rounded-[24px] bg-white py-1.5 pl-6 pr-1.5 shadow-sm"
+            className="flex w-full max-w-[541px] flex-col items-stretch gap-4 sm:mx-auto sm:max-w-none sm:w-auto sm:flex-row sm:items-center sm:justify-center sm:gap-4"
             role="search"
             action="#courses"
             method="get"
           >
-            <span className="shrink-0 text-muted" aria-hidden>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.75" />
-                <path
-                  d="M20 20l-3.5-3.5"
-                  stroke="currentColor"
-                  strokeWidth="1.75"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
-            <label htmlFor="hero-search" className="sr-only">
-              Search courses
-            </label>
-            <input
-              id="hero-search"
-              name="q"
-              type="search"
-              placeholder="Course, topic, creator"
-              className="min-w-0 flex-1 bg-transparent text-base leading-[1.6] text-text placeholder:text-muted focus:outline-none"
-            />
+            <div className="flex h-[52px] w-full items-center gap-2 rounded-[24px] bg-white px-6 sm:w-[461px]">
+              <span className="shrink-0 text-muted" aria-hidden>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.75" />
+                  <path
+                    d="M20 20l-3.5-3.5"
+                    stroke="currentColor"
+                    strokeWidth="1.75"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+              <label htmlFor="hero-search" className="sr-only">
+                Search courses
+              </label>
+              <input
+                id="hero-search"
+                name="q"
+                type="search"
+                placeholder="Course, topic, creator"
+                className="min-w-0 flex-1 bg-transparent text-base leading-[1.6] text-text placeholder:text-muted focus:outline-none"
+              />
+            </div>
             <button
               type="submit"
-              className="inline-flex h-full shrink-0 items-center justify-center rounded-[20px] bg-brand-lime px-6 text-lg font-medium text-text transition hover:brightness-95"
+              className="inline-flex h-[52px] shrink-0 items-center justify-center rounded-[24px] bg-brand-lime px-6 text-lg font-medium text-text transition hover:brightness-95"
             >
               Search
             </button>
@@ -153,15 +155,16 @@ export function Hero() {
             className="-right-4 bottom-0 h-[130px] w-[140px] sm:right-[2%] sm:h-[180px] sm:w-[190px] lg:right-[4%] lg:h-[220px] lg:w-[230px]"
           />
 
-          {/* Hero person */}
-          <div className="absolute bottom-0 left-1/2 z-10 w-[min(72%,340px)] -translate-x-1/2 sm:w-[420px] lg:w-[500px]">
+          {/* Hero person — keep Figma aspect 516∶483; width-driven, never stretch */}
+          <div className="absolute bottom-0 left-1/2 z-10 w-[min(78%,340px)] -translate-x-1/2 sm:w-[480px] lg:w-[578px]">
             <Image
               src="/figma/hero-person.png"
               alt="Young man with headphones and laptop smiling"
-              width={916}
-              height={902}
-              className="h-auto w-full object-contain object-bottom"
+              width={516}
+              height={483}
+              className="pointer-events-none h-auto w-full"
               style={{
+                aspectRatio: "516 / 483",
                 filter:
                   "drop-shadow(51px 73px 72px rgba(0,0,0,0.13)) drop-shadow(17px 24px 24px rgba(0,0,0,0.09))",
               }}
