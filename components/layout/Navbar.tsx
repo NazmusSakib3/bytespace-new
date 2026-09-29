@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Logo } from "@/components/layout/Logo";
@@ -8,20 +9,21 @@ const navLinks = [
   { href: "/", label: "Home", active: true },
   { href: "#courses", label: "Courses", active: false },
   { href: "#creators", label: "Creators", active: false },
-];
+] as const;
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
     <header className="relative z-50 bg-transparent">
+      {/* Figma Header_Frame: 1440×120, side inset 120, item gap 24 */}
       <nav
-        className="relative mx-auto flex h-[72px] w-full max-w-[1440px] items-center px-4 sm:h-[88px] sm:px-8 lg:h-[120px] lg:px-[120px]"
+        className="relative mx-auto flex h-[88px] w-full max-w-[1440px] items-center px-6 sm:h-[100px] sm:px-10 lg:h-[120px] lg:px-[120px]"
         aria-label="Main navigation"
       >
-        <Logo variant="light" className="relative z-10 text-2xl font-bold text-[#f5f5f6]" />
+        <Logo variant="light" className="relative z-10" />
 
-        <ul className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-6 md:flex">
+        <ul className="font-nav absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-6 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
@@ -29,7 +31,7 @@ export function Navbar() {
                 className={
                   link.active
                     ? "text-base font-medium leading-[1.2] text-[#f5f5f6]"
-                    : "text-base font-normal leading-[1.6] text-[#f5f5f6]/95 transition-colors hover:text-white"
+                    : "text-base font-normal leading-[1.6] text-[#f5f5f6] transition-colors hover:text-white"
                 }
               >
                 {link.label}
@@ -38,38 +40,33 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="relative z-10 ml-auto hidden items-center gap-6 md:flex">
+        <div className="font-nav relative z-10 ml-auto hidden items-center gap-6 md:flex">
           <Link
             href="/login"
-            className="text-base leading-6 text-[#f5f5f6] transition-colors hover:text-white"
+            className="text-base font-normal leading-6 text-[#f5f5f6] transition-colors hover:text-white"
           >
             Sign In
           </Link>
           <Link
             href="/signup"
-            className="text-base leading-6 text-[#f5f5f6] transition-colors hover:text-white"
+            className="text-base font-normal leading-6 text-[#f5f5f6] transition-colors hover:text-white"
           >
             Join Us
           </Link>
           <button
             type="button"
-            className="inline-flex size-6 items-center justify-center text-[#f5f5f6] transition hover:text-white"
+            className="inline-flex size-6 items-center justify-center transition hover:opacity-80"
             aria-label="Shopping bag"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
-              <path
-                d="M6 8h12l-1 12H7L6 8z"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M9 8V7a3 3 0 016 0v1"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-            </svg>
+            <Image
+              src="/figma/shopping-bag.svg"
+              alt=""
+              width={24}
+              height={24}
+              unoptimized
+              className="size-6"
+              aria-hidden
+            />
           </button>
         </div>
 
@@ -103,16 +100,13 @@ export function Navbar() {
       </nav>
 
       {open ? (
-        <div
-          id="mobile-menu"
-          className="border-t border-white/20 px-4 py-4 md:hidden"
-        >
-          <ul className="flex flex-col gap-3">
+        <div id="mobile-menu" className="border-t border-white/20 px-6 py-4 md:hidden">
+          <ul className="font-nav flex flex-col gap-3">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="block py-2 text-sm font-medium text-white"
+                  className="block py-2 text-base font-medium text-[#f5f5f6]"
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
@@ -122,14 +116,14 @@ export function Navbar() {
             <li className="flex flex-col gap-2 pt-2">
               <Link
                 href="/login"
-                className="rounded-full border border-white/40 px-4 py-2.5 text-center text-sm font-semibold text-white"
+                className="rounded-full border border-white/40 px-4 py-2.5 text-center text-sm font-medium text-white"
                 onClick={() => setOpen(false)}
               >
                 Sign In
               </Link>
               <Link
                 href="/signup"
-                className="rounded-full bg-white px-4 py-2.5 text-center text-sm font-semibold text-brand-blue"
+                className="rounded-full bg-white px-4 py-2.5 text-center text-sm font-medium text-brand-blue"
                 onClick={() => setOpen(false)}
               >
                 Join Us

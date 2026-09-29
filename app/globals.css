@@ -31,8 +31,10 @@
   --color-muted: var(--muted);
   --color-border: var(--border);
   --color-text: var(--text);
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-poppins), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Satoshi", var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-poppins), "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  --font-logo: "Clash Display", var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-nav: "Satoshi", var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
@@ -43,6 +45,14 @@ body {
 
 .font-heading {
   font-family: var(--font-heading);
+}
+
+.font-logo {
+  font-family: var(--font-logo);
+}
+
+.font-nav {
+  font-family: var(--font-nav);
 }
 
 @keyframes float-y {

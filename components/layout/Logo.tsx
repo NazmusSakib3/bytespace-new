@@ -7,12 +7,12 @@ type LogoProps = {
 };
 
 export function Logo({ variant = "default", className = "" }: LogoProps) {
-  const textColor = variant === "light" ? "text-white" : "text-text";
+  const textColor = variant === "light" ? "text-[#f5f5f6]" : "text-text";
 
   return (
     <Link
       href="/"
-      className={`inline-flex items-center gap-[8px] font-heading text-xl font-bold tracking-tight sm:text-2xl ${textColor} ${className}`}
+      className={`font-logo inline-flex items-center gap-2 text-2xl font-bold leading-none tracking-normal ${textColor} ${className}`}
       aria-label="ByteSpace home"
     >
       <Image
@@ -20,8 +20,9 @@ export function Logo({ variant = "default", className = "" }: LogoProps) {
         alt=""
         width={29}
         height={32}
-        className="h-[31px] w-auto"
+        className="h-[31.5px] w-[28.875px] shrink-0"
         priority
+        unoptimized
       />
       ByteSpace
     </Link>

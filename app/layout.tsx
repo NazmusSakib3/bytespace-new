@@ -28,6 +28,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Figma: Clash Display (logo) + Satoshi (nav/body) via Fontshare */}
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=clash-display@700&f[]=satoshi@400,500,700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>
         {children}
       </body>
