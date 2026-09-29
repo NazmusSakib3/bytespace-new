@@ -120,11 +120,11 @@ export function Hero() {
 
           <div className="relative z-10 mx-auto w-[220px] overflow-hidden rounded-[2rem] sm:w-[260px] lg:w-[280px]">
             <Image
-              src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?auto=format&fit=crop&w=600&q=80"
-              alt="Person with headphones learning on a laptop"
+              src="https://images.unsplash.com/photo-1588196749597-9dbc6e1a0f0a?auto=format&fit=crop&w=600&q=80"
+              alt="Young person with headphones smiling while using a laptop"
               width={600}
               height={720}
-              className="h-auto w-full object-cover object-top"
+              className="aspect-[3/4] h-auto w-full object-cover object-top"
               priority
             />
           </div>
