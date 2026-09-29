@@ -7,7 +7,7 @@ export function CtaBand() {
       <Container>
         <div className="flex flex-col items-center gap-6 text-center text-white">
           <h2 id="cta-heading" className="text-2xl font-bold sm:text-3xl lg:text-4xl">
-            Ready to level up your career?
+            Unlock Your Potential with ByteSpace
           </h2>
           <p className="max-w-xl text-blue-100">
             Join thousands of learners building in-demand skills today. Create your free

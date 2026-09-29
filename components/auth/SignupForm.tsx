@@ -128,8 +128,8 @@ export function SignupForm() {
         ) : null}
       </div>
 
-      <Button type="submit" variant="primary" size="lg" fullWidth>
-        Create account
+      <Button type="submit" variant="lime" size="lg" fullWidth>
+        Sign Up
       </Button>
 
       <p className="text-center text-sm text-muted">

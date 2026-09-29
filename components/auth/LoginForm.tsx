@@ -78,7 +78,7 @@ export function LoginForm() {
         </Link>
       </div>
 
-      <Button type="submit" variant="primary" size="lg" fullWidth>
+      <Button type="submit" variant="lime" size="lg" fullWidth>
         Log in
       </Button>
 

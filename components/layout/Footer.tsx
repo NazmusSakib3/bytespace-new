@@ -18,7 +18,7 @@ const social = [
 export function Footer() {
   return (
     <footer id="about" className="bg-brand-blue-deep text-white">
-      <Container as="footer" className="py-14">
+      <Container className="py-14">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           <div>
             <Logo variant="light" />

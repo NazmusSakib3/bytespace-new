@@ -12,7 +12,7 @@ export default function SignupPage() {
     <AuthShell
       title="Welcome to ByteSpace"
       subtitle="Join a community of learners building skills for the digital economy."
-      panelVariant="light"
+      panelVariant="blue"
     >
       <SignupForm />
     </AuthShell>
