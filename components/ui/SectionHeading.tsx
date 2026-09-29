@@ -3,6 +3,7 @@ type SectionHeadingProps = {
   subtitle?: string;
   align?: "left" | "center";
   className?: string;
+  id?: string;
 };
 
 export function SectionHeading({
@@ -10,12 +11,16 @@ export function SectionHeading({
   subtitle,
   align = "center",
   className = "",
+  id,
 }: SectionHeadingProps) {
   const alignClass = align === "center" ? "text-center mx-auto" : "text-left";
 
   return (
     <div className={`max-w-2xl ${alignClass} ${className}`}>
-      <h2 className="text-2xl font-bold tracking-tight text-text sm:text-3xl lg:text-4xl">
+      <h2
+        id={id}
+        className="text-2xl font-bold tracking-tight text-text sm:text-3xl lg:text-4xl"
+      >
         {title}
       </h2>
       {subtitle ? (

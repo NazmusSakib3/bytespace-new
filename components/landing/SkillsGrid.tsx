@@ -108,6 +108,7 @@ export function SkillsGrid() {
     <section id="skills" className="py-16 sm:py-20" aria-labelledby="skills-heading">
       <Container>
         <SectionHeading
+          id="skills-heading"
           title="Discover Your Passion, Build Your Skills"
           subtitle="Explore curated learning paths across high-demand disciplines—each designed to take you from curious beginner to confident professional."
           className="mb-12"

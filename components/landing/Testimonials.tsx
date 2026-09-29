@@ -63,6 +63,7 @@ export function Testimonials() {
     >
       <Container>
         <SectionHeading
+          id="testimonials-heading"
           title="Discover What Our Community Is Saying"
           subtitle="Real stories from learners who grew their skills and advanced their careers with ByteSpace."
           className="mb-12"
