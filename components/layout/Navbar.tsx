@@ -33,7 +33,7 @@ export function Navbar() {
             ))}
           </ul>
 
-          <div className="hidden items-center gap-4 md:flex">
+          <div className="hidden items-center gap-5 md:flex">
             <Link
               href="/login"
               className="text-sm font-medium text-white/90 transition-colors hover:text-white"
@@ -42,7 +42,7 @@ export function Navbar() {
             </Link>
             <Link
               href="/signup"
-              className="rounded-full bg-white px-5 py-2 text-sm font-semibold text-brand-blue transition hover:bg-white/90"
+              className="text-sm font-medium text-white/90 transition-colors hover:text-white"
             >
               Join Us
             </Link>
