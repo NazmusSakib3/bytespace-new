@@ -12,7 +12,7 @@ export function Logo({ variant = "default", className = "" }: LogoProps) {
   return (
     <Link
       href="/"
-      className={`inline-flex items-center gap-2.5 font-heading text-xl font-bold tracking-tight ${textColor} ${className}`}
+      className={`inline-flex items-center gap-[8px] font-heading text-xl font-bold tracking-tight sm:text-2xl ${textColor} ${className}`}
       aria-label="ByteSpace home"
     >
       <Image
@@ -20,7 +20,7 @@ export function Logo({ variant = "default", className = "" }: LogoProps) {
         alt=""
         width={29}
         height={32}
-        className="h-8 w-auto"
+        className="h-[31px] w-auto"
         priority
       />
       ByteSpace
