@@ -113,10 +113,10 @@ export function Hero() {
         </div>
 
         {/* Visual stage — person, lime circle, ornaments, floating cards */}
-        <div className="relative mx-auto mt-6 h-[460px] w-full sm:mt-2 sm:h-[520px] lg:h-[560px]">
-          {/* Lime circle behind person (Figma ~520–560 visible disc) */}
+        <div className="relative mx-auto mt-4 h-[480px] w-full overflow-visible sm:mt-0 sm:h-[540px] lg:h-[580px]">
+          {/* Lime circle behind person (Figma disc sits mid-lower) */}
           <div
-            className="absolute left-1/2 top-[8%] z-0 size-[280px] -translate-x-1/2 rounded-full bg-brand-lime sm:size-[400px] lg:top-[6%] lg:size-[520px]"
+            className="absolute left-1/2 top-[18%] z-0 size-[260px] -translate-x-1/2 rounded-full bg-brand-lime sm:top-[12%] sm:size-[380px] lg:top-[10%] lg:size-[500px]"
             aria-hidden
           />
 

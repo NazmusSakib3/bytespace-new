@@ -16,12 +16,12 @@ export function Navbar() {
   return (
     <header className="relative z-50 bg-transparent">
       <nav
-        className="mx-auto flex h-[72px] w-full max-w-[1440px] items-center justify-between px-4 sm:h-[88px] sm:px-8 lg:h-[120px] lg:px-[120px]"
+        className="relative mx-auto flex h-[72px] w-full max-w-[1440px] items-center px-4 sm:h-[88px] sm:px-8 lg:h-[120px] lg:px-[120px]"
         aria-label="Main navigation"
       >
-        <Logo variant="light" className="text-2xl font-bold text-[#f5f5f6]" />
+        <Logo variant="light" className="relative z-10 text-2xl font-bold text-[#f5f5f6]" />
 
-        <ul className="hidden items-center gap-6 md:flex">
+        <ul className="absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-6 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
@@ -38,7 +38,7 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="relative z-10 ml-auto hidden items-center gap-6 md:flex">
           <Link
             href="/login"
             className="text-base leading-6 text-[#f5f5f6] transition-colors hover:text-white"
@@ -75,7 +75,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/30 text-white md:hidden"
+          className="relative z-10 ml-auto inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/30 text-white md:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
