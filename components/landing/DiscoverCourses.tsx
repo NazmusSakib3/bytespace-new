@@ -84,15 +84,16 @@ export function DiscoverCourses() {
   return (
     <section id="courses" className="bg-white py-16 sm:py-20 lg:py-24" aria-labelledby="discover-heading">
       <Container>
-        {/* Frame 3 heading — Poppins SemiBold 48 / Satoshi 18 #82868E */}
-        <div className="mx-auto mb-12 max-w-[935px] text-center">
+        {/* Figma: Poppins SemiBold 48 / Satoshi 18 #82868E — title breaks after comma */}
+        <div className="mx-auto mb-10 max-w-[935px] text-center sm:mb-12">
           <h2
             id="discover-heading"
             className="font-heading text-[1.75rem] font-semibold leading-[1.2] tracking-[-0.01em] text-text sm:text-[2.5rem] lg:text-[48px]"
           >
-            Discover Your Passion, Build Your Skills
+            Discover Your Passion,
+            <br className="hidden sm:block" /> Build Your Skills
           </h2>
-          <p className="font-nav mx-auto mt-6 max-w-[819px] text-base leading-[1.6] text-muted sm:text-lg">
+          <p className="font-nav mx-auto mt-5 max-w-[819px] text-base leading-[1.6] text-muted sm:mt-6 sm:text-lg">
             At Bytespace Courses, we bring you closer to life-changing knowledge. Explore a variety
             of courses across different fields, from technology to the arts, and make a difference
             in your career and life.
@@ -115,12 +116,12 @@ export function DiscoverCourses() {
                 aria-selected={isActive}
                 onClick={() => setActive(cat)}
                 className={[
-                  "rounded-full px-4 py-2.5 text-sm font-medium transition",
+                  "font-nav rounded-full px-4 py-2.5 text-sm font-medium leading-none transition",
                   isMore
-                    ? "bg-transparent px-2 font-medium text-brand-blue hover:underline"
+                    ? "bg-transparent px-2 text-brand-blue hover:underline"
                     : isActive
-                      ? "bg-brand-lime font-medium text-text"
-                      : "bg-surface-muted text-text hover:bg-[#e5e6e8]",
+                      ? "bg-brand-lime text-text"
+                      : "bg-surface-muted text-muted hover:bg-[#e5e6e8] hover:text-text",
                 ].join(" ")}
               >
                 {cat}
@@ -141,16 +142,6 @@ export function DiscoverCourses() {
                     className="object-cover"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-x-2 bottom-2 flex flex-wrap gap-1.5">
-                    {[course.lessons, course.duration, course.comments].map((chip) => (
-                      <span
-                        key={chip}
-                        className="rounded-full bg-black/45 px-2 py-1 text-[10px] font-medium text-white backdrop-blur-sm sm:text-xs"
-                      >
-                        {chip}
-                      </span>
-                    ))}
-                  </div>
                 </div>
 
                 <div className="mt-4 flex items-start justify-between gap-3">

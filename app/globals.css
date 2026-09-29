@@ -44,15 +44,16 @@ body {
 }
 
 .font-heading {
-  font-family: var(--font-heading);
+  /* Resolve next/font var directly so Poppins applies even if theme tokens lag */
+  font-family: var(--font-poppins), "Satoshi", ui-sans-serif, system-ui, sans-serif;
 }
 
 .font-logo {
-  font-family: var(--font-logo);
+  font-family: "Clash Display", var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 }
 
 .font-nav {
-  font-family: var(--font-nav);
+  font-family: "Satoshi", var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 @keyframes float-y {
