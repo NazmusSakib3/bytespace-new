@@ -43,22 +43,7 @@ function Ornament({ src, tint, className, flip = false }: Readonly<OrnamentProps
 
 export function Hero() {
   return (
-    <section
-      className="relative overflow-hidden bg-brand-blue"
-      aria-labelledby="hero-heading"
-    >
-      {/* Figma grid (120px cells, 12% white) */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <Image
-          src="/figma/hero-grid.svg"
-          alt=""
-          fill
-          priority
-          className="object-cover object-top"
-          sizes="100vw"
-        />
-      </div>
-
+    <section className="relative overflow-hidden" aria-labelledby="hero-heading">
       <div className="relative z-10 mx-auto w-full max-w-[1440px]">
         {/* Headline + search — Figma Hero cluster */}
         <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-10 px-4 pt-6 text-center sm:gap-[60px] sm:px-6 sm:pt-10 lg:pt-8">
