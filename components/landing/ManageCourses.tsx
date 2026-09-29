@@ -74,11 +74,17 @@ export function ManageCourses() {
               aria-label="Happy students"
             >
               <p className="text-xs font-medium text-muted sm:text-sm">Happy Students</p>
-              <p className="mt-0.5 text-sm font-semibold text-text">
-                4.5 (240){" "}
-                <span className="text-brand-yellow" aria-hidden>
-                  ★
-                </span>
+              <p className="mt-0.5 flex items-center gap-1 text-sm font-semibold text-text">
+                <span>4.5 (240)</span>
+                <Image
+                  src="/figma/star.svg"
+                  alt=""
+                  width={13}
+                  height={13}
+                  unoptimized
+                  className="size-[13px]"
+                  aria-hidden
+                />
               </p>
               <div className="mt-2 flex items-center">
                 <div className="flex -space-x-2" aria-hidden>

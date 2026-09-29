@@ -211,9 +211,15 @@ export function Hero() {
             <p className="mt-0.5 flex items-center gap-1 text-xs leading-[1.6]">
               <span className="text-text">4.5</span>
               <span className="text-muted">(240)</span>
-              <span className="text-brand-yellow" aria-hidden>
-                ★
-              </span>
+              <Image
+                src="/figma/star.svg"
+                alt=""
+                width={13}
+                height={13}
+                unoptimized
+                className="size-[13px]"
+                aria-hidden
+              />
             </p>
             <div className="mt-2 flex items-center">
               <div className="flex" aria-hidden>
