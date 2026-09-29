@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const categories = [
   "Featured",
@@ -83,23 +82,31 @@ export function DiscoverCourses() {
   const [active, setActive] = useState("Featured");
 
   return (
-    <section id="courses" className="py-16 sm:py-20 lg:py-24" aria-labelledby="discover-heading">
+    <section id="courses" className="bg-white py-16 sm:py-20 lg:py-24" aria-labelledby="discover-heading">
       <Container>
-        <SectionHeading
-          id="discover-heading"
-          title="Discover Your Passion, Build Your Skills"
-          subtitle="At Bytespace Courses, we bring you closer to life-changing knowledge. Explore a variety of courses across different fields, from technology to the arts, and make a difference in your career and life."
-          className="mb-10"
-          maxWidth="max-w-4xl"
-        />
+        {/* Frame 3 heading — Poppins SemiBold 48 / Satoshi 18 #82868E */}
+        <div className="mx-auto mb-12 max-w-[935px] text-center">
+          <h2
+            id="discover-heading"
+            className="font-heading text-[1.75rem] font-semibold leading-[1.2] tracking-[-0.01em] text-text sm:text-[2.5rem] lg:text-[48px]"
+          >
+            Discover Your Passion, Build Your Skills
+          </h2>
+          <p className="font-nav mx-auto mt-6 max-w-[819px] text-base leading-[1.6] text-muted sm:text-lg">
+            At Bytespace Courses, we bring you closer to life-changing knowledge. Explore a variety
+            of courses across different fields, from technology to the arts, and make a difference
+            in your career and life.
+          </p>
+        </div>
 
         <div
-          className="mb-10 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3"
+          className="mb-12 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3"
           role="tablist"
           aria-label="Course categories"
         >
           {categories.map((cat) => {
             const isActive = active === cat;
+            const isMore = cat === "+ More";
             return (
               <button
                 key={cat}
@@ -109,9 +116,11 @@ export function DiscoverCourses() {
                 onClick={() => setActive(cat)}
                 className={[
                   "rounded-full px-4 py-2.5 text-sm font-medium transition",
-                  isActive
-                    ? "bg-brand-lime font-semibold text-text shadow-sm"
-                    : "border border-border bg-white text-text hover:border-brand-blue/30",
+                  isMore
+                    ? "bg-transparent px-2 font-medium text-brand-blue hover:underline"
+                    : isActive
+                      ? "bg-brand-lime font-medium text-text"
+                      : "bg-surface-muted text-text hover:bg-[#e5e6e8]",
                 ].join(" ")}
               >
                 {cat}
