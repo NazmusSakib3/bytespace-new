@@ -4,26 +4,26 @@ import Image from "next/image";
 import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 
-const categories = [
-  "Featured",
-  "Music",
-  "Drawing & Painting",
-  "Marketing",
-  "Animation",
-  "Social Media",
-  "UI/UX Design",
-  "Creative Marketing",
-  "Digital Illustration",
-  "Film & Video",
-  "Crafts",
-  "Freelance & Entrepreneurship",
-  "Graphic Design",
-  "Photography",
-  "Productivity",
-  "Web Development",
-  "Data Science",
-  "Cooking",
-  "+ More",
+const categoryRows = [
+  [
+    "Featured",
+    "Music",
+    "Drawing & Painting",
+    "Marketing",
+    "Animation",
+    "Social Media",
+    "UI/UX Design",
+    "Creative Marketing",
+  ],
+  [
+    "Digital Illustration",
+    "Film & Video",
+    "Crafts",
+    "Freelance & Entrepreneurship",
+    "Graphic Design",
+    "Photography",
+  ],
+  ["Productivity", "Web Development", "Data Science", "Cooking", "+ More"],
 ];
 
 const courses = [
@@ -101,33 +101,40 @@ export function DiscoverCourses() {
         </div>
 
         <div
-          className="mb-12 flex flex-wrap items-center justify-center gap-2.5 sm:gap-3"
+          className="mb-12 flex flex-col items-center gap-2.5 sm:gap-3"
           role="tablist"
           aria-label="Course categories"
         >
-          {categories.map((cat) => {
-            const isActive = active === cat;
-            const isMore = cat === "+ More";
-            return (
-              <button
-                key={cat}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                onClick={() => setActive(cat)}
-                className={[
-                  "font-nav rounded-full px-4 py-2.5 text-sm font-medium leading-none transition",
-                  isMore
-                    ? "bg-transparent px-2 text-brand-blue hover:underline"
-                    : isActive
-                      ? "bg-brand-lime text-text"
-                      : "bg-surface-muted text-muted hover:bg-[#e5e6e8] hover:text-text",
-                ].join(" ")}
-              >
-                {cat}
-              </button>
-            );
-          })}
+          {categoryRows.map((row) => (
+            <div
+              key={row.join("-")}
+              className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 min-[900px]:flex-nowrap"
+            >
+              {row.map((cat) => {
+                const isActive = active === cat;
+                const isMore = cat === "+ More";
+                return (
+                  <button
+                    key={cat}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    onClick={() => setActive(cat)}
+                    className={[
+                      "font-nav shrink-0 whitespace-nowrap rounded-full px-2.5 py-2 text-[13px] font-medium leading-none transition sm:px-3 sm:py-2.5 sm:text-sm",
+                      isMore
+                        ? "bg-transparent px-1.5 text-brand-blue hover:underline sm:px-2"
+                        : isActive
+                          ? "bg-brand-lime text-text"
+                          : "bg-surface-muted text-muted hover:bg-[#e5e6e8] hover:text-text",
+                    ].join(" ")}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
+            </div>
+          ))}
         </div>
 
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
