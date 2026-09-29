@@ -155,19 +155,22 @@ export function Hero() {
             className="-right-4 bottom-0 h-[130px] w-[140px] sm:right-[2%] sm:h-[180px] sm:w-[190px] lg:right-[4%] lg:h-[220px] lg:w-[230px]"
           />
 
-          {/* Hero person — keep Figma aspect 516∶483; width-driven, never stretch */}
-          <div className="absolute bottom-0 left-1/2 z-10 w-[min(78%,340px)] -translate-x-1/2 sm:w-[480px] lg:w-[578px]">
+          {/* Hero person — edge flood-fill transparency; unoptimized PNG (no WebP alpha bugs) */}
+          <div
+            className="absolute bottom-0 left-1/2 z-10 w-[min(78%,340px)] -translate-x-1/2 sm:w-[480px] lg:w-[578px]"
+            style={{
+              filter:
+                "drop-shadow(25px 36px 36px rgba(0,0,0,0.1)) drop-shadow(10px 14px 16px rgba(0,0,0,0.08))",
+            }}
+          >
             <Image
               src="/figma/hero-person.png"
               alt="Young man with headphones and laptop smiling"
               width={516}
               height={483}
-              className="pointer-events-none h-auto w-full"
-              style={{
-                aspectRatio: "516 / 483",
-                filter:
-                  "drop-shadow(51px 73px 72px rgba(0,0,0,0.13)) drop-shadow(17px 24px 24px rgba(0,0,0,0.09))",
-              }}
+              unoptimized
+              className="pointer-events-none h-auto w-full select-none"
+              style={{ aspectRatio: "516 / 483" }}
               priority
             />
           </div>
