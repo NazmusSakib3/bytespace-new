@@ -3,16 +3,15 @@ import { AuthShell } from "@/components/auth/AuthShell";
 import { LoginForm } from "@/components/auth/LoginForm";
 
 export const metadata: Metadata = {
-  title: "Log in — ByteSpace",
+  title: "Sign In — ByteSpace",
   description: "Sign in to your ByteSpace account.",
 };
 
 export default function LoginPage() {
   return (
     <AuthShell
-      title="Learn without limits"
+      title="Welcome back"
       subtitle="Access your courses, track progress, and connect with mentors from anywhere."
-      panelVariant="blue"
     >
       <LoginForm />
     </AuthShell>

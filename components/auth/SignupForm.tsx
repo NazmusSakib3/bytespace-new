@@ -10,8 +10,6 @@ type FormErrors = {
   fullName?: string;
   email?: string;
   password?: string;
-  confirmPassword?: string;
-  terms?: string;
 };
 
 export function SignupForm() {
@@ -19,8 +17,6 @@ export function SignupForm() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [terms, setTerms] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
 
   function validate(): FormErrors {
@@ -36,12 +32,6 @@ export function SignupForm() {
     } else if (password.length < 8) {
       next.password = "Password must be at least 8 characters";
     }
-    if (password !== confirmPassword) {
-      next.confirmPassword = "Passwords do not match";
-    }
-    if (!terms) {
-      next.terms = "You must accept the terms to continue";
-    }
     return next;
   }
 
@@ -54,15 +44,15 @@ export function SignupForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-4">
+    <form onSubmit={handleSubmit} noValidate className="space-y-5">
       <div>
-        <h2 className="text-2xl font-bold text-text">Create your account</h2>
-        <p className="mt-1 text-sm text-muted">Join ByteSpace and start learning today.</p>
+        <h2 className="text-2xl font-bold text-text">Welcome to ByteSpace</h2>
+        <p className="mt-1 text-sm text-muted">Create your account and start learning today.</p>
       </div>
 
       <Input
         id="signup-name"
-        label="Full name"
+        label="Full Name"
         type="text"
         autoComplete="name"
         placeholder="Jane Doe"
@@ -93,51 +83,44 @@ export function SignupForm() {
         error={errors.password}
       />
 
-      <Input
-        id="signup-confirm"
-        label="Confirm password"
-        type="password"
-        autoComplete="new-password"
-        placeholder="••••••••"
-        value={confirmPassword}
-        onChange={(e) => setConfirmPassword(e.target.value)}
-        error={errors.confirmPassword}
-      />
+      <Button type="submit" variant="primary" size="lg" fullWidth>
+        Sign Up
+      </Button>
 
-      <div>
-        <label className="flex items-start gap-3 text-sm text-text">
-          <input
-            type="checkbox"
-            checked={terms}
-            onChange={(e) => setTerms(e.target.checked)}
-            className="mt-1 h-4 w-4 rounded border-border text-brand-blue focus:ring-brand-blue"
-          />
-          <span>
-            I agree to the{" "}
-            <Link href="#" className="text-brand-blue hover:underline" onClick={(e) => e.preventDefault()}>
-              Terms of Service
-            </Link>{" "}
-            and{" "}
-            <Link href="#" className="text-brand-blue hover:underline" onClick={(e) => e.preventDefault()}>
-              Privacy Policy
-            </Link>
-          </span>
-        </label>
-        {errors.terms ? (
-          <p className="mt-1.5 text-sm text-red-600" role="alert">{errors.terms}</p>
-        ) : null}
+      <div className="relative py-2 text-center text-sm text-muted">
+        <span className="relative z-10 bg-white px-2">or</span>
+        <div className="absolute inset-x-0 top-1/2 -z-0 border-t border-border" aria-hidden />
       </div>
 
-      <Button type="submit" variant="lime" size="lg" fullWidth>
-        Sign Up
+      <Button
+        type="button"
+        variant="outline"
+        size="lg"
+        fullWidth
+        onClick={() => router.push("/")}
+        className="gap-2"
+      >
+        <GoogleIcon />
+        Continue with Google
       </Button>
 
       <p className="text-center text-sm text-muted">
         Already have an account?{" "}
         <Link href="/login" className="font-semibold text-brand-blue hover:underline">
-          Log in
+          Sign In
         </Link>
       </p>
     </form>
+  );
+}
+
+function GoogleIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
+      <path
+        fill="#EA4335"
+        d="M12 10.2v3.6h5.1c-.2 1.2-1.5 3.6-5.1 3.6-3.1 0-5.6-2.5-5.6-5.6S8.9 6.2 12 6.2c1.8 0 2.9.7 3.6 1.4l2.4-2.4C16.6 3.8 14.5 2.8 12 2.8 6.9 2.8 2.8 6.9 2.8 12S6.9 21.2 12 21.2c5.2 0 8.6-3.6 8.6-8.7 0-.6-.1-1-.2-1.5H12z"
+      />
+    </svg>
   );
 }

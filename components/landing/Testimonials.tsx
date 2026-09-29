@@ -45,9 +45,7 @@ function Stars({ count }: { count: number }) {
           className="text-brand-yellow"
           aria-hidden
         >
-          <path
-            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-          />
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
         </svg>
       ))}
     </div>
@@ -73,11 +71,7 @@ export function Testimonials() {
           {testimonials.map((item) => (
             <li key={item.name}>
               <article className="flex h-full flex-col rounded-2xl border border-border bg-white p-6 shadow-sm">
-                <Stars count={item.rating} />
-                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-muted">
-                  &ldquo;{item.quote}&rdquo;
-                </blockquote>
-                <footer className="mt-6 flex items-center gap-3">
+                <div className="mb-4 flex items-center gap-3">
                   <Image
                     src={item.avatar}
                     alt=""
@@ -89,7 +83,11 @@ export function Testimonials() {
                     <p className="font-semibold text-text">{item.name}</p>
                     <p className="text-sm text-muted">{item.role}</p>
                   </div>
-                </footer>
+                </div>
+                <Stars count={item.rating} />
+                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-muted">
+                  &ldquo;{item.quote}&rdquo;
+                </blockquote>
               </article>
             </li>
           ))}

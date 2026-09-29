@@ -2,32 +2,30 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/layout/Logo";
 
 const navLinks = [
+  { href: "/", label: "Home" },
   { href: "#courses", label: "Courses" },
-  { href: "#skills", label: "Categories" },
-  { href: "#testimonials", label: "Community" },
-  { href: "#about", label: "About" },
+  { href: "#creators", label: "Creators" },
 ];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-white/95 backdrop-blur">
+    <header className="relative z-50 bg-transparent">
       <Container as="nav" aria-label="Main navigation">
-        <div className="flex h-16 items-center justify-between gap-4">
-          <Logo />
+        <div className="flex h-16 items-center justify-between gap-4 sm:h-20">
+          <Logo variant="light" />
 
-          <ul className="hidden items-center gap-8 md:flex">
+          <ul className="hidden items-center gap-10 md:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-sm font-medium text-muted transition-colors hover:text-brand-blue"
+                  className="text-sm font-medium text-white/90 transition-colors hover:text-white"
                 >
                   {link.label}
                 </Link>
@@ -35,18 +33,44 @@ export function Navbar() {
             ))}
           </ul>
 
-          <div className="hidden items-center gap-3 md:flex">
-            <Button href="/login" variant="ghost" size="sm">
-              Login
-            </Button>
-            <Button href="/signup" variant="primary" size="sm">
-              Sign Up
-            </Button>
+          <div className="hidden items-center gap-4 md:flex">
+            <Link
+              href="/login"
+              className="text-sm font-medium text-white/90 transition-colors hover:text-white"
+            >
+              Sign In
+            </Link>
+            <Link
+              href="/signup"
+              className="rounded-full bg-white px-5 py-2 text-sm font-semibold text-brand-blue transition hover:bg-white/90"
+            >
+              Join Us
+            </Link>
+            <button
+              type="button"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white transition hover:bg-white/10"
+              aria-label="Shopping bag"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path
+                  d="M6 8h12l-1 12H7L6 8z"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M9 8V7a3 3 0 016 0v1"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
           </div>
 
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/30 text-white md:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -74,13 +98,16 @@ export function Navbar() {
         </div>
 
         {open ? (
-          <div id="mobile-menu" className="border-t border-border py-4 md:hidden">
+          <div
+            id="mobile-menu"
+            className="border-t border-white/20 py-4 md:hidden"
+          >
             <ul className="flex flex-col gap-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="block py-2 text-sm font-medium text-text"
+                    className="block py-2 text-sm font-medium text-white"
                     onClick={() => setOpen(false)}
                   >
                     {link.label}
@@ -88,12 +115,20 @@ export function Navbar() {
                 </li>
               ))}
               <li className="flex flex-col gap-2 pt-2">
-                <Button href="/login" variant="outline" fullWidth>
-                  Login
-                </Button>
-                <Button href="/signup" variant="primary" fullWidth>
-                  Sign Up
-                </Button>
+                <Link
+                  href="/login"
+                  className="rounded-full border border-white/40 px-4 py-2.5 text-center text-sm font-semibold text-white"
+                  onClick={() => setOpen(false)}
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/signup"
+                  className="rounded-full bg-white px-4 py-2.5 text-center text-sm font-semibold text-brand-blue"
+                  onClick={() => setOpen(false)}
+                >
+                  Join Us
+                </Link>
               </li>
             </ul>
           </div>

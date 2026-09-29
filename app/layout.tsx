@@ -9,9 +9,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ByteSpace — Learn skills that matter",
+  title: "ByteSpace — Get Access to Hundreds Courses Available",
   description:
-    "Get access to hundreds of courses. Discover your passion and build digital skills with ByteSpace.",
+    "Unlock your creativity, gain valuable knowledge, and grow your business with our wide range of courses.",
 };
 
 export default function RootLayout({

@@ -30,7 +30,7 @@ const variantClasses: Record<ButtonVariant, string> = {
   outline:
     "border-2 border-brand-blue text-brand-blue bg-transparent hover:bg-brand-blue/5",
   lime:
-    "bg-brand-lime-bright text-brand-blue-deep hover:bg-brand-lime focus-visible:ring-brand-lime-bright",
+    "bg-brand-lime-bright text-text hover:brightness-95 focus-visible:ring-brand-lime-bright",
   ghost: "text-brand-blue hover:bg-brand-blue/5",
 };
 
