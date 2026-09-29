@@ -9,11 +9,11 @@ const company = [
   { href: "/signup", label: "Contact" },
 ];
 
-const resources = [
-  { href: "#courses", label: "Blog" },
-  { href: "#courses", label: "Guides" },
+const services = [
+  { href: "#courses", label: "Courses" },
   { href: "#creators", label: "Creator Tools" },
-  { href: "#courses", label: "Pricing" },
+  { href: "#courses", label: "Learning Paths" },
+  { href: "#courses", label: "Mentorship" },
 ];
 
 const support = [
@@ -127,7 +127,7 @@ export function Footer() {
           </div>
 
           <LinkColumn title="Company" links={company} />
-          <LinkColumn title="Resources" links={resources} />
+          <LinkColumn title="Services" links={services} />
           <LinkColumn title="Support" links={support} />
         </div>
 

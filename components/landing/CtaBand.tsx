@@ -27,9 +27,14 @@ export function CtaBand() {
             Join thousands of creators building in-demand skills. Create your free account and
             start your first course in minutes.
           </p>
-          <Button href="/signup" variant="lime" size="lg">
-            Join Us Now
-          </Button>
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+            <Button href="/signup" variant="lime" size="lg">
+              Get Started
+            </Button>
+            <Button href="#courses" variant="outlineLight" size="lg">
+              Learn More
+            </Button>
+          </div>
         </div>
       </Container>
     </section>

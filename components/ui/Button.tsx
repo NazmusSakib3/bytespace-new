@@ -1,7 +1,13 @@
 import Link from "next/link";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "outline" | "lime" | "ghost";
+type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "outline"
+  | "outlineLight"
+  | "lime"
+  | "ghost";
 type ButtonSize = "sm" | "md" | "lg";
 
 type BaseProps = {
@@ -29,6 +35,8 @@ const variantClasses: Record<ButtonVariant, string> = {
     "bg-brand-blue-deep text-white hover:bg-brand-blue-dark focus-visible:ring-brand-blue-deep",
   outline:
     "border-2 border-brand-blue text-brand-blue bg-transparent hover:bg-brand-blue/5",
+  outlineLight:
+    "border-2 border-white text-white bg-transparent hover:bg-white/10 focus-visible:ring-white",
   lime:
     "bg-brand-lime-bright text-text hover:brightness-95 focus-visible:ring-brand-lime-bright",
   ghost: "text-brand-blue hover:bg-brand-blue/5",

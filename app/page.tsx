@@ -22,8 +22,8 @@ export default function HomePage() {
         <LearningPaths />
         <FeatureHighlight />
         <ManageCourses />
-        <Testimonials />
         <CtaBand />
+        <Testimonials />
       </main>
       <Footer />
     </>

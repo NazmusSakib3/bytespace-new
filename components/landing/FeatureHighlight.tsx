@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 
 const stats = [
-  { value: "10K+", label: "Students" },
+  { value: "10K", label: "Students" },
   { value: "75+", label: "Courses" },
   { value: "1K", label: "Mentors" },
 ];

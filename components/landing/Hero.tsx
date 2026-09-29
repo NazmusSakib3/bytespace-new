@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 
-function Squiggle({ className = "" }: { className?: string }) {
+function Squiggle({ className = "", stroke = "#D4FF25" }: { className?: string; stroke?: string }) {
   return (
     <svg
       className={className}
@@ -13,7 +13,7 @@ function Squiggle({ className = "" }: { className?: string }) {
     >
       <path
         d="M4 20c8-14 16 14 24 0s16 14 24 0 12-10 16-4"
-        stroke="#D4FF25"
+        stroke={stroke}
         strokeWidth="5"
         strokeLinecap="round"
       />
@@ -24,7 +24,7 @@ function Squiggle({ className = "" }: { className?: string }) {
 function Torus({ className = "" }: { className?: string }) {
   return (
     <svg className={className} width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden>
-      <ellipse cx="28" cy="28" rx="22" ry="12" stroke="#FFE566" strokeWidth="10" />
+      <ellipse cx="28" cy="28" rx="22" ry="12" stroke="#FFFFFF" strokeWidth="10" />
       <ellipse cx="28" cy="28" rx="10" ry="5" fill="#0052FF" />
     </svg>
   );
@@ -33,8 +33,8 @@ function Torus({ className = "" }: { className?: string }) {
 function Cone({ className = "" }: { className?: string }) {
   return (
     <svg className={className} width="48" height="56" viewBox="0 0 48 56" fill="none" aria-hidden>
-      <path d="M24 4L44 48H4L24 4z" fill="#D4FF25" />
-      <ellipse cx="24" cy="48" rx="20" ry="6" fill="#b8e000" />
+      <path d="M24 4L44 48H4L24 4z" fill="#FFFFFF" />
+      <ellipse cx="24" cy="48" rx="20" ry="6" fill="#E8EEFF" />
     </svg>
   );
 }
@@ -42,10 +42,10 @@ function Cone({ className = "" }: { className?: string }) {
 function Cylinder({ className = "" }: { className?: string }) {
   return (
     <svg className={className} width="40" height="52" viewBox="0 0 40 52" fill="none" aria-hidden>
-      <ellipse cx="20" cy="10" rx="18" ry="8" fill="#FFE566" />
-      <rect x="2" y="10" width="36" height="32" fill="#FFE566" />
-      <ellipse cx="20" cy="42" rx="18" ry="8" fill="#f5d040" />
-      <ellipse cx="20" cy="10" rx="18" ry="8" fill="#fff3a8" opacity="0.7" />
+      <ellipse cx="20" cy="10" rx="18" ry="8" fill="#D4FF25" />
+      <rect x="2" y="10" width="36" height="32" fill="#D4FF25" />
+      <ellipse cx="20" cy="42" rx="18" ry="8" fill="#b8e000" />
+      <ellipse cx="20" cy="10" rx="18" ry="8" fill="#e8ff8a" opacity="0.7" />
     </svg>
   );
 }
@@ -113,18 +113,25 @@ export function Hero() {
             aria-hidden
           />
 
-          <Squiggle className="animate-float absolute -left-2 top-8 z-20 sm:left-0 sm:top-12" />
+          <Squiggle
+            className="animate-float absolute -left-2 top-8 z-20 sm:left-0 sm:top-12"
+            stroke="#D4FF25"
+          />
+          <Squiggle
+            className="animate-float-delay absolute right-8 top-28 z-20 sm:right-12 sm:top-32"
+            stroke="#FFFFFF"
+          />
           <Torus className="animate-float-slow absolute -right-2 top-4 z-20 sm:right-4 sm:top-8" />
           <Cone className="animate-float-delay absolute bottom-16 -left-4 z-20 sm:bottom-20 sm:left-0" />
           <Cylinder className="animate-float absolute bottom-24 -right-2 z-20 sm:bottom-28 sm:right-2" />
 
           <div className="relative z-10 mx-auto w-[220px] overflow-hidden rounded-[2rem] sm:w-[260px] lg:w-[280px]">
             <Image
-              src="https://images.unsplash.com/photo-1627556704302-624286467c65?auto=format&fit=crop&w=600&q=80"
-              alt="Young man with headphones and laptop learning online"
+              src="https://images.unsplash.com/photo-1610484826967-09c5720778c7?auto=format&fit=crop&w=600&q=80"
+              alt="Young man with headphones using a laptop"
               width={600}
               height={720}
-              className="aspect-[3/4] h-auto w-full object-cover object-top"
+              className="aspect-[3/4] h-auto w-full object-cover object-[center_20%]"
               priority
             />
           </div>

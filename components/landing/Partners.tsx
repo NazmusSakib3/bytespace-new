@@ -11,13 +11,10 @@ const logos = [
 export function Partners() {
   return (
     <section
-      className="border-y border-border bg-surface-muted py-10 sm:py-12"
+      className="border-y border-border bg-white py-10 sm:py-12"
       aria-label="Trusted by partners"
     >
       <Container>
-        <p className="mb-8 text-center text-xs font-semibold uppercase tracking-widest text-muted">
-          Trusted by leading teams
-        </p>
         <ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-14">
           {logos.map((logo, i) => (
             <li key={`${logo.name}-${i}`} className="flex items-center gap-2 text-muted/70">
