@@ -2,6 +2,8 @@ import { CtaBand } from "@/components/landing/CtaBand";
 import { DiscoverCourses } from "@/components/landing/DiscoverCourses";
 import { FeatureHighlight } from "@/components/landing/FeatureHighlight";
 import { Hero } from "@/components/landing/Hero";
+import { LearningPaths } from "@/components/landing/LearningPaths";
+import { ManageCourses } from "@/components/landing/ManageCourses";
 import { Partners } from "@/components/landing/Partners";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { Footer } from "@/components/layout/Footer";
@@ -17,9 +19,11 @@ export default function HomePage() {
       <main>
         <Partners />
         <DiscoverCourses />
+        <LearningPaths />
         <FeatureHighlight />
-        <CtaBand />
+        <ManageCourses />
         <Testimonials />
+        <CtaBand />
       </main>
       <Footer />
     </>

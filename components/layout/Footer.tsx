@@ -9,18 +9,18 @@ const company = [
   { href: "/signup", label: "Contact" },
 ];
 
-const community = [
-  { href: "#creators", label: "Creators" },
-  { href: "#testimonials", label: "Learners" },
-  { href: "#courses", label: "Events" },
+const resources = [
   { href: "#courses", label: "Blog" },
+  { href: "#courses", label: "Guides" },
+  { href: "#creators", label: "Creator Tools" },
+  { href: "#courses", label: "Pricing" },
 ];
 
-const resources = [
+const support = [
   { href: "#courses", label: "Help Center" },
+  { href: "/signup", label: "Contact" },
   { href: "/login", label: "Sign In" },
   { href: "/signup", label: "Join Us" },
-  { href: "#courses", label: "Pricing" },
 ];
 
 const social = [
@@ -127,8 +127,8 @@ export function Footer() {
           </div>
 
           <LinkColumn title="Company" links={company} />
-          <LinkColumn title="Community" links={community} />
           <LinkColumn title="Resources" links={resources} />
+          <LinkColumn title="Support" links={support} />
         </div>
 
         <div className="mt-12 border-t border-white/10 pt-6 text-center text-sm text-white/60">

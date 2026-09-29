@@ -120,8 +120,8 @@ export function Hero() {
 
           <div className="relative z-10 mx-auto w-[220px] overflow-hidden rounded-[2rem] sm:w-[260px] lg:w-[280px]">
             <Image
-              src="https://images.unsplash.com/photo-1588196749597-9dbc6e1a0f0a?auto=format&fit=crop&w=600&q=80"
-              alt="Young person with headphones smiling while using a laptop"
+              src="https://images.unsplash.com/photo-1627556704302-624286467c65?auto=format&fit=crop&w=600&q=80"
+              alt="Young man with headphones and laptop learning online"
               width={600}
               height={720}
               className="aspect-[3/4] h-auto w-full object-cover object-top"
@@ -134,8 +134,7 @@ export function Hero() {
             aria-label="UI/UX Design category"
           >
             <p className="text-sm font-bold text-text">UI/UX Design</p>
-            <p className="mt-1 text-xs text-muted">200 Courses</p>
-            <p className="text-xs text-muted">1000+ Students</p>
+            <p className="mt-1 text-xs text-muted">200 Courses • 1000+ Students</p>
           </aside>
 
           <aside
