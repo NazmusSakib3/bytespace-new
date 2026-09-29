@@ -158,12 +158,12 @@ export function DiscoverCourses() {
                     </h3>
                     <p className="mt-0.5 text-sm text-brand-blue">by purepearl studio</p>
                   </div>
-                  <span className="font-nav inline-flex shrink-0 items-center gap-1 rounded-full bg-[#4F4F4F] px-2.5 py-1 text-[18px] font-normal leading-[1.6] tracking-normal text-white">
+                  <span className="font-nav inline-flex shrink-0 items-center gap-1 rounded-full border border-[#e5e6e8] bg-white px-2.5 py-1 text-[18px] font-normal leading-[1.6] tracking-normal text-[#4F4F4F]">
                     4.5
                     <svg width="14" height="14" viewBox="0 0 13 13" fill="none" aria-hidden>
                       <path
                         d="M6.106 0.344c.15-.46.8-.46.95 0l1.218 3.72a.5.5 0 0 0 .475.344l3.914.009c.483.001.684.619.294.904L9.795 7.63a.5.5 0 0 0-.181.557l1.201 3.725c.148.46-.377.842-.769.559L6.874 10.177a.5.5 0 0 0-.586 0L3.116 12.47c-.392.283-.917-.099-.769-.559l1.201-3.725a.5.5 0 0 0-.181-.557L.206 5.321c-.39-.285-.189-.903.294-.904l3.914-.009a.5.5 0 0 0 .474-.344L6.106.344Z"
-                        fill="white"
+                        fill="#4F4F4F"
                       />
                     </svg>
                   </span>
