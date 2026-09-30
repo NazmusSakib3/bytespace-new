@@ -18,75 +18,62 @@ const AVATARS = [
   "/figma/manage-avatar7.png",
 ];
 
+/**
+ * Figma Frame 14 (34:1158) — 1200×596, collage Frame 12 (541×596) + text (580), gap 79.
+ * https://www.figma.com/design/vIVChSxtAIVN2jOkX7Erp7/…?node-id=34-1158
+ */
 export function ManageCourses() {
   return (
     <section
-      className="relative overflow-hidden bg-[#F8F8F9] pb-16 pt-10 sm:pb-20 sm:pt-12 lg:pb-24 lg:pt-14"
+      className="relative overflow-hidden bg-[#F8F8F9] py-16 sm:py-20 lg:py-[74px]"
       aria-labelledby="manage-heading"
     >
-      <div
-        className="pointer-events-none absolute -left-[20%] top-[5%] h-[720px] w-[720px] rounded-full bg-[#003BE2]/12 blur-[90px]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -right-[10%] bottom-[-5%] h-[640px] w-[640px] rounded-full bg-[#D4FB20]/30 blur-[80px]"
-        aria-hidden
-      />
-
-      <Container className="relative z-10">
-        {/* Figma Frame 14: collage 541 + gap + text 580 */}
+      <Container className="relative z-10 lg:px-0">
         <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-[79px]">
-          {/* Collage — Figma Frame 12: 541 × 596 */}
-          <div className="relative order-2 mx-auto h-[480px] w-full max-w-[541px] sm:h-[540px] lg:order-1 lg:h-[596px] lg:shrink-0 lg:max-w-none">
-            {/* Woman cutout — centered, slightly left */}
+          {/* Frame 12 — 541 × 596 absolute composition */}
+          <div className="relative order-2 mx-auto aspect-[541/596] w-full max-w-[541px] shrink-0 lg:order-1 lg:mx-0">
+            {/* Woman — Figma 34:1011 @ 28,0 / 435×596 */}
             <div
-              className="absolute left-1/2 top-0 z-10 h-full w-[min(80%,435px)] -translate-x-[55%]"
+              className="absolute z-10"
               style={{
+                left: "5.18%",
+                top: 0,
+                width: "80.41%",
+                height: "100%",
                 filter:
-                  "drop-shadow(16.9px 24.2px 24px rgba(0,0,0,0.09)) drop-shadow(10.2px 14.6px 16px rgba(0,0,0,0.08)) drop-shadow(5.4px 7.7px 9.6px rgba(0,0,0,0.07))",
+                  "drop-shadow(25.8px 36.9px 36px rgba(0,0,0,0.1)) drop-shadow(16.9px 24.2px 24px rgba(0,0,0,0.09)) drop-shadow(10.2px 14.6px 16px rgba(0,0,0,0.08)) drop-shadow(5.4px 7.7px 9.6px rgba(0,0,0,0.07))",
               }}
             >
               <Image
-                src="/figma/manage-woman.png"
+                src="/figma/manage/woman.png"
                 alt="Creator with headset holding a tablet"
-                width={435}
-                height={596}
-                className="h-full w-full object-contain object-bottom"
-                priority={false}
+                fill
+                unoptimized
+                className="object-contain object-bottom"
+                sizes="435px"
               />
             </div>
 
-            {/* Lime spring ornament — Figma ~305,114 / 215×215 */}
+            {/* Lime spring — Figma 34:1006 @ 305,114 / 215×215 (tint baked in) */}
             <div
-              className="pointer-events-none absolute right-[4%] top-[19%] z-[5] size-[120px] sm:size-[160px] lg:size-[215px]"
+              className="pointer-events-none absolute z-[5]"
+              style={{ left: "56.38%", top: "19.13%", width: "39.74%", aspectRatio: "1" }}
               aria-hidden
             >
               <Image
-                src="/figma/manage-ornament.png"
+                src="/figma/manage/ornament.png"
                 alt=""
                 fill
+                unoptimized
                 className="object-contain"
                 sizes="215px"
               />
-              <div
-                className="absolute inset-0 mix-blend-hard-light"
-                style={{
-                  backgroundColor: "#d4fb20",
-                  WebkitMaskImage: "url(/figma/manage-ornament.png)",
-                  WebkitMaskSize: "contain",
-                  WebkitMaskRepeat: "no-repeat",
-                  WebkitMaskPosition: "center",
-                  maskImage: "url(/figma/manage-ornament.png)",
-                  maskSize: "contain",
-                  maskRepeat: "no-repeat",
-                  maskPosition: "center",
-                }}
-              />
             </div>
 
-            {/* Total Revenue — left 0, top 44 */}
+            {/* Total Revenue — 34:987 @ 0,44 */}
             <aside
-              className="absolute left-0 top-[7%] z-20 flex w-[min(48%,232px)] flex-col gap-2 rounded-2xl bg-brand-blue p-4 backdrop-blur-[10px]"
+              className="absolute left-0 z-20 flex w-[min(48%,232px)] flex-col gap-2 rounded-2xl bg-[#003BE2] p-4 backdrop-blur-[10px]"
+              style={{ top: "7.38%" }}
               aria-label="Total revenue"
             >
               <div>
@@ -104,13 +91,14 @@ export function ManageCourses() {
                 </span>
               </div>
               <div className="relative h-2 w-full max-w-[200px] overflow-hidden rounded-3xl bg-white">
-                <div className="absolute inset-y-0 left-0 w-[56%] rounded-3xl bg-brand-lime" />
+                <div className="absolute inset-y-0 left-0 w-[56%] rounded-3xl bg-[#D4FB20]" />
               </div>
             </aside>
 
-            {/* Year to Date — left 0, top 194, width 134 */}
+            {/* Year to Date — 34:998 @ 0,194 / 134 wide */}
             <aside
-              className="absolute left-0 top-[32%] z-20 flex w-[134px] flex-col gap-2 rounded-2xl bg-brand-blue p-4 backdrop-blur-[10px]"
+              className="absolute left-0 z-20 flex w-[134px] flex-col gap-2 rounded-2xl bg-[#003BE2] p-4 backdrop-blur-[10px]"
+              style={{ top: "32.55%" }}
               aria-label="Year to date revenue"
             >
               <div>
@@ -127,9 +115,10 @@ export function ManageCourses() {
               </span>
             </aside>
 
-            {/* Happy Students — left 283, top 413, width 258 */}
+            {/* Happy Students — 34:1038 @ 283,413 / 258 wide — white card */}
             <aside
-              className="absolute bottom-[10%] right-0 z-20 flex w-[min(100%,258px)] flex-col gap-2 rounded-2xl bg-white p-4 shadow-[0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-[10px]"
+              className="absolute z-20 flex w-[min(100%,258px)] flex-col gap-2 rounded-2xl bg-white p-4 backdrop-blur-[10px]"
+              style={{ left: "52.31%", top: "69.3%" }}
               aria-label="Happy students"
             >
               <div>
@@ -140,7 +129,7 @@ export function ManageCourses() {
                   <span className="font-bold text-[#242528]">4.5 </span>
                   <span className="text-[#82868E]">(240)</span>
                   <Image
-                    src="/figma/manage-star.svg"
+                    src="/figma/manage/star.svg"
                     alt=""
                     width={16}
                     height={16}
@@ -167,7 +156,7 @@ export function ManageCourses() {
                   style={{ marginLeft: -16 }}
                 >
                   <Image
-                    src="/figma/manage-2k.svg"
+                    src="/figma/manage/2k.svg"
                     alt=""
                     width={43}
                     height={43}
@@ -182,7 +171,7 @@ export function ManageCourses() {
             </aside>
           </div>
 
-          {/* Text column */}
+          {/* Text — 34:897 */}
           <div className="order-1 flex w-full max-w-[580px] flex-col gap-10 lg:order-2 lg:shrink-0">
             <h2
               id="manage-heading"
@@ -190,19 +179,23 @@ export function ManageCourses() {
             >
               Create &amp; Manage Courses Easily.
             </h2>
-            <p className="font-nav max-w-[574px] text-base leading-[1.6] text-[#4B4C53] sm:text-lg">
-              ByteSpace supports individuals or entities in the creation, publication, and
-              administration of educational courses.
+            <p className="font-nav max-w-[574px] text-base leading-[1.6] text-[#4B4C53] sm:text-lg sm:leading-7">
+              <span className="font-bold text-[#242528]">ByteSpace</span> supports individuals or
+              entities in the creation, publication, and administration of educational courses.
             </p>
             <ul className="flex flex-col gap-4">
               {checklist.map((item) => (
-                <li key={item} className="flex items-center gap-2">
-                  <span className="flex size-6 shrink-0 text-brand-blue" aria-hidden>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                    </svg>
-                  </span>
-                  <span className="font-nav text-base font-medium leading-[22px] text-[#242528] sm:text-lg">
+                <li key={item} className="flex items-end gap-2">
+                  <Image
+                    src="/figma/manage/check.svg"
+                    alt=""
+                    width={24}
+                    height={24}
+                    unoptimized
+                    className="size-6 shrink-0"
+                    aria-hidden
+                  />
+                  <span className="font-nav text-base font-medium leading-[1.2] text-[#242528] sm:text-lg">
                     {item}
                   </span>
                 </li>
