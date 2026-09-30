@@ -30,44 +30,26 @@ const courses = [
   {
     title: "Learn Figma from Basic",
     image: "/figma/course-1-figma.png",
-    lessons: "17 Lessons",
-    duration: "2 hours 16 mins",
-    comments: "59 Comments",
   },
   {
     title: "Build Digital Asset",
     image: "/figma/course-2-digital.png",
-    lessons: "17 Lessons",
-    duration: "2 hours 16 mins",
-    comments: "59 Comments",
   },
   {
     title: "the Power of Big Data",
     image: "/figma/course-3-bigdata.png",
-    lessons: "17 Lessons",
-    duration: "2 hours 16 mins",
-    comments: "59 Comments",
   },
   {
     title: "Balancing Productivity and Self-Care",
     image: "/figma/course-4-productivity.png",
-    lessons: "17 Lessons",
-    duration: "2 hours 16 mins",
-    comments: "59 Comments",
   },
   {
     title: "Mastering Money Management",
     image: "/figma/course-5-money.png",
-    lessons: "17 Lessons",
-    duration: "2 hours 16 mins",
-    comments: "59 Comments",
   },
   {
     title: "From Idea to Startup Success",
     image: "/figma/course-6-startup.png",
-    lessons: "17 Lessons",
-    duration: "2 hours 16 mins",
-    comments: "59 Comments",
   },
 ];
 
@@ -84,16 +66,15 @@ export function DiscoverCourses() {
   return (
     <section id="courses" className="bg-white py-16 sm:py-20 lg:py-24" aria-labelledby="discover-heading">
       <Container>
-        {/* Figma: Poppins SemiBold 48 / Satoshi 18 #82868E — title breaks after comma */}
-        <div className="mx-auto mb-10 max-w-[935px] text-center sm:mb-12">
+        {/* Figma: Poppins SemiBold 44 / Satoshi 18 #82868E, gap 16 */}
+        <div className="mx-auto mb-10 flex max-w-[935px] flex-col items-center gap-4 text-center sm:mb-12">
           <h2
             id="discover-heading"
-            className="font-heading text-[1.75rem] font-semibold leading-[1.2] tracking-[-0.01em] text-text sm:text-[2.5rem] lg:text-[48px]"
+            className="font-heading max-w-[588px] text-[1.75rem] font-semibold leading-[1.2] tracking-[-0.01em] text-[#040819] sm:text-[2.5rem] lg:text-[44px] lg:leading-[52.8px] lg:tracking-[-0.44px]"
           >
-            Discover Your Passion,
-            <br className="hidden sm:block" /> Build Your Skills
+            Discover Your Passion, Build Your Skills
           </h2>
-          <p className="font-nav mx-auto mt-5 max-w-[819px] text-base leading-[1.6] text-muted sm:mt-6 sm:text-lg">
+          <p className="font-nav max-w-[917px] text-base leading-[1.6] text-muted sm:text-lg">
             At Bytespace Courses, we bring you closer to life-changing knowledge. Explore a variety
             of courses across different fields, from technology to the arts, and make a difference
             in your career and life.
@@ -101,14 +82,14 @@ export function DiscoverCourses() {
         </div>
 
         <div
-          className="mb-12 flex flex-col items-center gap-2.5 sm:gap-3"
+          className="mb-12 flex flex-col items-center gap-4"
           role="tablist"
           aria-label="Course categories"
         >
           {categoryRows.map((row) => (
             <div
               key={row.join("-")}
-              className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5 min-[900px]:flex-nowrap"
+              className="flex flex-wrap items-center justify-center gap-4 min-[900px]:flex-nowrap"
             >
               {row.map((cat) => {
                 const isActive = active === cat;
@@ -121,12 +102,12 @@ export function DiscoverCourses() {
                     aria-selected={isActive}
                     onClick={() => setActive(cat)}
                     className={[
-                      "font-nav shrink-0 whitespace-nowrap rounded-full px-2.5 py-2 text-[13px] font-medium leading-none transition sm:px-3 sm:py-2.5 sm:text-sm",
+                      "font-nav shrink-0 whitespace-nowrap rounded-full px-4 py-3 text-base font-medium leading-5 transition",
                       isMore
-                        ? "bg-transparent px-1.5 text-brand-blue hover:underline sm:px-2"
+                        ? "bg-transparent px-0 text-brand-blue hover:underline"
                         : isActive
                           ? "bg-brand-lime text-text"
-                          : "bg-surface-muted text-muted hover:bg-[#e5e6e8] hover:text-text",
+                          : "bg-surface-muted text-[#4B4C53] hover:bg-[#e5e6e8] hover:text-text",
                     ].join(" ")}
                   >
                     {cat}
@@ -137,10 +118,10 @@ export function DiscoverCourses() {
           ))}
         </div>
 
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
           {courses.map((course) => (
             <li key={course.title}>
-              <article className="flex h-full flex-col rounded-[1.25rem] border border-border bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+              <article className="flex h-full flex-col rounded-3xl border border-[#CED0D3] bg-white p-4 transition hover:-translate-y-1 hover:shadow-md">
                 <div className="relative aspect-[341/195] overflow-hidden rounded-xl">
                   <Image
                     src={course.image}
@@ -151,28 +132,31 @@ export function DiscoverCourses() {
                   />
                 </div>
 
-                <div className="mt-4 flex items-start justify-between gap-3">
+                <div className="mt-6 flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <h3 className="truncate font-heading text-base font-semibold text-text">
+                    <h3 className="truncate font-heading text-xl font-semibold leading-6 text-black">
                       {course.title}
                     </h3>
-                    <p className="mt-0.5 text-sm text-brand-blue">by purepearl studio</p>
+                    <p className="font-nav mt-0.5 text-xs leading-5">
+                      <span className="text-[#4F4F4F]">by </span>
+                      <span className="text-brand-blue">purepearl studio</span>
+                    </p>
                   </div>
-                  {/* Figma card: compact white pill, light border, ~14px Satoshi #4F4F4F + gray star */}
-                  <span className="font-nav inline-flex h-[26px] shrink-0 items-center gap-1 rounded-full border border-[#e5e6e8] bg-white px-2 text-[13px] font-normal leading-none tracking-normal text-[#4F4F4F]">
+                  {/* Figma: plain 18px #4F4F4F + 24px gray star — no pill */}
+                  <span className="font-nav inline-flex shrink-0 items-center gap-0.5 text-lg font-normal leading-7 text-[#4F4F4F]">
                     4.5
-                    <svg width="11" height="11" viewBox="0 0 13 13" fill="none" aria-hidden>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
                       <path
-                        d="M6.106 0.344c.15-.46.8-.46.95 0l1.218 3.72a.5.5 0 0 0 .475.344l3.914.009c.483.001.684.619.294.904L9.795 7.63a.5.5 0 0 0-.181.557l1.201 3.725c.148.46-.377.842-.769.559L6.874 10.177a.5.5 0 0 0-.586 0L3.116 12.47c-.392.283-.917-.099-.769-.559l1.201-3.725a.5.5 0 0 0-.181-.557L.206 5.321c-.39-.285-.189-.903.294-.904l3.914-.009a.5.5 0 0 0 .474-.344L6.106.344Z"
+                        d="M12 3.5l2.12 6.5h6.84l-5.54 4.03 2.12 6.52L12 16.52l-5.54 4.03 2.12-6.52L3.04 10h6.84L12 3.5z"
                         fill="#C5C7CB"
                       />
                     </svg>
                   </span>
                 </div>
 
-                <div className="mt-4 flex items-center justify-between gap-3">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-surface-muted px-3 py-1.5 text-xs font-medium text-muted">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                <div className="mt-4 flex items-center gap-3">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-surface-muted px-3 py-1.5 text-xs font-medium leading-4 text-[#4F4F4F]">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
                       <rect x="4" y="14" width="3" height="6" rx="0.5" />
                       <rect x="10.5" y="10" width="3" height="10" rx="0.5" />
                       <rect x="17" y="6" width="3" height="14" rx="0.5" />
@@ -186,21 +170,23 @@ export function DiscoverCourses() {
                           key={src}
                           src={src}
                           alt=""
-                          width={28}
-                          height={28}
-                          className="h-7 w-7 rounded-full border-2 border-white object-cover"
+                          width={32}
+                          height={32}
+                          className="h-8 w-8 rounded-full object-cover"
                         />
                       ))}
                     </div>
-                    <span className="ml-0.5 flex h-7 w-7 items-center justify-center rounded-full bg-brand-lime text-[10px] font-bold text-text">
+                    <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-brand-lime text-xs font-medium leading-5 text-text">
                       26+
                     </span>
                   </div>
                 </div>
 
-                <p className="mt-4">
-                  <span className="font-heading text-lg font-bold text-brand-blue">$25</span>
-                  <span className="text-sm text-muted">/lifetime</span>
+                <p className="mt-4 flex items-end">
+                  <span className="font-heading text-xl font-semibold leading-6 text-brand-blue">
+                    $25
+                  </span>
+                  <span className="font-nav text-xs leading-5 text-[#4F4F4F]">/lifetime</span>
                 </p>
               </article>
             </li>

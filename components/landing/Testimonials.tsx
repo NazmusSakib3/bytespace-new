@@ -45,11 +45,11 @@ export function Testimonials() {
         <div className="mb-12 grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-16">
           <h2
             id="testimonials-heading"
-            className="font-heading text-2xl font-bold tracking-tight text-text sm:text-3xl lg:text-[2.5rem] lg:leading-tight"
+            className="font-heading text-2xl font-semibold tracking-[-0.01em] text-black sm:text-3xl lg:text-[44px] lg:leading-[52.8px]"
           >
             Discover What Our Community Is Saying
           </h2>
-          <p className="text-base leading-relaxed text-muted sm:text-lg">
+          <p className="font-nav text-base leading-[1.6] text-muted sm:text-lg">
             At ByteSpace, our vibrant community of learners and creators is at the heart of what
             we do. Hear directly from those who have experienced the transformative journey of
             learning and creating on our platform. Explore testimonials that reflect the diverse
@@ -57,10 +57,10 @@ export function Testimonials() {
           </p>
         </div>
 
-        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-7">
+        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
           {testimonials.map((item) => (
             <li key={item.name}>
-              <article className="flex h-full flex-col rounded-[1.25rem] border border-border bg-white p-6 shadow-sm sm:p-7">
+              <article className="flex h-full flex-col rounded-3xl bg-white p-6">
                 <Image
                   src={item.avatar}
                   alt=""
@@ -68,11 +68,11 @@ export function Testimonials() {
                   height={80}
                   className="h-16 w-16 rounded-full object-cover sm:h-20 sm:w-20"
                 />
-                <div className="mt-5">
-                  <p className="font-heading text-base font-semibold text-text">{item.name}</p>
-                  <p className="mt-0.5 text-sm text-muted">{item.role}</p>
+                <div className="mt-6">
+                  <p className="font-heading text-xl font-semibold leading-6 text-black">{item.name}</p>
+                  <p className="font-nav text-lg leading-7 text-brand-blue">{item.role}</p>
                 </div>
-                <blockquote className="mt-5 flex-1 text-sm leading-relaxed text-muted sm:text-base">
+                <blockquote className="font-nav mt-6 flex-1 text-base leading-[1.6] text-muted sm:text-lg">
                   &ldquo;{item.quote}&rdquo;
                 </blockquote>
               </article>

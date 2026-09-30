@@ -44,14 +44,14 @@ export function CtaBand() {
       />
 
       <Container className="relative z-10">
-        <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center text-white">
+        <div className="mx-auto flex max-w-4xl flex-col items-center gap-10 text-center text-white">
           <h2
             id="cta-heading"
-            className="font-heading max-w-2xl text-2xl font-bold sm:text-3xl lg:text-[2.5rem] lg:leading-tight"
+            className="font-heading max-w-[710px] text-2xl font-semibold sm:text-3xl lg:text-[44px] lg:leading-[52.8px]"
           >
             Unlock Your Potential as a Creator with ByteSpace
           </h2>
-          <p className="max-w-3xl text-sm leading-relaxed text-white/90 sm:text-base">
+          <p className="font-nav max-w-[964px] text-base leading-[1.6] text-neutral-100 sm:text-lg">
             Experience the collaboration of numerous creators and an expanding selection of
             courses. Register now and become a part of a community comprising over 10,000 local
             and international creators. Utilize our Course Editor, and showcase your expertise by

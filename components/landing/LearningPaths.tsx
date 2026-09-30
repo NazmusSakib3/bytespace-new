@@ -6,117 +6,53 @@ type Path = {
   icon: ReactNode;
 };
 
+/** Figma Material-style filled icons inside lime circles */
 const paths: Path[] = [
   {
     title: "Design",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
-        {/* Pencil */}
-        <path
-          d="M14.5 4.5l5 5-9.8 9.8H4.7v-5L14.5 4.5z"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinejoin="round"
-        />
-        <path d="M13 6l5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-        {/* Ruler crossing */}
-        <path
-          d="M5.5 8.5l10 10"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinecap="round"
-        />
-        <path
-          d="M7.2 10.2l1.2-1.2M9 12l1.2-1.2M10.8 13.8l1.2-1.2M12.6 15.6l1.2-1.2"
-          stroke="currentColor"
-          strokeWidth="1.4"
-          strokeLinecap="round"
-        />
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zm17.71-10.04a1.003 1.003 0 000-1.42l-2.5-2.5a1.003 1.003 0 00-1.42 0l-1.83 1.83 3.75 3.75 1.999-1.66z" />
       </svg>
     ),
   },
   {
     title: "Development",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <rect x="7" y="2.5" width="10" height="19" rx="2.2" stroke="currentColor" strokeWidth="1.6" />
-        <path d="M10.5 5.5h3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-        <circle cx="12" cy="18.5" r="0.9" fill="currentColor" />
-        <path
-          d="M10 10.5l-1.6 1.8L10 14.1M14 10.5l1.6 1.8L14 14.1"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+        <path d="M17 1H7C5.9 1 5 1.9 5 3v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 18H7V5h10v14zM9 10.5l1.5 1.5L9 13.5 10.5 15 13 12.5 10.5 10 9 10.5zm6 0L13.5 12 15 13.5 13.5 15 11 12.5 13.5 10 15 10.5z" />
       </svg>
     ),
   },
   {
     title: "IT & Software",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <rect x="3" y="5" width="18" height="11.5" rx="1.8" stroke="currentColor" strokeWidth="1.6" />
-        <path d="M8 19.5h8M12 16.5v3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-        <path d="M3 14.5h18" stroke="currentColor" strokeWidth="1.4" />
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+        <path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z" />
       </svg>
     ),
   },
   {
     title: "Business",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <path
-          d="M4 20V9.5h5V20M9 20V5h6v15M15 20v-7h5V20"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M6 12.5h1M6 15h1M11.5 8h1M11.5 11h1M11.5 14h1M17 15h1"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+        <path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z" />
       </svg>
     ),
   },
   {
     title: "Marketing",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <path
-          d="M4 9.5h3.2l6.3-3.8v12.6L7.2 14.5H4V9.5z"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinejoin="round"
-        />
-        <path
-          d="M15.8 9.2c.9.7 1.5 1.7 1.5 2.8s-.6 2.1-1.5 2.8M18.2 7.2c1.6 1.2 2.6 3 2.6 5s-1 3.8-2.6 5"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
       </svg>
     ),
   },
   {
     title: "Photography",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
-        <path
-          d="M4 8.5h3.2l1.4-2h6.8l1.4 2H20v10.2H4V8.5z"
-          stroke="currentColor"
-          strokeWidth="1.6"
-          strokeLinejoin="round"
-        />
-        <circle cx="12" cy="13.2" r="3.2" stroke="currentColor" strokeWidth="1.6" />
-        <path
-          d="M12 11.4v3.6M10.2 13.2h3.6"
-          stroke="currentColor"
-          strokeWidth="1.4"
-          strokeLinecap="round"
-        />
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+        <path d="M12 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6-5h-1.5l-1.1-1.17C15.14 5.3 14.7 5 14.21 5H9.79c-.49 0-.93.3-1.19.83L7.5 7H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-6 12c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" />
       </svg>
     ),
   },
@@ -126,34 +62,32 @@ export function LearningPaths() {
   return (
     <section className="bg-white py-16 sm:py-20 lg:py-24" aria-labelledby="paths-heading">
       <Container>
-        {/* Figma: Poppins SemiBold 48 / Satoshi 18 #82868E — same rhythm as Discover */}
-        <div className="mx-auto mb-10 max-w-[935px] text-center sm:mb-12">
+        {/* Figma: Poppins SemiBold 36 / Satoshi 18 #82868E */}
+        <div className="mx-auto mb-10 flex max-w-[935px] flex-col items-center gap-4 text-center sm:mb-12">
           <h2
             id="paths-heading"
-            className="font-heading text-[1.75rem] font-semibold leading-[1.2] tracking-[-0.01em] text-text sm:text-[2.5rem] lg:text-[48px]"
+            className="font-heading text-[1.75rem] font-semibold leading-[1.2] tracking-[-0.01em] text-[#040819] sm:text-4xl sm:leading-10"
           >
             Explore Diverse Learning Paths at Bytespace
           </h2>
-          <p className="font-nav mx-auto mt-5 max-w-[819px] text-base leading-[1.6] text-muted sm:mt-6 sm:text-lg">
+          <p className="font-nav max-w-[917px] text-base leading-[1.6] text-muted sm:text-lg">
             At Bytespace, we believe in empowering individuals through knowledge. Our diverse range
             of courses spans various fields, ensuring there&apos;s something for everyone. Unleash
             your potential and explore our carefully curated categories.
           </p>
         </div>
 
-        <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 lg:gap-5">
+        <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 lg:gap-10">
           {paths.map((path) => (
             <li key={path.title}>
-              <article className="flex aspect-square flex-col items-center justify-center gap-4 rounded-[1.25rem] border border-border bg-white px-3 py-6 text-center shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+              <article className="flex aspect-square max-h-[167px] flex-col items-center justify-center gap-3 rounded-3xl border border-[#CED0D3] bg-white px-3 py-6 text-center transition hover:-translate-y-1 hover:shadow-sm">
                 <span
-                  className="flex h-[60px] w-[60px] items-center justify-center rounded-full bg-brand-lime text-text"
+                  className="flex items-center justify-center rounded-[40px] bg-brand-lime p-3 text-text"
                   aria-hidden
                 >
                   {path.icon}
                 </span>
-                <h3 className="font-heading text-sm font-semibold text-text sm:text-base">
-                  {path.title}
-                </h3>
+                <h3 className="font-nav text-xl font-medium leading-6 text-text">{path.title}</h3>
               </article>
             </li>
           ))}

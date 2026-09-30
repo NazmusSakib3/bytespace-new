@@ -50,7 +50,7 @@ const logos = [
 export function Partners() {
   return (
     <section
-      className="border-b border-border bg-white py-12 sm:py-16"
+      className="border-b border-border bg-surface-muted py-12 sm:py-16 lg:py-[80px]"
       aria-label="Trusted by partners"
     >
       <Container>

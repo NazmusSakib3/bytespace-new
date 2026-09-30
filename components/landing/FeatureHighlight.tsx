@@ -28,11 +28,11 @@ export function FeatureHighlight() {
           <div>
             <h2
               id="feature-heading"
-              className="font-heading text-2xl font-bold tracking-tight text-text sm:text-3xl lg:text-[2.5rem] lg:leading-tight"
+              className="font-heading text-2xl font-semibold tracking-[-0.01em] text-text sm:text-3xl lg:text-[44px] lg:leading-[52.8px]"
             >
               Your Path to Professional Growth Starts Here!
             </h2>
-            <p className="mt-5 max-w-md text-base leading-relaxed text-muted sm:text-lg">
+            <p className="font-nav mt-10 max-w-[477px] text-base leading-[1.6] text-muted sm:text-lg">
               Explore our curated selection of courses tailored to enhance your capabilities and
               accelerate your career journey. Whether you are looking to sharpen specific skills,
               gain industry expertise, or embark on a new career path entirely, we have the
@@ -42,10 +42,10 @@ export function FeatureHighlight() {
             <ul className="mt-10 flex flex-wrap gap-10 sm:gap-14" aria-label="Platform stats">
               {stats.map((stat) => (
                 <li key={stat.label}>
-                  <p className="font-heading text-3xl font-extrabold text-brand-blue sm:text-4xl">
+                  <p className="font-heading text-3xl font-medium text-brand-blue sm:text-4xl sm:leading-10">
                     {stat.value}
                   </p>
-                  <p className="mt-1 text-sm font-medium text-muted">{stat.label}</p>
+                  <p className="font-nav mt-1 text-base leading-7 text-muted sm:text-lg">{stat.label}</p>
                 </li>
               ))}
             </ul>

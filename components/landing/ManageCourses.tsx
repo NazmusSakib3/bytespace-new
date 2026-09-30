@@ -39,32 +39,38 @@ export function ManageCourses() {
             </div>
 
             <aside
-              className="absolute left-0 top-[8%] z-20 w-[150px] rounded-2xl bg-white p-3.5 shadow-xl sm:w-[200px] sm:p-4"
+              className="absolute left-0 top-[8%] z-20 w-[150px] rounded-2xl bg-brand-blue p-3.5 shadow-xl backdrop-blur-[10px] sm:w-[200px] sm:p-4"
               aria-label="Total revenue"
             >
-              <p className="text-xs font-medium text-text sm:text-sm">Total Revenue</p>
-              <p className="text-[10px] text-muted">July 1-28</p>
+              <p className="text-xs font-medium text-neutral-100 sm:text-base sm:leading-5">
+                Total Revenue
+              </p>
+              <p className="text-[10px] leading-3 text-neutral-100">July 1-28</p>
               <div className="mt-2 flex items-center justify-between gap-2">
-                <p className="font-heading text-lg font-bold text-text sm:text-2xl">$120.29</p>
-                <span className="rounded-full bg-brand-lime px-2 py-0.5 text-[10px] font-semibold text-text">
+                <p className="font-heading text-lg font-semibold text-neutral-100 sm:text-2xl sm:leading-8">
+                  $120.29
+                </p>
+                <span className="rounded-full bg-brand-lime px-2 py-0.5 text-[10px] font-medium text-text">
                   +12$
                 </span>
               </div>
-              <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-border">
+              <div className="mt-2 h-2 overflow-hidden rounded-full bg-white">
                 <div className="h-full w-[70%] rounded-full bg-brand-lime" />
               </div>
             </aside>
 
             <aside
-              className="absolute right-0 top-[22%] z-20 w-[120px] rounded-2xl bg-white p-3 shadow-xl sm:w-[140px] sm:p-3.5"
+              className="absolute left-0 top-[36%] z-20 w-[120px] rounded-2xl bg-brand-blue p-3 shadow-xl backdrop-blur-[10px] sm:w-[128px] sm:p-4"
               aria-label="Year to date revenue"
             >
-              <p className="text-xs font-medium text-text">Year to Date</p>
-              <p className="text-[10px] text-muted">2023</p>
-              <p className="mt-2 font-heading text-base font-bold text-text sm:text-lg">
+              <p className="text-xs font-medium leading-5 text-neutral-100 sm:text-base">
+                Year to Date
+              </p>
+              <p className="text-[10px] leading-3 text-neutral-100">2023</p>
+              <p className="mt-2 font-heading text-base font-semibold text-neutral-100 sm:text-2xl sm:leading-8">
                 $1,200.38
               </p>
-              <span className="mt-2 inline-block rounded-full bg-brand-lime px-2 py-0.5 text-[10px] font-semibold text-text">
+              <span className="mt-2 inline-block rounded-full bg-brand-lime px-2 py-0.5 text-[10px] font-medium text-text">
                 +12$
               </span>
             </aside>
@@ -109,32 +115,25 @@ export function ManageCourses() {
           <div className="order-1 lg:order-2">
             <h2
               id="manage-heading"
-              className="font-heading text-2xl font-bold tracking-tight text-text sm:text-3xl lg:text-[2.5rem] lg:leading-tight"
+              className="font-heading text-2xl font-semibold tracking-[-0.01em] text-text sm:text-3xl lg:text-[44px] lg:leading-[52.8px]"
             >
               Create &amp; Manage Courses Easily.
             </h2>
-            <p className="mt-5 max-w-lg text-base leading-relaxed text-muted sm:text-lg">
-              ByteSpace supports individuals or entities in the creation, publication, and
-              administration of educational courses.
+            <p className="font-nav mt-10 max-w-lg text-base leading-[1.6] text-muted sm:text-lg">
+              <span className="font-bold text-text">ByteSpace</span> supports individuals or
+              entities in the creation, publication, and administration of educational courses.
             </p>
-            <ul className="mt-8 space-y-4">
+            <ul className="mt-10 space-y-4">
               {checklist.map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <span
-                    className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-blue text-white"
-                    aria-hidden
-                  >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                      <path
-                        d="M5 12l5 5L20 7"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
+                <li key={item} className="flex items-end gap-2">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center text-brand-blue" aria-hidden>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                     </svg>
                   </span>
-                  <span className="text-sm font-medium text-text sm:text-base">{item}</span>
+                  <span className="font-nav text-base font-medium leading-5 text-text sm:text-lg">
+                    {item}
+                  </span>
                 </li>
               ))}
             </ul>
