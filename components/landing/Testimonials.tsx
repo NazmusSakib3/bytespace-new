@@ -29,50 +29,57 @@ export function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative overflow-hidden py-16 sm:py-20 lg:py-24"
+      className="relative overflow-hidden bg-[#F8F8F9] py-16 sm:py-20 lg:py-[74px]"
       aria-labelledby="testimonials-heading"
     >
+      {/* Figma soft blobs — lime + blue */}
       <div
-        className="pointer-events-none absolute -left-40 top-20 h-[500px] w-[500px] rounded-full bg-brand-lime/20 blur-3xl"
+        className="pointer-events-none absolute left-[58%] top-[-30%] h-[720px] w-[720px] rounded-full bg-[#D4FB20]/45 blur-[100px]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -right-32 -top-20 h-[420px] w-[420px] rounded-full bg-brand-lime/15 blur-3xl"
+        className="pointer-events-none absolute left-[20%] top-[-20%] h-[420px] w-[420px] rounded-full bg-[#D4FB20]/30 blur-[80px]"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -left-[30%] bottom-[-10%] h-[720px] w-[720px] rounded-full bg-[#003BE2]/18 blur-[100px]"
         aria-hidden
       />
 
       <Container className="relative z-10">
-        <div className="mb-12 grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-16">
+        <div className="mb-[72px] grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-10">
           <h2
             id="testimonials-heading"
-            className="font-heading text-2xl font-semibold tracking-[-0.01em] text-black sm:text-3xl lg:text-[44px] lg:leading-[52.8px]"
+            className="font-heading max-w-[577px] text-[1.75rem] font-semibold leading-[1.2] tracking-[-0.01em] text-black sm:text-[2.5rem] lg:mt-[39px] lg:text-[44px] lg:tracking-[-0.44px]"
           >
             Discover What Our Community Is Saying
           </h2>
-          <p className="font-nav text-base leading-[1.6] text-muted sm:text-lg">
-            At ByteSpace, our vibrant community of learners and creators is at the heart of what
-            we do. Hear directly from those who have experienced the transformative journey of
-            learning and creating on our platform. Explore testimonials that reflect the diverse
-            perspectives of enthusiastic learners and accomplished creators.
+          <p className="font-nav max-w-[580px] text-base leading-[1.6] text-[#4B4C53] sm:text-lg lg:justify-self-end">
+            At ByteSpace, our vibrant community of learners and creators is at the heart of what we
+            do. Hear directly from those who have experienced the transformative journey of learning
+            and creating on our platform. Explore testimonials that reflect the diverse perspectives
+            of enthusiastic learners and accomplished creators.
           </p>
         </div>
 
-        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-[41px]">
           {testimonials.map((item) => (
             <li key={item.name}>
-              <article className="flex h-full flex-col rounded-3xl bg-white p-6">
+              <article className="flex h-full flex-col gap-6 rounded-3xl bg-white p-6">
                 <Image
                   src={item.avatar}
                   alt=""
                   width={80}
                   height={80}
-                  className="h-16 w-16 rounded-full object-cover sm:h-20 sm:w-20"
+                  className="size-20 rounded-full object-cover"
                 />
-                <div className="mt-6">
-                  <p className="font-heading text-xl font-semibold leading-6 text-black">{item.name}</p>
-                  <p className="font-nav text-lg leading-7 text-brand-blue">{item.role}</p>
+                <div>
+                  <p className="font-heading text-xl font-semibold leading-[1.2] tracking-[-0.2px] text-black sm:leading-7">
+                    {item.name}
+                  </p>
+                  <p className="font-nav text-lg leading-[1.6] text-brand-blue">{item.role}</p>
                 </div>
-                <blockquote className="font-nav mt-6 flex-1 text-base leading-[1.6] text-muted sm:text-lg">
+                <blockquote className="font-nav text-base leading-[1.6] text-[#4F4F4F] sm:text-lg">
                   &ldquo;{item.quote}&rdquo;
                 </blockquote>
               </article>

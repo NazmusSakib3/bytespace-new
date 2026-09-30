@@ -2,129 +2,115 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/layout/Logo";
 
-const columns = [
-  {
-    title: "Featured Courses",
-    links: [
-      { href: "#courses", label: "Featured Courses" },
-      { href: "#courses", label: "Featured Categories" },
-      { href: "#courses", label: "Business" },
-      { href: "#courses", label: "IT" },
-      { href: "#courses", label: "Design" },
-    ],
-  },
-  {
-    title: "Development",
-    links: [
-      { href: "#courses", label: "Development" },
-      { href: "#courses", label: "Marketing" },
-      { href: "#courses", label: "Photography" },
-      { href: "#courses", label: "Finance" },
-      { href: "#courses", label: "Sport" },
-    ],
-  },
-  {
-    title: "Become a Creator",
-    links: [
-      { href: "/signup", label: "Become a Creator" },
-      { href: "#creators", label: "Affiliate Program" },
-      { href: "/signup", label: "Contact" },
-      { href: "#", label: "Help" },
-      { href: "#", label: "About" },
-    ],
-  },
-  {
-    title: "About",
-    links: [
-      { href: "#", label: "Our Story" },
-      { href: "#testimonials", label: "Community" },
-      { href: "#", label: "Careers" },
-      { href: "#", label: "Press" },
-      { href: "/signup", label: "Contact Us" },
-    ],
-  },
+const linkColumns = [
+  [
+    { href: "#courses", label: "Featured Courses" },
+    { href: "#courses", label: "Featured Categories" },
+    { href: "#courses", label: "Business" },
+    { href: "#courses", label: "IT" },
+    { href: "#courses", label: "Design" },
+  ],
+  [
+    { href: "#courses", label: "Development" },
+    { href: "#courses", label: "Marketing" },
+    { href: "#courses", label: "Photography" },
+    { href: "#courses", label: "Finance" },
+    { href: "#courses", label: "Sport" },
+  ],
+  [
+    { href: "/signup", label: "Become a Creator" },
+    { href: "#creators", label: "Affiliate Program" },
+    { href: "/signup", label: "Contact" },
+    { href: "#", label: "Help" },
+    { href: "#", label: "About" },
+  ],
 ];
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-white text-text">
-      <Container className="py-14 sm:py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_1.4fr] lg:gap-16">
-          <div>
-            <Logo />
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">
-              Stay Up to date with our latest features and releases by joining our newsletter.
-            </p>
+    <footer className="border-t border-[#CED0D3] bg-white text-[#242528]">
+      <Container className="py-[71px]">
+        <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-[92px]">
+          {/* Brand + newsletter */}
+          <div className="flex w-full max-w-[528px] flex-col gap-[45px] lg:shrink-0">
+            <div className="flex flex-col gap-4">
+              <Logo />
+              <p className="font-nav max-w-[528px] text-sm leading-[1.6] text-[#242528]">
+                Stay Up to date with our latest features and releases by joining our newsletter.
+              </p>
+            </div>
 
-            <form
-              className="mt-6 flex max-w-lg items-center gap-3 rounded-full border border-border bg-white p-1.5 shadow-sm"
-              action="#"
-              method="post"
-            >
-              <label htmlFor="footer-email" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="footer-email"
-                type="email"
-                name="email"
-                required
-                placeholder="Enter your email"
-                className="min-w-0 flex-1 bg-transparent px-4 py-2.5 text-sm text-text placeholder:text-muted focus:outline-none"
-              />
-              <button
-                type="submit"
-                className="shrink-0 rounded-full bg-brand-lime px-6 py-2.5 text-sm font-bold text-text transition hover:brightness-95"
+            <div className="flex flex-col gap-6">
+              <form
+                className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6"
+                action="#"
+                method="post"
               >
-                Join
-              </button>
-            </form>
-            <p className="mt-3 max-w-md text-xs leading-relaxed text-muted">
-              By subscribing, you agree to our Privacy Policy and consent to receive updates from
-              our company.
-            </p>
+                <label htmlFor="footer-email" className="sr-only">
+                  Email address
+                </label>
+                <input
+                  id="footer-email"
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="Enter your email"
+                  className="h-[52px] w-full max-w-[376px] rounded-full border border-[#CED0D3] bg-white px-6 font-nav text-base leading-[1.6] text-[#242528] placeholder:text-[#242528]/60 focus:outline-none focus:ring-2 focus:ring-brand-lime"
+                />
+                <button
+                  type="submit"
+                  className="inline-flex shrink-0 items-center justify-center rounded-3xl bg-brand-lime px-6 py-3 font-nav text-lg font-medium leading-[1.2] text-[#242528] transition hover:brightness-95"
+                >
+                  Search
+                </button>
+              </form>
+              <p className="font-nav max-w-[504px] text-xs leading-[1.6] text-[#242528]">
+                By subscribing, you agree to our Privacy Policy and consent to receive updates from
+                our company.
+              </p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
-            {columns.map((col) => (
-              <div key={col.title}>
-                <h3 className="font-heading text-sm font-semibold text-text">{col.title}</h3>
-                <ul className="mt-4 space-y-3">
-                  {col.links.map((link) => (
-                    <li key={`${col.title}-${link.label}`}>
-                      <Link
-                        href={link.href}
-                        className="text-sm text-muted transition-colors hover:text-text"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          {/* Link columns — Figma: no visible headings */}
+          <div className="grid flex-1 grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-10">
+            {linkColumns.map((links, colIndex) => (
+              <ul key={colIndex} className="flex flex-col gap-4">
+                {links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="font-nav text-sm leading-[1.6] text-[#242528] transition-opacity hover:opacity-70"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             ))}
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-4 border-t border-border pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} ByteSpace. All rights reserved.</p>
-          <ul className="flex flex-wrap gap-x-6 gap-y-2">
-            <li>
-              <Link href="#" className="hover:text-text">
-                Terms of Service
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="hover:text-text">
-                Privacy Policy
-              </Link>
-            </li>
-            <li>
-              <Link href="#" className="hover:text-text">
-                Cookie Policy
-              </Link>
-            </li>
-          </ul>
+        <div className="mt-[130px] border-t border-[#CED0D3] pt-5">
+          <div className="flex flex-col gap-4 font-nav text-xs leading-[1.6] text-[#242528] sm:flex-row sm:items-start sm:justify-between">
+            <p>@ 2023 ByteSpace. All rights reserved.</p>
+            <ul className="flex flex-wrap gap-x-6 gap-y-2">
+              <li>
+                <Link href="#" className="hover:opacity-70">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="hover:opacity-70">
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link href="#" className="hover:opacity-70">
+                  Cookies Settings
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </Container>
     </footer>
