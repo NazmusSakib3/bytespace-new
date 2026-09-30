@@ -15,7 +15,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="relative z-50 bg-transparent">
+    <header className="absolute inset-x-0 top-0 z-50 bg-transparent">
       {/* Figma Header_Frame: 1440×120, side inset 120, item gap 24 */}
       <nav
         className="relative mx-auto flex h-[88px] w-full max-w-[1440px] items-center px-6 sm:h-[100px] sm:px-10 lg:h-[120px] lg:px-[120px]"

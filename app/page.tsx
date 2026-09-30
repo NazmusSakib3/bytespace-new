@@ -13,19 +13,20 @@ import { Navbar } from "@/components/layout/Navbar";
 export default function HomePage() {
   return (
     <>
-      {/* Figma Hero_Frame: blue + grid behind header and hero */}
+      {/* Figma Hero_Frame 1:1695 — 1440×1024 */}
       <div className="relative overflow-hidden bg-brand-blue">
         <div className="pointer-events-none absolute inset-0" aria-hidden>
           <Image
-            src="/figma/hero-grid.svg"
+            src="/figma/hero/grid.svg"
             alt=""
             fill
             priority
+            unoptimized
             className="object-cover object-top"
             sizes="100vw"
           />
         </div>
-        <div className="relative z-10">
+        <div className="relative z-10 mx-auto h-[max(680px,min(1024px,calc(100vw*0.711)))] w-full max-w-[1440px] overflow-hidden">
           <Navbar />
           <Hero />
         </div>
