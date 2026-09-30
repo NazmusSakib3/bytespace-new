@@ -10,48 +10,10 @@ const AVATARS = [
   "/figma/avatar7.png",
 ];
 
-type OrnamentProps = {
-  src: string;
-  tint: "#d4fb20" | "#f5f5f6";
-  /** left/top/width as % of 1440×1024 Hero_Frame */
-  left: string;
-  top: string;
-  width: string;
-  flip?: boolean;
-  z?: number;
-};
-
-function Ornament({ src, tint, left, top, width, flip = false, z = 15 }: Readonly<OrnamentProps>) {
-  return (
-    <div
-      className="pointer-events-none absolute aspect-square"
-      style={{ left, top, width, zIndex: z }}
-      aria-hidden
-    >
-      <div className={`relative size-full ${flip ? "-scale-x-100" : ""}`}>
-        <Image src={src} alt="" fill unoptimized sizes="400px" className="object-contain" />
-        <div
-          className="absolute inset-0 mix-blend-hard-light"
-          style={{
-            backgroundColor: tint,
-            WebkitMaskImage: `url(${src})`,
-            WebkitMaskSize: "contain",
-            WebkitMaskRepeat: "no-repeat",
-            WebkitMaskPosition: "center",
-            maskImage: `url(${src})`,
-            maskSize: "contain",
-            maskRepeat: "no-repeat",
-            maskPosition: "center",
-          }}
-        />
-      </div>
-    </div>
-  );
-}
-
 /**
  * Figma Hero_Frame (1:1695) — 1440×1024 absolute layout.
  * Parent must be aspect-[1440/1024] with overflow hidden.
+ * Ellipse 7 + 3D ornaments use Figma-rendered PNGs (tint baked in, no mix-blend).
  */
 export function Hero() {
   return (
@@ -112,66 +74,22 @@ export function Hero() {
         </form>
       </div>
 
-      {/* Lime ring — Figma Ellipse 7: centered, top 582, 1149×1149 */}
+      {/* Ellipse 7 — Figma 1:1866 @ 145,582 / 1149×1149 (export = visible top slice) */}
       <div
-        className="pointer-events-none absolute left-1/2 z-0 aspect-square w-[79.8%] -translate-x-1/2"
-        style={{ top: "56.8%" }}
+        className="pointer-events-none absolute z-0"
+        style={{ left: "10.07%", top: "56.84%", width: "79.79%" }}
         aria-hidden
       >
         <Image
-          src="/figma/hero/lime-ring.svg"
+          src="/figma/hero/ellipse7.png"
           alt=""
-          fill
+          width={1149}
+          height={442}
           unoptimized
           priority
-          className="object-contain"
+          className="h-auto w-full select-none"
         />
       </div>
-
-      {/* 3D ornaments — Figma 46:79 */}
-      <Ornament
-        src="/figma/hero/spring-b.png"
-        tint="#d4fb20"
-        left="-8.2%"
-        top="21.6%"
-        width="26.7%"
-      />
-      <Ornament
-        src="/figma/hero/spring-b.png"
-        tint="#f5f5f6"
-        left="24.9%"
-        top="46.6%"
-        width="12.2%"
-        flip
-      />
-      <Ornament
-        src="/figma/hero/cone-a.png"
-        tint="#f5f5f6"
-        left="1.25%"
-        top="66.6%"
-        width="23.8%"
-      />
-      <Ornament
-        src="/figma/hero/cone-b.png"
-        tint="#d4fb20"
-        left="85.5%"
-        top="21.6%"
-        width="25.7%"
-      />
-      <Ornament
-        src="/figma/hero/cone-c.png"
-        tint="#f5f5f6"
-        left="76.8%"
-        top="45.3%"
-        width="13.1%"
-      />
-      <Ornament
-        src="/figma/hero/spring-a.png"
-        tint="#f5f5f6"
-        left="78.3%"
-        top="65.6%"
-        width="22.9%"
-      />
 
       {/* Person — Figma 431,512 / 578×541 */}
       <div
@@ -192,6 +110,94 @@ export function Hero() {
           unoptimized
           priority
           className="pointer-events-none h-auto w-full select-none object-contain object-top"
+        />
+      </div>
+
+      {/* 3D ornaments — Figma 46:79 children, tint baked into PNGs (no mix-blend) */}
+      <div
+        className="pointer-events-none absolute aspect-square z-[5]"
+        style={{ left: "-8.19%", top: "21.58%", width: "26.74%" }}
+        aria-hidden
+      >
+        <Image
+          src="/figma/hero/orn-spring-lime.png"
+          alt=""
+          fill
+          unoptimized
+          priority
+          className="object-contain"
+          sizes="400px"
+        />
+      </div>
+      <div
+        className="pointer-events-none absolute aspect-square z-[5]"
+        style={{ left: "24.86%", top: "46.58%", width: "12.15%" }}
+        aria-hidden
+      >
+        <Image
+          src="/figma/hero/orn-spring-white-sm.png"
+          alt=""
+          fill
+          unoptimized
+          className="object-contain"
+          sizes="200px"
+        />
+      </div>
+      <div
+        className="pointer-events-none absolute aspect-square z-[5]"
+        style={{ left: "1.25%", top: "66.6%", width: "23.75%" }}
+        aria-hidden
+      >
+        <Image
+          src="/figma/hero/orn-torus.png"
+          alt=""
+          fill
+          unoptimized
+          className="object-contain"
+          sizes="350px"
+        />
+      </div>
+      <div
+        className="pointer-events-none absolute aspect-square z-[5]"
+        style={{ left: "85.49%", top: "21.58%", width: "25.69%" }}
+        aria-hidden
+      >
+        <Image
+          src="/figma/hero/orn-cylinder.png"
+          alt=""
+          fill
+          unoptimized
+          priority
+          className="object-contain"
+          sizes="400px"
+        />
+      </div>
+      <div
+        className="pointer-events-none absolute aspect-square z-[5]"
+        style={{ left: "76.81%", top: "45.31%", width: "13.06%" }}
+        aria-hidden
+      >
+        <Image
+          src="/figma/hero/orn-pyramid.png"
+          alt=""
+          fill
+          unoptimized
+          className="object-contain"
+          sizes="200px"
+        />
+      </div>
+      <div
+        className="pointer-events-none absolute aspect-square z-[5]"
+        style={{ left: "78.26%", top: "65.63%", width: "22.92%" }}
+        aria-hidden
+      >
+        <Image
+          src="/figma/hero/orn-spring-white-lg.png"
+          alt=""
+          fill
+          unoptimized
+          className="object-contain"
+          sizes="350px"
         />
       </div>
 
