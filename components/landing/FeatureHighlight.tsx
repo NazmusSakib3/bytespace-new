@@ -14,45 +14,53 @@ const AVATARS = [
   "/figma/avatar4.png",
 ];
 
+const META_CHIPS = ["17 Lessons", "2 hours 16 mins", "59 Comments"];
+
 export function FeatureHighlight() {
   return (
     <section
       id="creators"
-      className="relative overflow-hidden bg-neutral-50 py-16 sm:py-20 lg:py-24"
+      className="relative overflow-hidden bg-[#F8F8F9] pb-10 pt-16 sm:pb-12 sm:pt-20 lg:pb-14 lg:pt-24"
       aria-labelledby="feature-heading"
     >
+      {/* Frame 15 soft blobs */}
       <div
-        className="pointer-events-none absolute -left-40 -top-40 h-[560px] w-[560px] rounded-full bg-brand-lime/40 blur-[20px]"
+        className="pointer-events-none absolute -left-[10%] -top-[20%] h-[720px] w-[720px] rounded-full bg-[#D4FB20]/35 blur-[80px]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -right-32 bottom-0 h-[560px] w-[560px] rounded-full bg-brand-blue/20 blur-[20px]"
+        className="pointer-events-none absolute -right-[15%] top-[10%] h-[720px] w-[720px] rounded-full bg-[#003BE2]/15 blur-[90px]"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute bottom-[-10%] left-[35%] h-[560px] w-[560px] rounded-full bg-[#D4FB20]/25 blur-[70px]"
         aria-hidden
       />
 
       <Container className="relative z-10">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <div>
+        <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-[63px]">
+          {/* Text column — Figma 574px */}
+          <div className="flex w-full max-w-[574px] flex-col gap-10 lg:shrink-0">
             <h2
               id="feature-heading"
-              className="font-heading text-2xl font-semibold tracking-[-0.01em] text-text sm:text-3xl lg:text-[44px] lg:leading-[52.8px]"
+              className="font-heading max-w-[577px] text-[1.75rem] font-semibold leading-[1.2] tracking-[-0.01em] text-[#242528] sm:text-[2.5rem] lg:text-[44px] lg:tracking-[-0.44px]"
             >
               Your Path to Professional Growth Starts Here!
             </h2>
-            <p className="font-nav mt-10 max-w-[477px] text-base leading-[1.6] text-muted sm:text-lg">
+            <p className="font-nav max-w-[477px] text-base leading-[1.6] text-[#4B4C53] sm:text-lg">
               Explore our curated selection of courses tailored to enhance your capabilities and
               accelerate your career journey. Whether you are looking to sharpen specific skills,
               gain industry expertise, or embark on a new career path entirely, we have the
               resources you need.
             </p>
 
-            <ul className="mt-10 flex flex-wrap gap-10 sm:gap-14" aria-label="Platform stats">
+            <ul className="flex flex-wrap gap-10 sm:gap-14" aria-label="Platform stats">
               {stats.map((stat) => (
-                <li key={stat.label}>
-                  <p className="font-heading text-3xl font-medium text-brand-blue sm:text-4xl sm:leading-10">
+                <li key={stat.label} className="flex flex-col items-start">
+                  <p className="font-heading text-3xl font-medium leading-[44px] tracking-[-0.01em] text-brand-blue sm:text-4xl">
                     {stat.value}
                   </p>
-                  <p className="font-nav mt-1 text-base leading-7 text-muted sm:text-lg">
+                  <p className="font-nav text-base leading-[1.6] text-[#4B4C53] sm:text-lg">
                     {stat.label}
                   </p>
                 </li>
@@ -60,74 +68,104 @@ export function FeatureHighlight() {
             </ul>
           </div>
 
-          {/* Figma collage: course card behind person + progress + lime ornament */}
-          <div className="relative mx-auto h-[480px] w-full max-w-[621px] sm:h-[520px] lg:h-[552px]">
-            {/* Course card behind person */}
-            <article className="absolute left-0 top-0 z-0 w-[min(100%,373px)] rounded-3xl border border-[#CED0D3] bg-white p-4">
-              <div className="relative aspect-[341/195] overflow-hidden rounded-xl">
+          {/* Collage — Figma Frame 11: 621 × 552 */}
+          <div className="relative mx-auto h-[420px] w-full max-w-[621px] sm:h-[500px] lg:mx-0 lg:h-[552px] lg:shrink-0">
+            {/* Course card behind person — 373×384 at 0,0 */}
+            <article className="absolute left-0 top-0 z-0 w-[min(68%,373px)] overflow-hidden rounded-3xl border border-[#CED0D3] bg-white">
+              <div className="relative m-4 aspect-[341/195] overflow-hidden rounded-xl">
                 <Image
-                  src="/figma/course-1-figma.png"
+                  src="/figma/growth-course-thumb.png"
                   alt=""
                   fill
                   className="object-cover"
-                  sizes="373px"
+                  sizes="341px"
                 />
-              </div>
-              <div className="mt-4 flex items-start justify-between gap-2">
-                <div className="min-w-0">
-                  <h3 className="truncate font-heading text-xl font-semibold text-black">
-                    Learn Figma from Basic
-                  </h3>
-                  <p className="font-nav text-xs leading-5">
-                    <span className="text-[#4F4F4F]">by </span>
-                    <span className="text-brand-blue">purepearl studio</span>
-                  </p>
-                </div>
-                <span className="font-nav inline-flex shrink-0 items-center gap-0.5 text-lg text-[#4F4F4F]">
-                  4.5
-                  <Image
-                    src="/figma/star.svg"
-                    alt=""
-                    width={20}
-                    height={20}
-                    unoptimized
-                    className="size-5"
-                    aria-hidden
-                  />
-                </span>
-              </div>
-              <div className="mt-4 flex items-center gap-3">
-                <span className="inline-flex items-center gap-1 rounded-full bg-surface-muted px-3 py-1.5 text-xs font-medium text-[#4F4F4F]">
-                  Beginner
-                </span>
-                <div className="flex -space-x-2">
-                  {AVATARS.map((src) => (
-                    <Image
-                      key={src}
-                      src={src}
-                      alt=""
-                      width={32}
-                      height={32}
-                      className="h-8 w-8 rounded-full object-cover"
-                    />
+                <div className="absolute bottom-3 left-3 flex flex-wrap gap-2">
+                  {META_CHIPS.map((chip) => (
+                    <span
+                      key={chip}
+                      className="rounded-3xl bg-[rgba(246,246,246,0.6)] px-3 py-1.5 font-nav text-xs font-medium leading-5 text-[#4F4F4F] backdrop-blur-[4px]"
+                    >
+                      {chip}
+                    </span>
                   ))}
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-black text-xs font-medium text-white">
-                    26+
+                </div>
+              </div>
+
+              <div className="relative px-4 pb-4">
+                <div className="flex items-start justify-between gap-2">
+                  <div className="min-w-0">
+                    <h3 className="font-heading text-xl font-semibold leading-7 tracking-[-0.2px] text-black">
+                      Learn Figma from Basic
+                    </h3>
+                    <p className="font-nav text-xs leading-5">
+                      <span className="text-[#4F4F4F]">by </span>
+                      <span className="text-brand-blue">purepearl studio</span>
+                    </p>
+                  </div>
+                  <span className="font-nav inline-flex shrink-0 items-center gap-0.5 text-lg font-medium leading-7 text-[#4F4F4F]">
+                    4.5
+                    <Image
+                      src="/figma/star.svg"
+                      alt=""
+                      width={24}
+                      height={24}
+                      unoptimized
+                      className="size-6"
+                      aria-hidden
+                    />
                   </span>
                 </div>
+
+                <div className="mt-4 flex items-center gap-3">
+                  <span className="inline-flex items-center gap-1 rounded-3xl bg-[#F5F5F6] px-3 py-1.5 font-nav text-xs font-medium leading-5 text-[#4B4C53]">
+                    <Image
+                      src="/figma/signal-cellular.svg"
+                      alt=""
+                      width={20}
+                      height={20}
+                      unoptimized
+                      className="size-5"
+                      aria-hidden
+                    />
+                    Beginner
+                  </span>
+                  <div className="flex items-start">
+                    {AVATARS.map((src, i) => (
+                      <Image
+                        key={src}
+                        src={src}
+                        alt=""
+                        width={32}
+                        height={32}
+                        className="size-8 rounded-full object-cover"
+                        style={{ marginLeft: i === 0 ? 0 : -8 }}
+                      />
+                    ))}
+                    <span
+                      className="flex size-8 items-center justify-center rounded-full bg-black font-nav text-xs font-medium text-white"
+                      style={{ marginLeft: -8 }}
+                    >
+                      26+
+                    </span>
+                  </div>
+                </div>
+
+                <p className="mt-4 flex items-end">
+                  <span className="font-heading text-xl font-semibold leading-7 tracking-[-0.2px] text-brand-blue">
+                    <span className="font-medium">$</span>25
+                  </span>
+                  <span className="font-nav text-xs leading-5 text-[#4F4F4F]">/lifetime</span>
+                </p>
               </div>
-              <p className="mt-4 flex items-end">
-                <span className="font-heading text-xl font-semibold text-brand-blue">$25</span>
-                <span className="text-xs text-[#4F4F4F]">/lifetime</span>
-              </p>
             </article>
 
-            {/* Person cutout overlapping card */}
+            {/* Person cutout — 577×540 at 0,12 */}
             <div
-              className="absolute bottom-0 left-[8%] z-10 w-[min(92%,520px)] sm:left-[12%] lg:left-[15%]"
+              className="absolute left-0 top-[2%] z-10 w-[min(100%,577px)]"
               style={{
                 filter:
-                  "drop-shadow(16px 24px 24px rgba(0,0,0,0.09)) drop-shadow(5px 8px 10px rgba(0,0,0,0.07))",
+                  "drop-shadow(16.9px 24.2px 24px rgba(0,0,0,0.09)) drop-shadow(10.2px 14.6px 16px rgba(0,0,0,0.08)) drop-shadow(5.4px 7.7px 9.6px rgba(0,0,0,0.07))",
               }}
             >
               <Image
@@ -140,27 +178,27 @@ export function FeatureHighlight() {
               />
             </div>
 
-            {/* Lime ornament — Figma right of head */}
+            {/* Lime spring ornament — Figma ~406,67 / 215×215 */}
             <div
-              className="pointer-events-none absolute right-0 top-[8%] z-[5] size-[140px] sm:size-[180px] lg:size-[216px]"
+              className="pointer-events-none absolute right-[2%] top-[12%] z-[5] size-[120px] sm:size-[160px] lg:size-[215px]"
               aria-hidden
             >
               <Image
-                src="/figma/ornament-cylinder.png"
+                src="/figma/growth-ornament.png"
                 alt=""
                 fill
                 className="object-contain"
-                sizes="216px"
+                sizes="215px"
               />
               <div
                 className="absolute inset-0 mix-blend-hard-light"
                 style={{
                   backgroundColor: "#d4fb20",
-                  WebkitMaskImage: "url(/figma/ornament-cylinder.png)",
+                  WebkitMaskImage: "url(/figma/growth-ornament.png)",
                   WebkitMaskSize: "contain",
                   WebkitMaskRepeat: "no-repeat",
                   WebkitMaskPosition: "center",
-                  maskImage: "url(/figma/ornament-cylinder.png)",
+                  maskImage: "url(/figma/growth-ornament.png)",
                   maskSize: "contain",
                   maskRepeat: "no-repeat",
                   maskPosition: "center",
@@ -168,15 +206,19 @@ export function FeatureHighlight() {
               />
             </div>
 
-            {/* Learning Progress — Figma right of head */}
+            {/* Learning Progress — Figma 345,213 */}
             <aside
-              className="absolute right-0 top-[35%] z-20 w-[180px] rounded-2xl bg-white p-4 shadow-[inset_0_4px_0_0_rgba(255,255,255,0.25)] backdrop-blur-[10px] sm:w-[200px]"
+              className="absolute right-0 top-[38%] z-20 w-[min(42%,232px)] rounded-2xl bg-white p-4 shadow-[0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-[10px] sm:top-[39%]"
               aria-label="Learning progress"
             >
-              <p className="font-nav text-sm font-medium leading-6 text-text">Learning Progress</p>
-              <p className="mt-1 font-heading text-5xl font-semibold leading-[1.2] text-text">55%</p>
-              <div className="relative mt-2 h-2 w-full overflow-hidden rounded-full bg-[#f6f6f6]">
-                <div className="absolute inset-y-0 left-0 w-[56%] rounded-full bg-brand-lime" />
+              <p className="font-nav text-sm font-medium leading-6 text-[#242528]">
+                Learning Progress
+              </p>
+              <p className="font-heading text-[2.5rem] font-semibold leading-[1.2] tracking-[-0.48px] text-[#242528] sm:text-5xl">
+                55%
+              </p>
+              <div className="relative mt-2 h-2 w-full overflow-hidden rounded-3xl bg-[#f6f6f6]">
+                <div className="absolute inset-y-0 left-0 w-[56%] rounded-3xl bg-brand-lime" />
               </div>
             </aside>
           </div>

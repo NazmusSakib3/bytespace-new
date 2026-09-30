@@ -21,15 +21,16 @@ const AVATARS = [
 export function ManageCourses() {
   return (
     <section
-      className="relative overflow-hidden bg-neutral-50 py-16 sm:py-20 lg:py-24"
+      className="relative overflow-hidden bg-[#F8F8F9] pb-16 pt-10 sm:pb-20 sm:pt-12 lg:pb-24 lg:pt-14"
       aria-labelledby="manage-heading"
     >
+      {/* Continues Frame 15 soft blobs from FeatureHighlight */}
       <div
-        className="pointer-events-none absolute -left-40 top-20 h-[500px] w-[500px] rounded-full bg-brand-blue/20 blur-[20px]"
+        className="pointer-events-none absolute -left-[20%] top-[5%] h-[720px] w-[720px] rounded-full bg-[#003BE2]/12 blur-[90px]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -right-20 -bottom-20 h-[420px] w-[420px] rounded-full bg-brand-lime/40 blur-[20px]"
+        className="pointer-events-none absolute -right-[10%] bottom-[-5%] h-[640px] w-[640px] rounded-full bg-[#D4FB20]/30 blur-[80px]"
         aria-hidden
       />
 
