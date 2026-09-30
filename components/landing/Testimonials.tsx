@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Container } from "@/components/ui/Container";
 
 const testimonials = [
   {
@@ -25,6 +24,10 @@ const testimonials = [
   },
 ];
 
+/**
+ * Figma Testimonials_Frame (34:1175) — Content 1204 wide.
+ * Cards (34:1183…): 374×432 / 374×436 / 374×407, gap 41.
+ */
 export function Testimonials() {
   return (
     <section
@@ -32,7 +35,7 @@ export function Testimonials() {
       className="relative overflow-hidden bg-[#F8F8F9] py-16 sm:py-20 lg:py-[74px]"
       aria-labelledby="testimonials-heading"
     >
-      {/* Figma soft blobs — lime + blue */}
+      {/* Figma soft blobs — Ellipse 11/12/8 */}
       <div
         className="pointer-events-none absolute left-[58%] top-[-30%] h-[720px] w-[720px] rounded-full bg-[#D4FB20]/45 blur-[100px]"
         aria-hidden
@@ -46,8 +49,9 @@ export function Testimonials() {
         aria-hidden
       />
 
-      <Container className="relative z-10">
-        <div className="mb-[72px] grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-10">
+      {/* Figma Content @ 118,74 / 1204×653 */}
+      <div className="relative z-10 mx-auto w-full max-w-[1204px] px-4 sm:px-6 lg:px-0">
+        <div className="mb-[72px] grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-5">
           <h2
             id="testimonials-heading"
             className="font-heading max-w-[577px] text-[1.75rem] font-semibold leading-[1.2] tracking-[-0.01em] text-black sm:text-[2.5rem] lg:mt-[39px] lg:text-[44px] lg:tracking-[-0.44px]"
@@ -62,31 +66,32 @@ export function Testimonials() {
           </p>
         </div>
 
-        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-[41px]">
+        {/* Testimonial_Card row — 3×374 + 2×41 = 1204 */}
+        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-[repeat(3,374px)] lg:justify-between lg:gap-[41px]">
           {testimonials.map((item) => (
-            <li key={item.name}>
-              <article className="flex h-full flex-col gap-6 rounded-3xl bg-white p-6">
+            <li key={item.name} className="min-w-0 lg:w-[374px]">
+              <article className="flex w-full flex-col gap-6 rounded-3xl bg-white p-6 lg:min-h-[432px] lg:w-[374px]">
                 <Image
                   src={item.avatar}
                   alt=""
                   width={80}
                   height={80}
-                  className="size-20 rounded-full object-cover"
+                  className="size-20 shrink-0 rounded-full object-cover"
                 />
-                <div>
-                  <p className="font-heading text-xl font-semibold leading-[1.2] tracking-[-0.2px] text-black sm:leading-7">
+                <div className="flex flex-col">
+                  <p className="font-heading text-xl font-semibold leading-[1.2] tracking-[-0.2px] text-black">
                     {item.name}
                   </p>
                   <p className="font-nav text-lg leading-[1.6] text-brand-blue">{item.role}</p>
                 </div>
-                <blockquote className="font-nav text-base leading-[1.6] text-[#4F4F4F] sm:text-lg">
+                <blockquote className="font-nav max-w-[326px] text-lg leading-[1.6] text-[#4F4F4F]">
                   &ldquo;{item.quote}&rdquo;
                 </blockquote>
               </article>
             </li>
           ))}
         </ul>
-      </Container>
+      </div>
     </section>
   );
 }
