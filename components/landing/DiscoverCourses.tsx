@@ -158,10 +158,10 @@ export function DiscoverCourses() {
                     </h3>
                     <p className="mt-0.5 text-sm text-brand-blue">by purepearl studio</p>
                   </div>
-                  {/* Figma: white pill + #e5e6e8 border; Satoshi 18/#4F4F4F; gray star; leading-none keeps ~28px height */}
-                  <span className="font-nav inline-flex h-7 shrink-0 items-center gap-1 rounded-full border border-[#e5e6e8] bg-white px-2.5 text-[18px] font-normal leading-none tracking-normal text-[#4F4F4F]">
+                  {/* Figma card: compact white pill, light border, ~14px Satoshi #4F4F4F + gray star */}
+                  <span className="font-nav inline-flex h-[26px] shrink-0 items-center gap-1 rounded-full border border-[#e5e6e8] bg-white px-2 text-[13px] font-normal leading-none tracking-normal text-[#4F4F4F]">
                     4.5
-                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden>
+                    <svg width="11" height="11" viewBox="0 0 13 13" fill="none" aria-hidden>
                       <path
                         d="M6.106 0.344c.15-.46.8-.46.95 0l1.218 3.72a.5.5 0 0 0 .475.344l3.914.009c.483.001.684.619.294.904L9.795 7.63a.5.5 0 0 0-.181.557l1.201 3.725c.148.46-.377.842-.769.559L6.874 10.177a.5.5 0 0 0-.586 0L3.116 12.47c-.392.283-.917-.099-.769-.559l1.201-3.725a.5.5 0 0 0-.181-.557L.206 5.321c-.39-.285-.189-.903.294-.904l3.914-.009a.5.5 0 0 0 .474-.344L6.106.344Z"
                         fill="#C5C7CB"
