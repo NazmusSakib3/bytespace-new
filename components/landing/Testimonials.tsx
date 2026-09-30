@@ -7,6 +7,8 @@ const testimonials = [
     quote:
       "ByteSpace has transformed my approach to learning. The diverse range of courses and the quality of content provided by creators have exceeded my expectations. The platform truly fosters a sense of community and lifelong learning.",
     avatar: "/figma/testimonial-1.png",
+    /** Figma 34:1183 */
+    cardHeightClass: "lg:h-[432px]",
   },
   {
     name: "James L.",
@@ -14,6 +16,8 @@ const testimonials = [
     quote:
       "I've tried several online learning platforms, and ByteSpace stands out for its vibrant community and the variety of courses available. The easy navigation and engaging content make it a go-to platform for continuous skill development.",
     avatar: "/figma/testimonial-2.png",
+    /** Figma 34:1189 */
+    cardHeightClass: "lg:h-[436px]",
   },
   {
     name: "Alex B.",
@@ -21,6 +25,8 @@ const testimonials = [
     quote:
       "As a creator, ByteSpace has been a game-changer for me. The Course Editor is user-friendly, and the support from the community is incredible. It's fulfilling to see my courses making a positive impact on learners globally.",
     avatar: "/figma/testimonial-3.png",
+    /** Figma 34:1195 */
+    cardHeightClass: "lg:h-[407px]",
   },
 ];
 
@@ -66,11 +72,13 @@ export function Testimonials() {
           </p>
         </div>
 
-        {/* Testimonial_Card row — 3×374 + 2×41 = 1204 */}
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-[repeat(3,374px)] lg:justify-between lg:gap-[41px]">
+        {/* Figma Testimonial_Card (34:1182) — 1204×436; cards 374×432/436/407, gap 41, items-start */}
+        <ul className="grid w-full gap-6 sm:grid-cols-2 lg:flex lg:h-[436px] lg:w-[1204px] lg:max-w-full lg:items-start lg:gap-[41px]">
           {testimonials.map((item) => (
-            <li key={item.name} className="min-w-0 lg:w-[374px]">
-              <article className="flex w-full flex-col gap-6 rounded-3xl bg-white p-6 lg:min-h-[432px] lg:w-[374px]">
+            <li key={item.name} className="min-w-0 lg:w-[374px] lg:shrink-0">
+              <article
+                className={`flex w-full flex-col gap-6 rounded-3xl bg-white p-6 lg:w-[374px] ${item.cardHeightClass}`}
+              >
                 <Image
                   src={item.avatar}
                   alt=""
