@@ -4,82 +4,69 @@ import { Container } from "@/components/ui/Container";
 
 type Ornament = {
   src: string;
-  tint: "#d4fb20" | "#f5f5f6";
-  className: string;
+  /** left/top/width as % of CTA_Frame 1440×488 */
+  left: string;
+  top: string;
+  width: string;
   flip?: boolean;
 };
 
-/** Figma CTA_Frame 1440×488 ornament placements */
+/**
+ * Figma CTA_Frame (34:1161) Group 6 (46:78) — tint baked into PNGs, no mix-blend.
+ * Positions are absolute within the 1440×488 frame.
+ */
 const ornaments: Ornament[] = [
-  // Large lime spring — top left (overflows)
+  // 34:1206 lime spring — -118,-162 / 385
   {
-    src: "/figma/cta/cta-spring-b.png",
-    tint: "#d4fb20",
-    className: "left-[-8%] top-[-33%] size-[min(28vw,385px)]",
+    src: "/figma/cta/orn-spring-lime-tl.png",
+    left: "-8.19%",
+    top: "-33.2%",
+    width: "26.74%",
   },
-  // White spring (flipped) — upper mid-left
+  // 34:1236 white spring — 353,5 / 175 (flipped in Figma)
   {
-    src: "/figma/cta/cta-spring-b.png",
-    tint: "#f5f5f6",
-    className: "left-[24%] top-[1%] size-[min(14vw,175px)]",
+    src: "/figma/cta/orn-spring-white-sm.png",
+    left: "24.51%",
+    top: "1.02%",
+    width: "12.15%",
     flip: true,
   },
-  // Lime cone — top right area
+  // 46:55 white cone — -48,225 / 188
   {
-    src: "/figma/cta/cta-cone-a.png",
-    tint: "#d4fb20",
-    className: "right-[12%] top-0 size-[min(14vw,188px)]",
+    src: "/figma/cta/orn-cone-white.png",
+    left: "-3.33%",
+    top: "46.11%",
+    width: "13.06%",
   },
-  // White cone/marshmallow — far top right
+  // 46:67 lime torus — 20,299 / 342
   {
-    src: "/figma/cta/cta-cone-d.png",
-    tint: "#f5f5f6",
-    className: "right-[-8%] top-[1%] size-[min(26vw,370px)]",
+    src: "/figma/cta/orn-torus-lime.png",
+    left: "1.39%",
+    top: "61.27%",
+    width: "23.75%",
   },
-  // White cone — mid left
+  // 46:61 lime pyramid — 1080,0 / 188
   {
-    src: "/figma/cta/cta-cone-b.png",
-    tint: "#f5f5f6",
-    className: "left-[-3%] top-[46%] size-[min(14vw,188px)]",
+    src: "/figma/cta/orn-pyramid.png",
+    left: "75%",
+    top: "0%",
+    width: "13.06%",
   },
-  // Large lime ring/cone — bottom left
+  // 46:73 white cylinder — 1226,6 / 370
   {
-    src: "/figma/cta/cta-cone-c.png",
-    tint: "#d4fb20",
-    className: "left-[1%] top-[61%] size-[min(24vw,342px)]",
+    src: "/figma/cta/orn-cylinder-white.png",
+    left: "85.14%",
+    top: "1.23%",
+    width: "25.69%",
   },
-  // Lime spring — bottom right
+  // 34:1221 lime spring — 1110,289 / 330
   {
-    src: "/figma/cta/cta-spring-a.png",
-    tint: "#d4fb20",
-    className: "right-[-2%] top-[59%] size-[min(24vw,330px)]",
+    src: "/figma/cta/orn-spring-lime-br.png",
+    left: "77.08%",
+    top: "59.22%",
+    width: "22.92%",
   },
 ];
-
-function TintedOrnament({ src, tint, className, flip }: Ornament) {
-  return (
-    <div
-      className={`pointer-events-none absolute z-[1] ${className} ${flip ? "-scale-x-100" : ""}`}
-      aria-hidden
-    >
-      <Image src={src} alt="" fill className="object-contain" sizes="400px" />
-      <div
-        className="absolute inset-0 mix-blend-hard-light"
-        style={{
-          backgroundColor: tint,
-          WebkitMaskImage: `url(${src})`,
-          WebkitMaskSize: "contain",
-          WebkitMaskRepeat: "no-repeat",
-          WebkitMaskPosition: "center",
-          maskImage: `url(${src})`,
-          maskSize: "contain",
-          maskRepeat: "no-repeat",
-          maskPosition: "center",
-        }}
-      />
-    </div>
-  );
-}
 
 export function CtaBand() {
   return (
@@ -99,9 +86,29 @@ export function CtaBand() {
         />
       </div>
 
-      {ornaments.map((ornament, i) => (
-        <TintedOrnament key={i} {...ornament} />
-      ))}
+      {/* Absolute stage matches Figma 1440×488 CTA_Frame */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        {ornaments.map((ornament) => (
+          <div
+            key={ornament.src + ornament.left}
+            className={`absolute aspect-square ${ornament.flip ? "-scale-x-100" : ""}`}
+            style={{
+              left: ornament.left,
+              top: ornament.top,
+              width: ornament.width,
+            }}
+          >
+            <Image
+              src={ornament.src}
+              alt=""
+              fill
+              unoptimized
+              className="object-contain"
+              sizes="400px"
+            />
+          </div>
+        ))}
+      </div>
 
       <Container className="relative z-10">
         <div className="mx-auto flex max-w-[964px] flex-col items-center gap-10 text-center">
