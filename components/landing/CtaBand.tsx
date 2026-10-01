@@ -18,6 +18,7 @@ type Ornament = {
   width: number;
   zIndex: number;
   flip?: boolean;
+  motion: string;
 };
 
 const ornaments: Ornament[] = [
@@ -27,6 +28,7 @@ const ornaments: Ornament[] = [
     top: -140,
     width: 300,
     zIndex: 1,
+    motion: "animate-float-ornament",
   },
   {
     src: "/figma/cta/orn-spring-white-sm.png",
@@ -35,6 +37,7 @@ const ornaments: Ornament[] = [
     width: 130,
     zIndex: 2,
     flip: true,
+    motion: "animate-float-ornament-soft animate-float-delay",
   },
   {
     src: "/figma/cta/orn-cone-white.png",
@@ -42,6 +45,7 @@ const ornaments: Ornament[] = [
     top: 200,
     width: 150,
     zIndex: 3,
+    motion: "animate-float-ornament-alt animate-float-delay-2",
   },
   {
     src: "/figma/cta/orn-torus-lime.png",
@@ -49,6 +53,7 @@ const ornaments: Ornament[] = [
     top: 318,
     width: 230,
     zIndex: 4,
+    motion: "animate-float-ornament animate-float-delay-3",
   },
   {
     src: "/figma/cta/orn-pyramid.png",
@@ -56,6 +61,7 @@ const ornaments: Ornament[] = [
     top: 16,
     width: 140,
     zIndex: 1,
+    motion: "animate-float-ornament-soft",
   },
   {
     src: "/figma/cta/orn-cylinder-white.png",
@@ -63,6 +69,7 @@ const ornaments: Ornament[] = [
     top: 24,
     width: 250,
     zIndex: 3,
+    motion: "animate-float-ornament-alt animate-float-delay",
   },
   {
     src: "/figma/cta/orn-spring-lime-br.png",
@@ -70,6 +77,7 @@ const ornaments: Ornament[] = [
     top: 318,
     width: 230,
     zIndex: 2,
+    motion: "animate-float-ornament animate-float-delay-2",
   },
 ];
 
@@ -77,15 +85,17 @@ function OrnamentImage({
   src,
   width,
   flip,
+  motion,
   style,
 }: {
   src: string;
   width: number;
   flip?: boolean;
+  motion: string;
   style: CSSProperties;
 }) {
   return (
-    <div className="absolute" style={{ ...style, height: width }}>
+    <div className={`absolute ${motion}`} style={{ ...style, height: width }}>
       <div className={`relative size-full${flip ? " -scale-x-100" : ""}`}>
         <Image
           src={src}
@@ -161,6 +171,7 @@ export function CtaBand() {
               src={ornament.src}
               width={ornament.width}
               flip={ornament.flip}
+              motion={ornament.motion}
               style={{
                 left: ornament.left,
                 top: ornament.top,
