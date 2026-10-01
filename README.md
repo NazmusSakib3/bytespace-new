@@ -23,6 +23,17 @@ Open [http://localhost:3000](http://localhost:3000).
 | `/login` | Login (UI only) |
 | `/signup` | Signup (UI only) |
 
+## Code & Git (assessment)
+
+| Requirement | How this repo meets it |
+| --- | --- |
+| Public GitHub repository | [NazmusSakib3/bytespace-new](https://github.com/NazmusSakib3/bytespace-new) (public) |
+| Work on a separate branch (not `main`) | Feature work landed via `feature/landing-and-auth` |
+| Pull Request for the work | [PR #1](https://github.com/NazmusSakib3/bytespace-new/pull/1) · [PR #2](https://github.com/NazmusSakib3/bytespace-new/pull/2) |
+| Clean, reusable components | `components/ui/*`, `components/layout/*`, `components/landing/*`, `components/auth/*` |
+
+Workflow used: **feature branch → Pull Request → merge into `main`**. Do not commit assessment work directly on `main`.
+
 ## Design
 
 Matches the [ByteSpace New Figma](https://www.figma.com/design/26TBgRjmpuxudcErJsHUfy/ByteSpace-New-Check-website) blue/lime e-learning aesthetic.
