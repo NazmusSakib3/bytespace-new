@@ -115,6 +115,29 @@ html {
 }
 
 /**
+ * Partners strip — scale 1440×202 artboard to cover the full grey band.
+ */
+.partners-bleed {
+  --partners-scale: 1;
+  position: relative;
+  width: 100%;
+  height: calc(202px * var(--partners-scale));
+  overflow: hidden;
+  background-color: #f5f5f6;
+}
+
+.partners-design {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1440px;
+  height: 202px;
+  margin-left: -720px;
+  transform: scale(var(--partners-scale));
+  transform-origin: top center;
+}
+
+/**
  * Auth artboard — always the Figma 1440 width (centered on blue canvas).
  */
 .design-page {

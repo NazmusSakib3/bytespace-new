@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
-import { DesignFrame } from "@/components/layout/DesignFrame";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+
+const FIGMA_W = 1440;
 
 /**
- * Figma Frame 2 (1:1794) — full-bleed #F5F5F6, content 1440×202.
+ * Figma Frame 2 (1:1794) — full-bleed #F5F5F6, 1440×202 artboard scaled to
+ * cover the band (same pattern as hero / CTA).
  */
 const logos = [
   { src: "/figma/partners/logo-1.svg", width: 167, height: 41, name: "Logoipsum" },
@@ -13,9 +18,48 @@ const logos = [
 ] as const;
 
 export function Partners() {
+  const rootRef = useRef<HTMLElement>(null);
+  const baseDprRef = useRef<number | null>(null);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const update = () => {
+      const client =
+        rootRef.current?.clientWidth ||
+        document.documentElement.clientWidth ||
+        window.innerWidth;
+      const dpr = window.devicePixelRatio || 1;
+
+      if (baseDprRef.current == null) {
+        baseDprRef.current = dpr;
+      }
+
+      const zoomRatio = dpr / baseDprRef.current;
+      setScale((client * zoomRatio) / FIGMA_W);
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    window.visualViewport?.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("resize", update);
+      window.visualViewport?.removeEventListener("resize", update);
+    };
+  }, []);
+
+  const style = {
+    "--partners-scale": String(scale),
+  } as CSSProperties;
+
   return (
-    <section className="relative w-full bg-[#F5F5F6]" aria-label="Trusted by partners">
-      <DesignFrame className="relative flex h-[202px] items-center">
+    <section
+      ref={rootRef}
+      className="partners-bleed"
+      style={style}
+      aria-label="Trusted by partners"
+      data-partners="cover"
+    >
+      <div className="partners-design flex items-center">
         <ul className="flex w-full items-end justify-between px-[154px]">
           {logos.map((logo, i) => (
             <li
@@ -34,7 +78,7 @@ export function Partners() {
             </li>
           ))}
         </ul>
-      </DesignFrame>
+      </div>
     </section>
   );
 }
