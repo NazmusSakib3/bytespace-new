@@ -6,73 +6,78 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 const FIGMA_W = 1440;
 
+/**
+ * Figma CTA_Frame (34:1161) Group 6 (46:78) — exact artboard coords & sizes.
+ * Overlaps are intentional layering (cylinder over pyramid/spring; torus over
+ * cone). The 488 band clips edges via overflow, matching Figma.
+ * Paint order = Figma stack (back → front).
+ */
 type Ornament = {
   src: string;
+  left: number;
   top: number;
   width: number;
+  zIndex: number;
   flip?: boolean;
-  motion: string;
-  left?: number;
-  right?: number;
 };
 
-/**
- * CTA ornaments sized for the 488px band (not the 1024px hero). Side wings
- * only — center copy column stays clear at 720p / 1080p / ultrawide.
- */
-const leftOrnaments: Ornament[] = [
-  {
-    src: "/figma/cta/orn-spring-lime-tl.png",
-    left: -70,
-    top: -80,
-    width: 220,
-    motion: "animate-float-ornament",
-  },
-  {
-    src: "/figma/cta/orn-spring-white-sm.png",
-    left: 150,
-    top: 18,
-    width: 100,
-    flip: true,
-    motion: "animate-float-ornament-soft animate-float-delay",
-  },
-  {
-    src: "/figma/cta/orn-cone-white.png",
-    left: -20,
-    top: 250,
-    width: 110,
-    motion: "animate-float-ornament-alt animate-float-delay-2",
-  },
-  {
-    src: "/figma/cta/orn-torus-lime.png",
-    left: -10,
-    top: 310,
-    width: 190,
-    motion: "animate-float-ornament animate-float-delay-3",
-  },
-];
-
-const rightOrnaments: Ornament[] = [
+const ornaments: Ornament[] = [
+  // 46:61 Cone / pyramid
   {
     src: "/figma/cta/orn-pyramid.png",
-    right: 42,
-    top: 24,
-    width: 110,
-    motion: "animate-float-ornament-soft",
+    left: 1080,
+    top: 0,
+    width: 188,
+    zIndex: 1,
   },
-  {
-    src: "/figma/cta/orn-cylinder-white.png",
-    right: -75,
-    top: 8,
-    width: 210,
-    motion: "animate-float-ornament-alt animate-float-delay",
-  },
+  // 34:1221 lime spring BR
   {
     src: "/figma/cta/orn-spring-lime-br.png",
-    right: -30,
-    top: 300,
-    width: 190,
-    motion: "animate-float-ornament animate-float-delay-2",
+    left: 1110,
+    top: 289,
+    width: 330,
+    zIndex: 2,
+  },
+  // 34:1206 lime spring TL
+  {
+    src: "/figma/cta/orn-spring-lime-tl.png",
+    left: -118,
+    top: -162,
+    width: 385,
+    zIndex: 3,
+  },
+  // 34:1236 white spring (mirrored)
+  {
+    src: "/figma/cta/orn-spring-white-sm.png",
+    left: 353,
+    top: 5,
+    width: 175,
+    zIndex: 4,
+    flip: true,
+  },
+  // 46:55 white cone
+  {
+    src: "/figma/cta/orn-cone-white.png",
+    left: -48,
+    top: 225,
+    width: 188,
+    zIndex: 5,
+  },
+  // 46:67 lime torus — in front of cone
+  {
+    src: "/figma/cta/orn-torus-lime.png",
+    left: 20,
+    top: 299,
+    width: 342,
+    zIndex: 6,
+  },
+  // 46:73 white cylinder — in front of pyramid / spring on the right
+  {
+    src: "/figma/cta/orn-cylinder-white.png",
+    left: 1226,
+    top: 6,
+    width: 370,
+    zIndex: 7,
   },
 ];
 
@@ -80,17 +85,15 @@ function OrnamentImage({
   src,
   width,
   flip,
-  motion,
   style,
 }: {
   src: string;
   width: number;
   flip?: boolean;
-  motion: string;
   style: CSSProperties;
 }) {
   return (
-    <div className={`absolute aspect-square ${motion}`} style={style}>
+    <div className="absolute aspect-square" style={style}>
       <div className={`relative size-full${flip ? " -scale-x-100" : ""}`}>
         <Image
           src={src}
@@ -145,7 +148,7 @@ export function CtaBand() {
       className="cta-bleed"
       style={style}
       aria-labelledby="cta-heading"
-      data-cta="scaled"
+      data-cta="figma"
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <Image
@@ -159,43 +162,18 @@ export function CtaBand() {
       </div>
 
       <div className="cta-design">
-        {/* Left wing — clipped so shapes cannot enter the copy column */}
-        <div
-          className="pointer-events-none absolute inset-y-0 left-0 z-0 w-[300px] overflow-hidden"
-          aria-hidden
-        >
-          {leftOrnaments.map((ornament) => (
+        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
+          {ornaments.map((ornament) => (
             <OrnamentImage
               key={ornament.src}
               src={ornament.src}
               width={ornament.width}
               flip={ornament.flip}
-              motion={ornament.motion}
               style={{
                 left: ornament.left,
                 top: ornament.top,
                 width: ornament.width,
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Right wing */}
-        <div
-          className="pointer-events-none absolute inset-y-0 right-0 z-0 w-[300px] overflow-hidden"
-          aria-hidden
-        >
-          {rightOrnaments.map((ornament) => (
-            <OrnamentImage
-              key={ornament.src}
-              src={ornament.src}
-              width={ornament.width}
-              flip={ornament.flip}
-              motion={ornament.motion}
-              style={{
-                right: ornament.right,
-                top: ornament.top,
-                width: ornament.width,
+                zIndex: ornament.zIndex,
               }}
             />
           ))}

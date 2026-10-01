@@ -2,6 +2,10 @@
 
 E-learning marketing site for the ByteSpace assessment: landing page plus Login and Signup UI.
 
+**Submission details & description:** see [SUBMISSION.md](./SUBMISSION.md)  
+**Live demo:** https://bytespace-new-rho.vercel.app  
+**GitHub:** https://github.com/NazmusSakib3/bytespace-new
+
 ## Stack
 
 - Next.js App Router
