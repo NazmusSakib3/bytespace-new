@@ -1,7 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import type { CSSProperties } from "react";
-import { DesignFrame } from "@/components/layout/DesignFrame";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+
+const FIGMA_W = 1440;
 
 type Ornament = {
   src: string;
@@ -13,9 +16,9 @@ type Ornament = {
 };
 
 /**
- * Figma CTA_Frame (34:1161) — ornaments use the same 1440 artboard coords as
- * the copy (inside DesignFrame) so they never drift into the text when the
- * viewport is wider/narrower than 1440.
+ * Figma CTA_Frame (34:1161) — 1440×488 artboard coords.
+ * The band scales to viewport width (like HeroBleed) so aspect ratio stays
+ * locked; ornaments are masked away from the center copy column.
  */
 const ornaments: Ornament[] = [
   {
@@ -100,9 +103,44 @@ function OrnamentImage({
 }
 
 export function CtaBand() {
+  const rootRef = useRef<HTMLElement>(null);
+  const baseDprRef = useRef<number | null>(null);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const update = () => {
+      const client =
+        rootRef.current?.clientWidth ||
+        document.documentElement.clientWidth ||
+        window.innerWidth;
+      const dpr = window.devicePixelRatio || 1;
+
+      if (baseDprRef.current == null) {
+        baseDprRef.current = dpr;
+      }
+
+      const zoomRatio = dpr / baseDprRef.current;
+      setScale((client * zoomRatio) / FIGMA_W);
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    window.visualViewport?.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("resize", update);
+      window.visualViewport?.removeEventListener("resize", update);
+    };
+  }, []);
+
+  const style = {
+    "--cta-scale": String(scale),
+  } as CSSProperties;
+
   return (
     <section
-      className="relative h-[488px] w-full overflow-hidden bg-[#003BE2]"
+      ref={rootRef}
+      className="cta-bleed"
+      style={style}
       aria-labelledby="cta-heading"
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden>
@@ -116,9 +154,8 @@ export function CtaBand() {
         />
       </div>
 
-      <DesignFrame className="relative z-10 h-full">
-        {/* Ornaments share the 1440 frame with the copy */}
-        <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
+      <div className="cta-design">
+        <div className="cta-ornaments pointer-events-none absolute inset-0 z-0" aria-hidden>
           {ornaments.map((ornament) => (
             <OrnamentImage
               key={ornament.src}
@@ -157,7 +194,7 @@ export function CtaBand() {
             </Link>
           </div>
         </div>
-      </DesignFrame>
+      </div>
     </section>
   );
 }
