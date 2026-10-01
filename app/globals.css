@@ -91,6 +91,30 @@ html {
 }
 
 /**
+ * CTA — scale the 1440×488 artboard to cover the full-bleed blue band
+ * (same pattern as hero). Ornament spacing stays locked inside the frame.
+ */
+.cta-bleed {
+  --cta-scale: 1;
+  position: relative;
+  width: 100%;
+  height: calc(488px * var(--cta-scale));
+  overflow: hidden;
+  background-color: #003be2;
+}
+
+.cta-design {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1440px;
+  height: 488px;
+  margin-left: -720px;
+  transform: scale(var(--cta-scale));
+  transform-origin: top center;
+}
+
+/**
  * Auth artboard — always the Figma 1440 width (centered on blue canvas).
  */
 .design-page {

@@ -1,12 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import type { CSSProperties } from "react";
-import { DesignFrame } from "@/components/layout/DesignFrame";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+
+const FIGMA_W = 1440;
 
 /**
- * Figma CTA_Frame (34:1161) — fixed 1440×488 artboard (no JS scale).
- * Browser zoom scales the whole page uniformly so ornaments keep spacing.
- * Positions nudged from Figma so side clusters do not stack on each other.
+ * Figma CTA_Frame (34:1161) — 1440 artboard scaled to cover the full blue
+ * band (like HeroBleed). Ornament positions are spaced so side clusters
+ * do not stack on each other; uniform scale keeps that spacing at any width.
  */
 type Ornament = {
   src: string;
@@ -18,7 +21,6 @@ type Ornament = {
 };
 
 const ornaments: Ornament[] = [
-  // Top-left lime spring — sits mostly outside the frame edge
   {
     src: "/figma/cta/orn-spring-lime-tl.png",
     left: -100,
@@ -26,7 +28,6 @@ const ornaments: Ornament[] = [
     width: 300,
     zIndex: 1,
   },
-  // Small white spring — kept left of the headline
   {
     src: "/figma/cta/orn-spring-white-sm.png",
     left: 240,
@@ -35,7 +36,6 @@ const ornaments: Ornament[] = [
     zIndex: 2,
     flip: true,
   },
-  // Bottom-left white cone — clear of the torus
   {
     src: "/figma/cta/orn-cone-white.png",
     left: -70,
@@ -43,7 +43,6 @@ const ornaments: Ornament[] = [
     width: 150,
     zIndex: 3,
   },
-  // Bottom-left torus — shifted right/down so it does not cover the cone
   {
     src: "/figma/cta/orn-torus-lime.png",
     left: 95,
@@ -51,7 +50,6 @@ const ornaments: Ornament[] = [
     width: 230,
     zIndex: 4,
   },
-  // Top-right pyramid — clear of the cylinder
   {
     src: "/figma/cta/orn-pyramid.png",
     left: 1090,
@@ -59,7 +57,6 @@ const ornaments: Ornament[] = [
     width: 140,
     zIndex: 1,
   },
-  // Top-right cylinder — pushed to the outer edge
   {
     src: "/figma/cta/orn-cylinder-white.png",
     left: 1310,
@@ -67,7 +64,6 @@ const ornaments: Ornament[] = [
     width: 250,
     zIndex: 3,
   },
-  // Bottom-right lime spring — below the cylinder, not through it
   {
     src: "/figma/cta/orn-spring-lime-br.png",
     left: 1185,
@@ -105,11 +101,46 @@ function OrnamentImage({
 }
 
 export function CtaBand() {
+  const rootRef = useRef<HTMLElement>(null);
+  const baseDprRef = useRef<number | null>(null);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const update = () => {
+      const client =
+        rootRef.current?.clientWidth ||
+        document.documentElement.clientWidth ||
+        window.innerWidth;
+      const dpr = window.devicePixelRatio || 1;
+
+      if (baseDprRef.current == null) {
+        baseDprRef.current = dpr;
+      }
+
+      const zoomRatio = dpr / baseDprRef.current;
+      setScale((client * zoomRatio) / FIGMA_W);
+    };
+
+    update();
+    window.addEventListener("resize", update);
+    window.visualViewport?.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("resize", update);
+      window.visualViewport?.removeEventListener("resize", update);
+    };
+  }, []);
+
+  const style = {
+    "--cta-scale": String(scale),
+  } as CSSProperties;
+
   return (
     <section
-      className="relative h-[488px] w-full overflow-hidden bg-[#003BE2]"
+      ref={rootRef}
+      className="cta-bleed"
+      style={style}
       aria-labelledby="cta-heading"
-      data-cta="stable"
+      data-cta="cover"
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <Image
@@ -122,12 +153,8 @@ export function CtaBand() {
         />
       </div>
 
-      {/*
-        Locked 1440 artboard — no transform scale. Zoom / different monitors
-        only change browser magnification or side gutters, not ornament spacing.
-      */}
-      <DesignFrame className="relative z-10 h-full overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
+      <div className="cta-design">
+        <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
           {ornaments.map((ornament) => (
             <OrnamentImage
               key={ornament.src}
@@ -166,7 +193,7 @@ export function CtaBand() {
             </Link>
           </div>
         </div>
-      </DesignFrame>
+      </div>
     </section>
   );
 }
