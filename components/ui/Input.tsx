@@ -9,7 +9,7 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 export function Input({ label, error, id, className = "", ...props }: InputProps) {
   return (
     <div className="w-full">
-      <label htmlFor={id} className="mb-1.5 block text-sm font-medium text-text">
+      <label htmlFor={id} className="mb-2 block text-sm font-medium leading-[1.2] text-text">
         {label}
       </label>
       <input

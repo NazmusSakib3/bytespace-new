@@ -41,6 +41,63 @@ body {
   font-family: var(--font-sans);
   color: var(--text);
   background: var(--surface);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  margin: 0;
+  width: 100%;
+  overflow-x: clip;
+}
+
+html {
+  margin: 0;
+  width: 100%;
+  overflow-x: clip;
+}
+
+/**
+ * Homepage content column — locked 1440 so ornaments/layout match Figma.
+ * Section backgrounds stay full-bleed outside this frame.
+ */
+.design-frame {
+  box-sizing: border-box;
+  width: 1440px;
+  margin-inline: auto;
+  flex-shrink: 0;
+}
+
+/**
+ * Hero: full-bleed blue band. Inner `.hero-design` is Figma 1440×1024,
+ * scaled via --hero-scale (HeroBleed: band width × DPR zoom ratio / 1440)
+ * so the frame covers the blue area at 100% and still grows with Ctrl+/-.
+ */
+.hero-bleed {
+  --hero-scale: 1;
+  position: relative;
+  width: 100%;
+  height: calc(1024px * var(--hero-scale));
+  overflow: hidden;
+  background-color: #003be2;
+}
+
+.hero-design {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1440px;
+  height: 1024px;
+  margin-left: -720px;
+  transform: scale(var(--hero-scale));
+  transform-origin: top center;
+}
+
+/**
+ * Auth artboard — always the Figma 1440 width (centered on blue canvas).
+ */
+.design-page {
+  box-sizing: border-box;
+  width: 1440px;
+  margin-inline: auto;
+  flex-shrink: 0;
 }
 
 .font-heading {
@@ -59,20 +116,50 @@ body {
 @keyframes float-y {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: translateY(-12px);
+    transform: translate3d(0, -12px, 0);
   }
 }
 
-@keyframes float-y-slow {
+@keyframes float-ornament {
   0%,
   100% {
-    transform: translateY(0) rotate(0deg);
+    transform: translate3d(0, 0, 0) rotate(0deg);
   }
   50% {
-    transform: translateY(-8px) rotate(4deg);
+    transform: translate3d(0, -14px, 0) rotate(2.5deg);
+  }
+}
+
+@keyframes float-ornament-alt {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(4px, -10px, 0) rotate(-3deg);
+  }
+}
+
+@keyframes float-ornament-soft {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-3px, -8px, 0);
+  }
+}
+
+@keyframes float-card {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
   }
 }
 
@@ -80,12 +167,42 @@ body {
   animation: float-y 4s ease-in-out infinite;
 }
 
-.animate-float-slow {
-  animation: float-y-slow 5.5s ease-in-out infinite;
+.animate-float-ornament {
+  animation: float-ornament 5.2s ease-in-out infinite;
+}
+
+.animate-float-ornament-alt {
+  animation: float-ornament-alt 6s ease-in-out infinite;
+}
+
+.animate-float-ornament-soft {
+  animation: float-ornament-soft 4.6s ease-in-out infinite;
+}
+
+.animate-float-card {
+  animation: float-card 5.5s ease-in-out infinite;
 }
 
 .animate-float-delay {
-  animation: float-y 4.5s ease-in-out 0.6s infinite;
+  animation-delay: 0.6s;
+}
+
+.animate-float-delay-2 {
+  animation-delay: 1.1s;
+}
+
+.animate-float-delay-3 {
+  animation-delay: 1.7s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-ornament,
+  .animate-float-ornament-alt,
+  .animate-float-ornament-soft,
+  .animate-float-card {
+    animation: none;
+  }
 }
 
 .hero-grid {
@@ -95,9 +212,27 @@ body {
   background-size: 120px 120px;
 }
 
+/* Figma Group 4 — 120px cells, white @ 12% opacity; tiles full viewport */
 .auth-grid {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(rgba(255, 255, 255, 0.12) 2px, rgba(255, 255, 255, 0) 2px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 2px, rgba(255, 255, 255, 0) 2px);
+  background-size: 120px 120px;
+  background-repeat: repeat;
+  /* Align to centered 1440×1024 artboard so lines match Figma and continue into gutters */
+  background-position: calc(50% - 720px) calc(50% - 512px);
+}
+
+/* Auth collage — Figma Group 7 fixed 548×585 */
+.auth-collage {
+  position: relative;
+  width: 548px;
+  height: 585px;
+}
+
+.auth-collage-canvas {
+  position: absolute;
+  inset: 0;
+  width: 548px;
+  height: 585px;
 }

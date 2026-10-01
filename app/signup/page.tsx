@@ -3,15 +3,16 @@ import { AuthShell } from "@/components/auth/AuthShell";
 import { SignupForm } from "@/components/auth/SignupForm";
 
 export const metadata: Metadata = {
-  title: "Sign Up — ByteSpace",
-  description: "Create your ByteSpace account and start learning.",
+  title: "Create an Account — ByteSpace",
+  description: "Sign up for ByteSpace and start learning.",
 };
 
+/** Figma Register 47:351 */
 export default function SignupPage() {
   return (
     <AuthShell
-      title="Start creating today"
-      subtitle="Join a community of learners building skills for the digital economy."
+      title="Sign up and come in"
+      subtitle="The registration process is straightforward, uncomplicated, and efficient, allowing users to sign up quickly, easily, and at no cost"
     >
       <SignupForm />
     </AuthShell>

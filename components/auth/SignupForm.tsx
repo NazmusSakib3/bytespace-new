@@ -12,6 +12,12 @@ type FormErrors = {
   password?: string;
 };
 
+const inputClassName =
+  "h-[52px] w-full rounded-xl border-[#E5E6E8] px-6 py-3 text-lg leading-[1.6] text-[#242528] placeholder:text-[#82868E]";
+
+/**
+ * Register form — Figma Register_Frame 47:362 (fixed design pixels).
+ */
 export function SignupForm() {
   const router = useRouter();
   const [fullName, setFullName] = useState("");
@@ -44,83 +50,73 @@ export function SignupForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="space-y-5">
-      <div>
-        <h2 className="text-2xl font-bold text-text">Welcome to ByteSpace</h2>
-        <p className="mt-1 text-sm text-muted">Create your account and start learning today.</p>
+    <form
+      onSubmit={handleSubmit}
+      noValidate
+      className="flex h-full w-[453px] flex-col items-center justify-between gap-[122px]"
+    >
+      <div className="flex w-full flex-col gap-10">
+        <div>
+          <p className="font-nav text-lg leading-[1.6] text-brand-blue">Create an Account</p>
+          <h2 className="font-heading text-[44px] font-semibold leading-[1.2] tracking-[-0.44px] text-[#242528]">
+            Welcome to ByteSpace
+          </h2>
+        </div>
+
+        <div className="flex w-full flex-col items-end gap-6">
+          <Input
+            id="signup-name"
+            label="Full Name"
+            type="text"
+            autoComplete="name"
+            placeholder="Jamie Davis"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            error={errors.fullName}
+            className={inputClassName}
+          />
+
+          <Input
+            id="signup-email"
+            label="Email"
+            type="email"
+            autoComplete="email"
+            placeholder="designer@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            error={errors.email}
+            className={inputClassName}
+          />
+
+          <Input
+            id="signup-password"
+            label="Password"
+            type="password"
+            autoComplete="new-password"
+            placeholder="********"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            error={errors.password}
+            className={inputClassName}
+          />
+
+          <Button
+            type="submit"
+            variant="lime"
+            size="lg"
+            className="!rounded-3xl px-6 py-3 text-lg font-medium leading-[1.2] text-[#242528]"
+          >
+            Continue
+          </Button>
+        </div>
       </div>
 
-      <Input
-        id="signup-name"
-        label="Full Name"
-        type="text"
-        autoComplete="name"
-        placeholder="Jane Doe"
-        value={fullName}
-        onChange={(e) => setFullName(e.target.value)}
-        error={errors.fullName}
-      />
-
-      <Input
-        id="signup-email"
-        label="Email"
-        type="email"
-        autoComplete="email"
-        placeholder="you@example.com"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        error={errors.email}
-      />
-
-      <Input
-        id="signup-password"
-        label="Password"
-        type="password"
-        autoComplete="new-password"
-        placeholder="••••••••"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        error={errors.password}
-      />
-
-      <Button type="submit" variant="primary" size="lg" fullWidth>
-        Sign Up
-      </Button>
-
-      <div className="relative py-2 text-center text-sm text-muted">
-        <span className="relative z-10 bg-white px-2">or</span>
-        <div className="absolute inset-x-0 top-1/2 -z-0 border-t border-border" aria-hidden />
-      </div>
-
-      <Button
-        type="button"
-        variant="outline"
-        size="lg"
-        fullWidth
-        onClick={() => router.push("/")}
-        className="gap-2"
-      >
-        <GoogleIcon />
-        Continue with Google
-      </Button>
-
-      <p className="text-center text-sm text-muted">
-        Already have an account?{" "}
-        <Link href="/login" className="font-semibold text-brand-blue hover:underline">
-          Sign In
+      <p className="font-nav flex gap-1 text-center text-base leading-[1.6] text-[#4B4C53]">
+        <span>Already have an account?</span>
+        <Link href="/login" className="text-brand-blue hover:underline">
+          Login
         </Link>
       </p>
     </form>
-  );
-}
-
-function GoogleIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
-      <path
-        fill="#EA4335"
-        d="M12 10.2v3.6h5.1c-.2 1.2-1.5 3.6-5.1 3.6-3.1 0-5.6-2.5-5.6-5.6S8.9 6.2 12 6.2c1.8 0 2.9.7 3.6 1.4l2.4-2.4C16.6 3.8 14.5 2.8 12 2.8 6.9 2.8 2.8 6.9 2.8 12S6.9 21.2 12 21.2c5.2 0 8.6-3.6 8.6-8.7 0-.6-.1-1-.2-1.5H12z"
-      />
-    </svg>
   );
 }

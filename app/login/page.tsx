@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 export default function LoginPage() {
   return (
     <AuthShell
-      title="Welcome back"
-      subtitle="Access your courses, track progress, and connect with mentors from anywhere."
+      title="Sign in with ease"
+      subtitle="Experience a seamless and efficient sign-in process that grants you instant access to a world of knowledge."
     >
       <LoginForm />
     </AuthShell>

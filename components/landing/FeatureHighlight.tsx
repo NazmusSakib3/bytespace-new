@@ -20,7 +20,7 @@ export function FeatureHighlight() {
   return (
     <section
       id="creators"
-      className="relative overflow-hidden bg-[#F8F8F9] pb-10 pt-16 sm:pb-12 sm:pt-20 lg:pb-14 lg:pt-24"
+      className="relative overflow-hidden bg-[#F8F8F9] pb-10 pt-16 sm:pb-12 sm:pt-20 lg:pb-0 lg:pt-24"
       aria-labelledby="feature-heading"
     >
       {/* Frame 15 soft blobs */}
@@ -69,7 +69,7 @@ export function FeatureHighlight() {
           </div>
 
           {/* Collage — Figma Frame 11: 621 × 552 */}
-          <div className="relative mx-auto h-[420px] w-full max-w-[621px] sm:h-[500px] lg:mx-0 lg:h-[552px] lg:shrink-0">
+          <div className="relative mx-auto aspect-[621/552] w-full max-w-[621px] lg:mx-0 lg:h-[552px] lg:shrink-0">
             {/* Course card behind person — 373×384 at 0,0 */}
             <article className="absolute left-0 top-0 z-0 w-[min(68%,373px)] overflow-hidden rounded-3xl border border-[#CED0D3] bg-white">
               <div className="relative m-4 aspect-[341/195] overflow-hidden rounded-xl">
@@ -160,10 +160,13 @@ export function FeatureHighlight() {
               </div>
             </article>
 
-            {/* Person cutout — 577×540 at 0,12 */}
+            {/* Person cutout — Figma 34:971 @ 0,12 / 577×540 */}
             <div
-              className="absolute left-0 top-[2%] z-10 w-[min(100%,577px)]"
+              className="absolute left-0 z-10"
               style={{
+                top: `${(12 / 552) * 100}%`,
+                width: `${(577 / 621) * 100}%`,
+                aspectRatio: "577 / 540",
                 filter:
                   "drop-shadow(16.9px 24.2px 24px rgba(0,0,0,0.09)) drop-shadow(10.2px 14.6px 16px rgba(0,0,0,0.08)) drop-shadow(5.4px 7.7px 9.6px rgba(0,0,0,0.07))",
               }}
@@ -171,44 +174,20 @@ export function FeatureHighlight() {
               <Image
                 src="/figma/growth-person.png"
                 alt="Young professional learning on a laptop"
-                width={577}
-                height={540}
-                className="h-auto w-full object-contain"
-                priority={false}
-              />
-            </div>
-
-            {/* Lime spring ornament — Figma ~406,67 / 215×215 */}
-            <div
-              className="pointer-events-none absolute right-[2%] top-[12%] z-[5] size-[120px] sm:size-[160px] lg:size-[215px]"
-              aria-hidden
-            >
-              <Image
-                src="/figma/growth-ornament.png"
-                alt=""
                 fill
-                className="object-contain"
-                sizes="215px"
-              />
-              <div
-                className="absolute inset-0 mix-blend-hard-light"
-                style={{
-                  backgroundColor: "#d4fb20",
-                  WebkitMaskImage: "url(/figma/growth-ornament.png)",
-                  WebkitMaskSize: "contain",
-                  WebkitMaskRepeat: "no-repeat",
-                  WebkitMaskPosition: "center",
-                  maskImage: "url(/figma/growth-ornament.png)",
-                  maskSize: "contain",
-                  maskRepeat: "no-repeat",
-                  maskPosition: "center",
-                }}
+                unoptimized
+                className="object-cover object-top"
+                sizes="577px"
               />
             </div>
 
-            {/* Learning Progress — Figma 345,213 */}
+            {/* Learning Progress — Figma 34:1031 @ 345,213 / 232×138 */}
             <aside
-              className="absolute right-0 top-[38%] z-20 w-[min(42%,232px)] rounded-2xl bg-white p-4 shadow-[0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-[10px] sm:top-[39%]"
+              className="absolute z-20 w-[min(37.36%,232px)] rounded-2xl bg-white p-4 shadow-[0_8px_24px_rgba(0,0,0,0.08)] backdrop-blur-[10px]"
+              style={{
+                left: `${(345 / 621) * 100}%`,
+                top: `${(213 / 552) * 100}%`,
+              }}
               aria-label="Learning progress"
             >
               <p className="font-nav text-sm font-medium leading-6 text-[#242528]">
@@ -221,6 +200,27 @@ export function FeatureHighlight() {
                 <div className="absolute inset-y-0 left-0 w-[56%] rounded-3xl bg-brand-lime" />
               </div>
             </aside>
+
+            {/* Lime spring — Figma 34:981 @ 406,67 / 215×215 — above Learning Progress */}
+            <div
+              className="animate-float-ornament pointer-events-none absolute z-40"
+              style={{
+                left: `${(406 / 621) * 100}%`,
+                top: `${(67 / 552) * 100}%`,
+                width: `${(215 / 621) * 100}%`,
+                aspectRatio: "1",
+              }}
+              aria-hidden
+            >
+              <Image
+                src="/figma/growth-ornament-lime.png"
+                alt=""
+                fill
+                unoptimized
+                className="object-contain"
+                sizes="215px"
+              />
+            </div>
           </div>
         </div>
       </Container>

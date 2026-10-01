@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { AuthCollage } from "@/components/auth/AuthCollage";
+import { DesignPage } from "@/components/layout/DesignPage";
 import { Logo } from "@/components/layout/Logo";
 
 type AuthShellProps = {
@@ -8,51 +10,57 @@ type AuthShellProps = {
   subtitle: string;
 };
 
+/**
+ * Figma Login / Register — locked 1440×1024 artboard (same as home DesignPage).
+ * https://www.figma.com/design/vIVChSxtAIVN2jOkX7Erp7/…?node-id=49-195
+ */
 export function AuthShell({ children, title, subtitle }: AuthShellProps) {
   return (
-    <div className="flex min-h-screen flex-col lg:flex-row">
-      <aside
-        className="relative flex flex-col justify-between overflow-hidden bg-brand-blue px-8 py-10 text-white lg:w-[45%] lg:px-12 lg:py-14"
-        aria-label="Brand"
-      >
-        <div className="auth-grid pointer-events-none absolute inset-0" aria-hidden />
+    <div className="relative flex min-h-screen w-full min-w-[1440px] items-center justify-center bg-brand-blue">
+      {/*
+        Full-bleed grid — Figma Register/Login Group 4 (120px cells).
+        Fixed so it covers the entire blue canvas (gutters beyond the 1440 artboard),
+        not only the centered DesignPage frame.
+        https://www.figma.com/design/vIVChSxtAIVN2jOkX7Erp7/…?node-id=47-351
+      */}
+      <div className="auth-grid pointer-events-none fixed inset-0 z-0" aria-hidden />
 
-        <div
-          className="pointer-events-none absolute -right-16 top-20 h-40 w-40 rounded-full bg-brand-lime-bright/90"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute bottom-24 left-8 h-16 w-16 rotate-12 bg-brand-yellow"
-          style={{ clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)" }}
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute bottom-10 right-16 h-20 w-20 rounded-full border-[10px] border-brand-yellow/80"
-          aria-hidden
-        />
+      <div className="relative z-10">
+        <DesignPage>
+          <div className="relative h-[1024px] w-[1440px] overflow-hidden">
+            <div className="relative z-10 h-full w-full">
+              {/* Left — Figma text @ 122,120; collage Group 7 @ 97,305 */}
+              <aside className="absolute inset-0 text-[#F5F5F6]" aria-label="Brand">
+                <div className="absolute left-[122px] top-[35px] z-20">
+                  <Logo variant="light" />
+                </div>
 
-        <div className="relative z-10">
-          <Logo variant="light" />
-        </div>
+                <div className="absolute left-[122px] top-[120px] z-20 flex w-[475px] flex-col gap-4">
+                  <h1 className="font-heading text-xl font-semibold leading-[1.2] tracking-[-0.2px]">
+                    {title}
+                  </h1>
+                  <p className="font-nav text-lg leading-[1.6]">{subtitle}</p>
+                </div>
 
-        <div className="relative z-10 mt-16 max-w-md lg:mt-0">
-          <p className="text-sm font-semibold uppercase tracking-wider text-brand-lime-bright">
-            ByteSpace
-          </p>
-          <h1 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">{title}</h1>
-          <p className="mt-4 text-base text-white/85">{subtitle}</p>
-        </div>
+                <div className="absolute left-[97px] top-[305px] z-10">
+                  <AuthCollage />
+                </div>
+              </aside>
 
-        <p className="relative z-10 mt-12 text-sm text-white/80">
-          <Link href="/" className="underline hover:no-underline">
-            ← Back to home
-          </Link>
-        </p>
-      </aside>
+              {/* Register_Frame — 579×784 @ left 741 (50%+21), top 120 */}
+              <main className="absolute left-[741px] top-[120px] z-20">
+                <div className="flex h-[784px] w-[579px] flex-col rounded-3xl bg-white px-[63px] py-[61px]">
+                  {children}
+                </div>
+              </main>
+            </div>
 
-      <main className="flex flex-1 items-center justify-center bg-white px-4 py-12 sm:px-8">
-        <div className="w-full max-w-md">{children}</div>
-      </main>
+            <p className="sr-only">
+              <Link href="/">Back to home</Link>
+            </p>
+          </div>
+        </DesignPage>
+      </div>
     </div>
   );
 }

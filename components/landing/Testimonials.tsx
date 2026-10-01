@@ -64,7 +64,8 @@ export function Testimonials() {
           >
             Discover What Our Community Is Saying
           </h2>
-          <p className="font-nav max-w-[580px] text-base leading-[1.6] text-[#4B4C53] sm:text-lg lg:justify-self-end">
+          {/* Figma 34:1181 — Satoshi Regular 18 / #4F4F4F / leading 1.6 */}
+          <p className="font-nav max-w-[580px] text-[18px] leading-[1.6] text-[#4F4F4F] lg:justify-self-end">
             At ByteSpace, our vibrant community of learners and creators is at the heart of what we
             do. Hear directly from those who have experienced the transformative journey of learning
             and creating on our platform. Explore testimonials that reflect the diverse perspectives
