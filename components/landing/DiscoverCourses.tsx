@@ -139,11 +139,12 @@ export function DiscoverCourses() {
                     className="object-cover"
                     sizes="341px"
                   />
-                  <div className="absolute bottom-3 left-3 flex flex-wrap gap-3">
+                  {/* Figma 13:251 — left 13 / top 150 / gap 12, single row inside 341×195 */}
+                  <div className="absolute left-[13px] top-[150px] flex items-start gap-2.5">
                     {META_CHIPS.map((chip) => (
                       <span
                         key={chip}
-                        className="rounded-3xl bg-[rgba(246,246,246,0.6)] px-3 py-1.5 font-nav text-xs font-medium leading-[1.2] text-[#4F4F4F] backdrop-blur-[4px]"
+                        className="shrink-0 whitespace-nowrap rounded-3xl bg-[rgba(246,246,246,0.6)] px-3 py-1.5 font-nav text-xs font-medium leading-[1.2] text-[#4F4F4F] backdrop-blur-[4px]"
                       >
                         {chip}
                       </span>
