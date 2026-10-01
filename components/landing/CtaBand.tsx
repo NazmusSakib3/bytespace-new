@@ -3,27 +3,21 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import { DesignFrame } from "@/components/layout/DesignFrame";
 
-const FIGMA_W = 1440;
-
 type Ornament = {
   src: string;
+  left: number;
   top: number;
   width: number;
   flip?: boolean;
   motion: string;
 };
 
-type LeftOrnament = Ornament & { left: number };
-type RightOrnament = Ornament & {
-  /** Distance from Figma frame right edge (1440 - left - width) */
-  right: number;
-};
-
 /**
- * Figma CTA_Frame (34:1161) — pin left cluster to section left,
- * right cluster to section right so ornaments sit at the ends.
+ * Figma CTA_Frame (34:1161) — ornaments use the same 1440 artboard coords as
+ * the copy (inside DesignFrame) so they never drift into the text when the
+ * viewport is wider/narrower than 1440.
  */
-const leftOrnaments: LeftOrnament[] = [
+const ornaments: Ornament[] = [
   {
     src: "/figma/cta/orn-spring-lime-tl.png",
     left: -118,
@@ -53,26 +47,23 @@ const leftOrnaments: LeftOrnament[] = [
     width: 342,
     motion: "animate-float-ornament animate-float-delay-3",
   },
-];
-
-const rightOrnaments: RightOrnament[] = [
   {
     src: "/figma/cta/orn-pyramid.png",
-    right: FIGMA_W - 1080 - 188,
+    left: 1080,
     top: 0,
     width: 188,
     motion: "animate-float-ornament-soft",
   },
   {
     src: "/figma/cta/orn-cylinder-white.png",
-    right: FIGMA_W - 1226 - 370,
+    left: 1226,
     top: 6,
     width: 370,
     motion: "animate-float-ornament-alt animate-float-delay",
   },
   {
     src: "/figma/cta/orn-spring-lime-br.png",
-    right: FIGMA_W - 1110 - 330,
+    left: 1110,
     top: 289,
     width: 330,
     motion: "animate-float-ornament animate-float-delay-2",
@@ -125,43 +116,25 @@ export function CtaBand() {
         />
       </div>
 
-      {/* Left-end ornaments — anchored to section left like Figma artboard edge */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-0 w-[720px]" aria-hidden>
-        {leftOrnaments.map((ornament) => (
-          <OrnamentImage
-            key={ornament.src}
-            src={ornament.src}
-            width={ornament.width}
-            flip={ornament.flip}
-            motion={ornament.motion}
-            style={{
-              left: ornament.left,
-              top: ornament.top,
-              width: ornament.width,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Right-end ornaments — anchored to section right */}
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-0 w-[720px]" aria-hidden>
-        {rightOrnaments.map((ornament) => (
-          <OrnamentImage
-            key={ornament.src}
-            src={ornament.src}
-            width={ornament.width}
-            flip={ornament.flip}
-            motion={ornament.motion}
-            style={{
-              right: ornament.right,
-              top: ornament.top,
-              width: ornament.width,
-            }}
-          />
-        ))}
-      </div>
-
       <DesignFrame className="relative z-10 h-full">
+        {/* Ornaments share the 1440 frame with the copy */}
+        <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
+          {ornaments.map((ornament) => (
+            <OrnamentImage
+              key={ornament.src}
+              src={ornament.src}
+              width={ornament.width}
+              flip={ornament.flip}
+              motion={ornament.motion}
+              style={{
+                left: ornament.left,
+                top: ornament.top,
+                width: ornament.width,
+              }}
+            />
+          ))}
+        </div>
+
         <div className="absolute inset-0 z-20 flex items-center justify-center px-4">
           <div className="relative z-20 mx-auto flex w-full max-w-[964px] flex-col items-center gap-10 text-center">
             <h2
