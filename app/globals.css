@@ -114,28 +114,6 @@ html {
   transform-origin: top center;
 }
 
-/* Keep decorative ornaments in the side wings; fade them out under the copy. */
-.cta-ornaments {
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    #000 0%,
-    #000 22%,
-    transparent 30%,
-    transparent 70%,
-    #000 78%,
-    #000 100%
-  );
-  mask-image: linear-gradient(
-    90deg,
-    #000 0%,
-    #000 22%,
-    transparent 30%,
-    transparent 70%,
-    #000 78%,
-    #000 100%
-  );
-}
-
 /**
  * Auth artboard — always the Figma 1440 width (centered on blue canvas).
  */

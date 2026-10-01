@@ -8,67 +8,70 @@ const FIGMA_W = 1440;
 
 type Ornament = {
   src: string;
-  left: number;
   top: number;
   width: number;
   flip?: boolean;
   motion: string;
+  left?: number;
+  right?: number;
 };
 
 /**
- * Figma CTA_Frame (34:1161) — 1440×488 artboard coords.
- * The band scales to viewport width (like HeroBleed) so aspect ratio stays
- * locked; ornaments are masked away from the center copy column.
+ * CTA ornaments sized for the 488px band (not the 1024px hero). Side wings
+ * only — center copy column stays clear at 720p / 1080p / ultrawide.
  */
-const ornaments: Ornament[] = [
+const leftOrnaments: Ornament[] = [
   {
     src: "/figma/cta/orn-spring-lime-tl.png",
-    left: -118,
-    top: -162,
-    width: 385,
+    left: -70,
+    top: -80,
+    width: 220,
     motion: "animate-float-ornament",
   },
   {
     src: "/figma/cta/orn-spring-white-sm.png",
-    left: 353,
-    top: 5,
-    width: 175,
+    left: 150,
+    top: 18,
+    width: 100,
     flip: true,
     motion: "animate-float-ornament-soft animate-float-delay",
   },
   {
     src: "/figma/cta/orn-cone-white.png",
-    left: -48,
-    top: 225,
-    width: 188,
+    left: -20,
+    top: 250,
+    width: 110,
     motion: "animate-float-ornament-alt animate-float-delay-2",
   },
   {
     src: "/figma/cta/orn-torus-lime.png",
-    left: 20,
-    top: 299,
-    width: 342,
+    left: -10,
+    top: 310,
+    width: 190,
     motion: "animate-float-ornament animate-float-delay-3",
   },
+];
+
+const rightOrnaments: Ornament[] = [
   {
     src: "/figma/cta/orn-pyramid.png",
-    left: 1080,
-    top: 0,
-    width: 188,
+    right: 42,
+    top: 24,
+    width: 110,
     motion: "animate-float-ornament-soft",
   },
   {
     src: "/figma/cta/orn-cylinder-white.png",
-    left: 1226,
-    top: 6,
-    width: 370,
+    right: -75,
+    top: 8,
+    width: 210,
     motion: "animate-float-ornament-alt animate-float-delay",
   },
   {
     src: "/figma/cta/orn-spring-lime-br.png",
-    left: 1110,
-    top: 289,
-    width: 330,
+    right: -30,
+    top: 300,
+    width: 190,
     motion: "animate-float-ornament animate-float-delay-2",
   },
 ];
@@ -142,6 +145,7 @@ export function CtaBand() {
       className="cta-bleed"
       style={style}
       aria-labelledby="cta-heading"
+      data-cta="scaled"
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <Image
@@ -155,8 +159,12 @@ export function CtaBand() {
       </div>
 
       <div className="cta-design">
-        <div className="cta-ornaments pointer-events-none absolute inset-0 z-0" aria-hidden>
-          {ornaments.map((ornament) => (
+        {/* Left wing — clipped so shapes cannot enter the copy column */}
+        <div
+          className="pointer-events-none absolute inset-y-0 left-0 z-0 w-[300px] overflow-hidden"
+          aria-hidden
+        >
+          {leftOrnaments.map((ornament) => (
             <OrnamentImage
               key={ornament.src}
               src={ornament.src}
@@ -165,6 +173,27 @@ export function CtaBand() {
               motion={ornament.motion}
               style={{
                 left: ornament.left,
+                top: ornament.top,
+                width: ornament.width,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Right wing */}
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 z-0 w-[300px] overflow-hidden"
+          aria-hidden
+        >
+          {rightOrnaments.map((ornament) => (
+            <OrnamentImage
+              key={ornament.src}
+              src={ornament.src}
+              width={ornament.width}
+              flip={ornament.flip}
+              motion={ornament.motion}
+              style={{
+                right: ornament.right,
                 top: ornament.top,
                 width: ornament.width,
               }}
