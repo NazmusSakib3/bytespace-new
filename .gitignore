@@ -39,3 +39,27 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.cursor/
+.vercel
+.env*
+
+# local Figma scratch / export work (do not ship)
+_*.jpg
+_*.png
+_figma-*.png
+_live-*.png
+public/figma/hero/_*
+public/figma/hero/parts/
+public/figma/hero/raw/
+public/figma/hero/raw2x/
+public/figma/hero/rendered/
+public/figma/hero/person-raw-*.png
+public/figma/hero/ornaments*.png
+public/figma/cta/parts/
+public/figma/manage/*-export.png
+public/figma/manage/svg*.svg
+public/figma/manage/collage.png
+scripts/
+**/tint_*.py
+**/_build_*.py

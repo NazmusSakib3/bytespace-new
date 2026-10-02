@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ByteSpace New
 
-## Getting Started
+E-learning marketing site for the ByteSpace assessment: landing page plus Login and Signup UI.
 
-First, run the development server:
+**Submission details & description:** see [SUBMISSION.md](./SUBMISSION.md)  
+**Live demo:** https://bytespace-new-rho.vercel.app  
+**GitHub:** https://github.com/NazmusSakib3/bytespace-new
+
+## Stack
+
+- Next.js App Router
+- TypeScript
+- Tailwind CSS v4
+
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Route | Page |
+| --- | --- |
+| `/` | Landing |
+| `/login` | Login (UI only) |
+| `/signup` | Signup (UI only) |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Code & Git (assessment)
 
-## Learn More
+| Requirement | How this repo meets it |
+| --- | --- |
+| Public GitHub repository | [NazmusSakib3/bytespace-new](https://github.com/NazmusSakib3/bytespace-new) (public) |
+| Work on a separate branch (not `main`) | Feature work landed via `feature/landing-and-auth` |
+| Pull Request for the work | [PR #1](https://github.com/NazmusSakib3/bytespace-new/pull/1) · [PR #2](https://github.com/NazmusSakib3/bytespace-new/pull/2) |
+| Clean, reusable components | `components/ui/*`, `components/layout/*`, `components/landing/*`, `components/auth/*` |
 
-To learn more about Next.js, take a look at the following resources:
+Workflow used: **feature branch → Pull Request → merge into `main`**. Do not commit assessment work directly on `main`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Design
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Matches the [ByteSpace New Figma](https://www.figma.com/design/26TBgRjmpuxudcErJsHUfy/ByteSpace-New-Check-website) blue/lime e-learning aesthetic.
 
-## Deploy on Vercel
+**Landing:** Navbar, Hero, Skills grid, Feature highlight (65k+), CTA band, Testimonials, Footer  
+**Auth:** Split blue brand panel + white form with client-side validation (no backend)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+npm run start
+npm run lint
+```
