@@ -59,8 +59,6 @@ const AVATARS = [
   "/figma/avatar4.png",
 ];
 
-const META_CHIPS = ["17 Lessons", "2 hours 16 mins", "59 Comments"];
-
 /**
  * Figma Frame 8 (33:683) — 1199×808 grid; cards 373×384; gap 40.
  */
@@ -139,17 +137,6 @@ export function DiscoverCourses() {
                     className="object-cover"
                     sizes="341px"
                   />
-                  {/* Figma 13:251 — left 13 / top 150 / gap 12, single row inside 341×195 */}
-                  <div className="absolute left-[13px] top-[150px] flex items-start gap-2.5">
-                    {META_CHIPS.map((chip) => (
-                      <span
-                        key={chip}
-                        className="shrink-0 whitespace-nowrap rounded-3xl bg-[rgba(246,246,246,0.6)] px-3 py-1.5 font-nav text-xs font-medium leading-[1.2] text-[#4F4F4F] backdrop-blur-[4px]"
-                      >
-                        {chip}
-                      </span>
-                    ))}
-                  </div>
                 </div>
 
                 <div className="relative mt-5 flex flex-1 flex-col gap-4">
