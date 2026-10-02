@@ -25,34 +25,26 @@ const AVATARS = [
 export function ManageCourses() {
   return (
     <section
-      className="relative overflow-x-clip bg-[#F8F8F9] py-16 sm:py-20 lg:pb-[74px] lg:pt-[72px]"
+      className="relative bg-[#F8F8F9] py-16 sm:py-20 lg:pb-[74px] lg:pt-[72px]"
       aria-labelledby="manage-heading"
     >
-      {/* Frame 15 blobs — continues gradient from creators section */}
-      <div
-        className="pointer-events-none absolute -left-[20%] top-[-30%] h-[720px] w-[720px] rounded-full bg-[#003BE2]/15 blur-[90px]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -right-[10%] top-[-40%] h-[900px] w-[900px] rounded-full bg-[#D4FB20]/30 blur-[100px]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute bottom-[-20%] left-[40%] h-[720px] w-[720px] rounded-full bg-[#D4FB20]/25 blur-[90px]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -left-[5%] bottom-[-15%] h-[500px] w-[500px] rounded-full bg-[#003BE2]/12 blur-[80px]"
-        aria-hidden
-      />
+      {/* Clip blobs only — do not clip the collage (overflow-x on the section
+          would force overflow-y to clip and cut the Happy Students card). */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+        <div className="absolute -left-[20%] top-[-30%] h-[720px] w-[720px] rounded-full bg-[#003BE2]/15 blur-[90px]" />
+        <div className="absolute -right-[10%] top-[-40%] h-[900px] w-[900px] rounded-full bg-[#D4FB20]/30 blur-[100px]" />
+        <div className="absolute bottom-[-20%] left-[40%] h-[720px] w-[720px] rounded-full bg-[#D4FB20]/25 blur-[90px]" />
+        <div className="absolute -left-[5%] bottom-[-15%] h-[500px] w-[500px] rounded-full bg-[#003BE2]/12 blur-[80px]" />
+      </div>
 
       <Container className="relative z-10 lg:px-0">
         <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-[79px]">
-          {/* Frame 12 — 541 × 596; overflow visible so spring isn't clipped */}
-          <div className="relative order-2 mx-auto aspect-[541/596] w-full max-w-[541px] shrink-0 overflow-visible lg:order-1 lg:mx-0 lg:h-[596px]">
+          {/* Frame 12 — 541 × 596; outer pad on mobile so overflowing Happy Students stays in-flow */}
+          <div className="relative order-2 mx-auto w-full max-w-[541px] shrink-0 pb-14 sm:pb-10 lg:order-1 lg:mx-0 lg:pb-0">
+            <div className="relative aspect-[541/596] w-full overflow-visible lg:h-[596px]">
             {/* Total Revenue — 34:987 @ 0,44 / 232×119 */}
             <aside
-              className="absolute left-0 top-[44px] z-10 flex w-[232px] shrink-0 flex-col items-start gap-2 rounded-2xl bg-[#003BE2] p-4 backdrop-blur-[10px]"
+              className="absolute left-0 top-[44px] z-10 flex w-[min(100%,232px)] shrink-0 flex-col items-start gap-2 rounded-2xl bg-[#003BE2] p-4 backdrop-blur-[10px]"
               aria-label="Total revenue"
             >
               <div className="flex flex-col items-start text-[#F5F5F6]">
@@ -113,11 +105,10 @@ export function ManageCourses() {
               </div>
             </div>
 
-            {/* Happy Students — 34:1038 @ 283,413 / 258 wide — white card */}
+            {/* Happy Students — 34:1038 @ 283,413 / 258; right-aligned on small screens */}
             <aside
-              className="absolute z-30 flex w-[min(100%,258px)] flex-col gap-2 rounded-2xl bg-white p-4 backdrop-blur-[10px]"
+              className="absolute right-0 left-auto z-30 flex w-[min(100%,258px)] flex-col gap-2 rounded-2xl bg-white p-4 backdrop-blur-[10px] lg:left-[52.31%] lg:right-auto"
               style={{
-                left: `${(283 / 541) * 100}%`,
                 top: `${(413 / 596) * 100}%`,
               }}
               aria-label="Happy students"
@@ -190,6 +181,7 @@ export function ManageCourses() {
                 className="object-contain"
                 sizes="215px"
               />
+            </div>
             </div>
           </div>
 
