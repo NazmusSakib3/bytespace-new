@@ -91,29 +91,29 @@ html {
 }
 
 /**
- * Auth (login/signup) — fit the 1440×1024 Figma artboard inside the viewport
- * on any aspect ratio (scale = min(w/1440, h/1024), centered).
+ * Auth (login/signup) — same width-cover scale as hero (1440×1024).
+ * Fills the viewport width; no letterboxed floating frame.
  */
 .auth-bleed {
   --auth-scale: 1;
   position: relative;
-  display: flex;
   width: 100%;
-  height: 100dvh;
+  min-height: 100dvh;
   min-height: 100vh;
-  align-items: center;
-  justify-content: center;
+  height: max(100dvh, calc(1024px * var(--auth-scale)));
   overflow: hidden;
   background-color: #003be2;
 }
 
 .auth-design {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 50%;
   width: 1440px;
   height: 1024px;
-  flex-shrink: 0;
+  margin-left: -720px;
   transform: scale(var(--auth-scale));
-  transform-origin: center center;
+  transform-origin: top center;
 }
 
 /**

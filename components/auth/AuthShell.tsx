@@ -6,7 +6,6 @@ import { AuthCollage } from "@/components/auth/AuthCollage";
 import { Logo } from "@/components/layout/Logo";
 
 const FIGMA_W = 1440;
-const FIGMA_H = 1024;
 
 type AuthShellProps = {
   children: ReactNode;
@@ -15,8 +14,8 @@ type AuthShellProps = {
 };
 
 /**
- * Figma Login / Register — 1440×1024 artboard scaled to fit any viewport
- * aspect ratio (same idea as hero bleed, but fit-contain + centered).
+ * Figma Login / Register — 1440×1024 artboard scaled to cover viewport width
+ * (same bleed pattern as the homepage hero — no letterboxing).
  * https://www.figma.com/design/vIVChSxtAIVN2jOkX7Erp7/…?node-id=49-195
  */
 export function AuthShell({ children, title, subtitle }: AuthShellProps) {
@@ -26,9 +25,10 @@ export function AuthShell({ children, title, subtitle }: AuthShellProps) {
 
   useEffect(() => {
     const update = () => {
-      const el = rootRef.current;
-      const clientW = el?.clientWidth || document.documentElement.clientWidth || window.innerWidth;
-      const clientH = el?.clientHeight || window.innerHeight;
+      const client =
+        rootRef.current?.clientWidth ||
+        document.documentElement.clientWidth ||
+        window.innerWidth;
       const dpr = window.devicePixelRatio || 1;
 
       if (baseDprRef.current == null) {
@@ -36,8 +36,7 @@ export function AuthShell({ children, title, subtitle }: AuthShellProps) {
       }
 
       const zoomRatio = dpr / baseDprRef.current;
-      const fit = Math.min(clientW / FIGMA_W, clientH / FIGMA_H);
-      setScale(fit * zoomRatio);
+      setScale((client * zoomRatio) / FIGMA_W);
     };
 
     update();
@@ -54,12 +53,7 @@ export function AuthShell({ children, title, subtitle }: AuthShellProps) {
   } as CSSProperties;
 
   return (
-    <div
-      ref={rootRef}
-      className="auth-bleed"
-      style={style}
-      data-auth="fit"
-    >
+    <div ref={rootRef} className="auth-bleed" style={style} data-auth="cover">
       {/*
         Full-bleed grid — Figma Register/Login Group 4 (120px cells).
         https://www.figma.com/design/vIVChSxtAIVN2jOkX7Erp7/…?node-id=47-351
