@@ -138,6 +138,31 @@ html {
 }
 
 /**
+ * Footer — scale 1440×525 artboard to cover full width (same as hero / CTA).
+ */
+.footer-bleed {
+  --footer-scale: 1;
+  position: relative;
+  width: 100%;
+  height: calc(525px * var(--footer-scale));
+  overflow: hidden;
+  border-top: 1px solid #ced0d3;
+  background-color: #ffffff;
+  color: #242528;
+}
+
+.footer-design {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1440px;
+  height: 525px;
+  margin-left: -720px;
+  transform: scale(var(--footer-scale));
+  transform-origin: top center;
+}
+
+/**
  * Auth artboard — always the Figma 1440 width (centered on blue canvas).
  */
 .design-page {
