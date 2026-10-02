@@ -91,6 +91,32 @@ html {
 }
 
 /**
+ * Auth (login/signup) — fit the 1440×1024 Figma artboard inside the viewport
+ * on any aspect ratio (scale = min(w/1440, h/1024), centered).
+ */
+.auth-bleed {
+  --auth-scale: 1;
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #003be2;
+}
+
+.auth-design {
+  position: relative;
+  width: 1440px;
+  height: 1024px;
+  flex-shrink: 0;
+  transform: scale(var(--auth-scale));
+  transform-origin: center center;
+}
+
+/**
  * CTA — scale the 1440×488 artboard to cover the full-bleed blue band
  * (same pattern as hero). Ornament spacing stays locked inside the frame.
  */
