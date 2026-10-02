@@ -53,14 +53,14 @@ const courses = [
 ];
 
 const AVATARS = [
-  "/figma/avatar1.png",
-  "/figma/avatar2.png",
-  "/figma/avatar3.png",
-  "/figma/avatar4.png",
+  "/figma/course-card/avatar-1.png",
+  "/figma/course-card/avatar-2.png",
+  "/figma/course-card/avatar-3.png",
+  "/figma/course-card/avatar-4.png",
 ];
 
 /**
- * Figma Frame 8 (33:683) — 1199×808 grid; cards 373×384; gap 40.
+ * Figma Frame 8 (33:683) / Course_Card_1 (13:249) — 1199×808 grid; cards 373×384; gap 40.
  */
 export function DiscoverCourses() {
   const [active, setActive] = useState("Featured");
@@ -150,45 +150,61 @@ export function DiscoverCourses() {
                         <span className="text-brand-blue">purepearl studio</span>
                       </p>
                     </div>
-                    <span className="font-nav inline-flex shrink-0 items-center gap-0 text-lg font-normal leading-7 text-[#4F4F4F]">
+                    <span className="font-nav inline-flex shrink-0 items-center text-lg font-normal leading-[1.6] text-[#4F4F4F]">
                       4.5
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
-                        <path
-                          d="M12 3.5l2.12 6.5h6.84l-5.54 4.03 2.12 6.52L12 16.52l-5.54 4.03 2.12-6.52L3.04 10h6.84L12 3.5z"
-                          fill="#C5C7CB"
-                        />
-                      </svg>
+                      <Image
+                        src="/figma/course-card/star.svg"
+                        alt=""
+                        width={24}
+                        height={24}
+                        unoptimized
+                        className="size-6"
+                        aria-hidden
+                      />
                     </span>
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <span className="inline-flex items-center gap-1 rounded-3xl bg-[#F5F5F6] px-3 py-1.5 text-xs font-medium leading-[1.2] text-[#4B4C53]">
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
+                    <span className="inline-flex items-center justify-center gap-1 rounded-3xl bg-[#F5F5F6] px-3 py-1.5 font-nav text-xs font-medium leading-[1.2] text-[#4B4C53]">
+                      <Image
+                        src="/figma/course-card/signal.svg"
+                        alt=""
+                        width={20}
+                        height={20}
+                        unoptimized
+                        className="size-5"
                         aria-hidden
-                      >
-                        <rect x="4" y="14" width="3" height="6" rx="0.5" />
-                        <rect x="10.5" y="10" width="3" height="10" rx="0.5" />
-                        <rect x="17" y="6" width="3" height="14" rx="0.5" />
-                      </svg>
+                      />
                       Beginner
                     </span>
+                    {/* Figma 13:265 — 4×32 avatars overlap −8px, then lime 26+ circle */}
                     <div className="flex items-start" aria-hidden>
-                      {AVATARS.map((src) => (
+                      {AVATARS.map((src, i) => (
                         <Image
                           key={src}
                           src={src}
                           alt=""
                           width={32}
                           height={32}
-                          className="relative mr-[-8px] size-8 rounded-full object-cover"
+                          className="relative size-8 shrink-0 rounded-full object-cover"
+                          style={{ marginRight: -8, zIndex: i + 1 }}
                         />
                       ))}
-                      <span className="relative flex size-8 items-center justify-center rounded-full bg-brand-lime font-nav text-xs font-medium leading-5 text-[#242528]">
-                        26+
+                      <span
+                        className="relative flex size-8 shrink-0 items-center justify-center"
+                        style={{ zIndex: AVATARS.length + 1 }}
+                      >
+                        <Image
+                          src="/figma/course-card/avatar-more.svg"
+                          alt=""
+                          width={32}
+                          height={32}
+                          unoptimized
+                          className="absolute inset-0 size-8"
+                        />
+                        <span className="relative font-nav text-xs font-medium leading-5 text-[#242528]">
+                          26+
+                        </span>
                       </span>
                     </div>
                   </div>
